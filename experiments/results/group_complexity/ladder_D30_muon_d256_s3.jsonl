@@ -1,0 +1,13 @@
+{"_meta": {"group": "D30", "optimizer": "muon", "seed": 3, "d_model": 256, "vocab_size": 61, "train_frac": 0.5, "commutator_density": 0.7, "group_order": 60}}
+{"step": 0, "train_loss": 4.152835369110107, "train_acc": 0.01833333447575569, "test_loss": 4.15114164352417, "test_acc": 0.014444444328546524, "wn_total": 43.843990157034504, "wn_hidden": 25.087087656537417}
+{"step": 100, "train_loss": 0.0030421882402151823, "train_acc": 1.0, "test_loss": 0.47639432549476624, "test_acc": 0.8455556035041809, "wn_total": 57.554001717624985, "wn_hidden": 46.85189078799442}
+{"step": 200, "train_loss": 0.00281947641633451, "train_acc": 1.0, "test_loss": 0.0046600340865552425, "test_acc": 1.0, "wn_total": 54.12556185147615, "wn_hidden": 44.728295289169}
+{"step": 300, "train_loss": 0.0012084301561117172, "train_acc": 1.0, "test_loss": 0.003620044095441699, "test_acc": 0.9994444847106934, "wn_total": 38.61622114432868, "wn_hidden": 26.54027498230707}
+{"step": 400, "train_loss": 0.00047343893675133586, "train_acc": 1.0, "test_loss": 0.006414432544261217, "test_acc": 0.9988889098167419, "wn_total": 36.21575182441289, "wn_hidden": 25.199210424012342}
+{"step": 500, "train_loss": 0.002220192924141884, "train_acc": 0.9994444847106934, "test_loss": 0.048513997346162796, "test_acc": 0.9905555844306946, "wn_total": 32.44170445460202, "wn_hidden": 21.459090101607096}
+{"step": 600, "train_loss": 0.00015671370783820748, "train_acc": 1.0, "test_loss": 0.1983191967010498, "test_acc": 0.9422222375869751, "wn_total": 48.536305146984404, "wn_hidden": 42.55915279362631}
+{"step": 700, "train_loss": 0.010110409930348396, "train_acc": 0.9977778196334839, "test_loss": 0.17730170488357544, "test_acc": 0.9583333730697632, "wn_total": 47.09719653707115, "wn_hidden": 41.93077103913692}
+{"step": 800, "train_loss": 0.00010141910024685785, "train_acc": 1.0, "test_loss": 0.03053976222872734, "test_acc": 0.9900000095367432, "wn_total": 47.43029310012393, "wn_hidden": 42.53845754706438}
+{"step": 900, "train_loss": 0.0003056377754546702, "train_acc": 1.0, "test_loss": 0.02923758700489998, "test_acc": 0.9916666746139526, "wn_total": 39.76342198958633, "wn_hidden": 34.28835282163889}
+{"step": 1000, "train_loss": 0.00019631703617051244, "train_acc": 1.0, "test_loss": 0.0013243691064417362, "test_acc": 1.0, "wn_total": 51.988165308242685, "wn_hidden": 48.52095436396667}
+{"_summary": {"group": "D30", "optimizer": "muon", "seed": 3, "d_model": 256, "train_frac": 0.5, "group_order": 60, "commutator_density": 0.7, "memorize_step": 100, "grok_step": 200, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 1.9341007225811901, "n_params": 1607424, "elapsed_sec": 44.77965760231018, "stopped_step": 1000}}

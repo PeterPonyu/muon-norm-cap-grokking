@@ -1,0 +1,10 @@
+{"_meta": {"group": "Z120", "optimizer": "muon", "seed": 1, "d_model": 256, "vocab_size": 121, "train_frac": 0.5, "commutator_density": 0.0, "group_order": 120}}
+{"step": 0, "train_loss": 4.847600936889648, "train_acc": 0.009166667237877846, "test_loss": 4.8448686599731445, "test_acc": 0.0076388888992369175, "wn_total": 43.98217850412856, "wn_hidden": 25.083777435359206}
+{"step": 100, "train_loss": 0.003275190247222781, "train_acc": 1.0, "test_loss": 0.009597808122634888, "test_acc": 0.99958336353302, "wn_total": 57.66763408769635, "wn_hidden": 46.4140495142319}
+{"step": 200, "train_loss": 0.0035379386972635984, "train_acc": 1.0, "test_loss": 0.0037018258590251207, "test_acc": 1.0, "wn_total": 53.384131154626246, "wn_hidden": 43.26449086420375}
+{"step": 300, "train_loss": 0.0016707757022231817, "train_acc": 1.0, "test_loss": 0.001886960701085627, "test_acc": 1.0, "wn_total": 38.60072195232282, "wn_hidden": 25.395249822942105}
+{"step": 400, "train_loss": 0.0007998219225555658, "train_acc": 1.0, "test_loss": 0.015493009239435196, "test_acc": 0.996666669845581, "wn_total": 38.85177282990522, "wn_hidden": 26.65355386996124}
+{"step": 500, "train_loss": 0.00025805228506214917, "train_acc": 1.0, "test_loss": 0.0002639405138324946, "test_acc": 1.0, "wn_total": 54.94874851017551, "wn_hidden": 48.244463825343956}
+{"step": 600, "train_loss": 0.00037080893525853753, "train_acc": 1.0, "test_loss": 0.02136654406785965, "test_acc": 0.9956944584846497, "wn_total": 37.696184159170556, "wn_hidden": 26.72388391974455}
+{"step": 700, "train_loss": 6.407850014511496e-05, "train_acc": 1.0, "test_loss": 0.0001615602959645912, "test_acc": 1.0, "wn_total": 54.40816996314543, "wn_hidden": 48.352429785125466}
+{"_summary": {"group": "Z120", "optimizer": "muon", "seed": 1, "d_model": 256, "train_frac": 0.5, "group_order": 120, "commutator_density": 0.0, "memorize_step": 100, "grok_step": 100, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 1.9276374903951163, "n_params": 1638144, "elapsed_sec": 87.51535105705261, "stopped_step": 700}}

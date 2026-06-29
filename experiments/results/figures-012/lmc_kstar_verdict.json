@@ -1,0 +1,61 @@
+{
+  "censor_spawn_step": 8000,
+  "by_optimizer": {
+    "adamw": {
+      "n": 5,
+      "n_censored": 3,
+      "locked_by_8000_rate": 0.4,
+      "median_k_star_imputed": 8000.0,
+      "median_k_star_uncensored_only": 8000.0,
+      "min": 8000,
+      "max": 8000,
+      "k_star_per_seed": {
+        "0": null,
+        "1": 8000,
+        "2": 8000,
+        "3": null,
+        "4": null
+      }
+    },
+    "muon": {
+      "n": 5,
+      "n_censored": 5,
+      "locked_by_8000_rate": 0.0,
+      "median_k_star_imputed": 8000.0,
+      "median_k_star_uncensored_only": null,
+      "min": null,
+      "max": null,
+      "k_star_per_seed": {
+        "0": null,
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null
+      }
+    },
+    "sgdm": {
+      "n": 5,
+      "n_censored": 4,
+      "locked_by_8000_rate": 0.2,
+      "median_k_star_imputed": 8000.0,
+      "median_k_star_uncensored_only": 8000.0,
+      "min": 8000,
+      "max": 8000,
+      "k_star_per_seed": {
+        "0": 8000,
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null
+      }
+    }
+  },
+  "distributional_test": {
+    "adamw_locked": 2,
+    "adamw_n": 5,
+    "muon_locked": 0,
+    "muon_n": 5,
+    "fisher_p_adamw_locks_more": 0.22222222222222224,
+    "claim": "basin stays open longer under Muon (lower lock-by-8000 rate)"
+  }
+}

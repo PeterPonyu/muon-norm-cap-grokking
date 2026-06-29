@@ -1,0 +1,76 @@
+{
+  "new_namespace": "experiments/results/muon_plasticity_perm_mnist_ext",
+  "new_cells_complete": 6,
+  "aggregate": {
+    "adamw_base": {
+      "n": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "median_slowdown": 2.2222222222222223,
+      "median_final_feat_eff_rank": 58.506038665771484,
+      "median_final_dead_frac": 0.58203125,
+      "median_last10_steps": 21.0,
+      "all_tasks_fit": true
+    },
+    "muon_lr0.005": {
+      "n": 5,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "median_slowdown": 3.9523809523809526,
+      "median_final_feat_eff_rank": 224.3526153564453,
+      "median_final_dead_frac": 0.001953125,
+      "median_last10_steps": 39.5,
+      "all_tasks_fit": true
+    },
+    "muon_lr0.01": {
+      "n": 5,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "median_slowdown": 5.222222222222222,
+      "median_final_feat_eff_rank": 231.97088623046875,
+      "median_final_dead_frac": 0.001953125,
+      "median_last10_steps": 47.0,
+      "all_tasks_fit": true
+    },
+    "muon_lr0.02": {
+      "n": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "median_slowdown": 6.111111111111111,
+      "median_final_feat_eff_rank": 7.245087623596191,
+      "median_final_dead_frac": 0.9453125,
+      "median_last10_steps": 50.0,
+      "all_tasks_fit": true
+    },
+    "sgdm_base": {
+      "n": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "median_slowdown": 2.2222222222222223,
+      "median_final_feat_eff_rank": 34.04169845581055,
+      "median_final_dead_frac": 0.619140625,
+      "median_last10_steps": 20.0,
+      "all_tasks_fit": true
+    }
+  },
+  "interpretation": "Fresh low-lr Muon seeds keep high feature rank and near-zero dead units, but still slow down more than AdamW/SGDM on permuted-MNIST; synthetic plasticity extension does not transfer."
+}

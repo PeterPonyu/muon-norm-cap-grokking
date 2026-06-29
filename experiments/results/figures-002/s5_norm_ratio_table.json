@@ -1,0 +1,50 @@
+{
+  "adamw_sc1.0": {
+    "n_runs": 5,
+    "n_grokked": 0,
+    "norm_ratio_mean": null,
+    "norm_ratio_std": null,
+    "grok_step_mean": null,
+    "memorize_step_mean": 100.0
+  },
+  "adamw_sc3.0": {
+    "n_runs": 5,
+    "n_grokked": 0,
+    "norm_ratio_mean": null,
+    "norm_ratio_std": null,
+    "grok_step_mean": null,
+    "memorize_step_mean": 100.0
+  },
+  "muon_sc1.0": {
+    "n_runs": 5,
+    "n_grokked": 5,
+    "norm_ratio_mean": 6.519415806300718,
+    "norm_ratio_std": 0.6829887698530109,
+    "grok_step_mean": 5380.0,
+    "memorize_step_mean": 100.0
+  },
+  "muon_sc3.0": {
+    "n_runs": 5,
+    "n_grokked": 1,
+    "norm_ratio_mean": 6.58451858628833,
+    "norm_ratio_std": 0.0,
+    "grok_step_mean": 8250.0,
+    "memorize_step_mean": 50.0
+  },
+  "sgdm_sc1.0": {
+    "n_runs": 5,
+    "n_grokked": 0,
+    "norm_ratio_mean": null,
+    "norm_ratio_std": null,
+    "grok_step_mean": null,
+    "memorize_step_mean": 160.0
+  },
+  "sgdm_sc3.0": {
+    "n_runs": 5,
+    "n_grokked": 0,
+    "norm_ratio_mean": null,
+    "norm_ratio_std": null,
+    "grok_step_mean": null,
+    "memorize_step_mean": 160.0
+  }
+}

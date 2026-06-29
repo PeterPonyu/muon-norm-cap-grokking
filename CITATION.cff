@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: >-
+  Code and data for: Norm growth is a byproduct, not the cause, of Muon-accelerated grokking
+message: If you use this code or data, please cite this archive and the manuscript.
+type: dataset
+authors:
+  - given-names: Zeyu
+    family-names: Fu
+    email: fuzeyu99@126.com
+    orcid: 'https://orcid.org/0009-0001-8329-0108'
+    affiliation: 'Army Medical University, Chongqing, China'
+abstract: >-
+  Code and result logs for a causal norm-cap test of Muon-accelerated grokking on tiny transformers.
+keywords:
+  - grokking
+  - Muon
+  - optimizers
+  - delayed generalization
+  - reproducibility
+license: MIT
+version: 1.0.0
+date-released: '2026-06-29'
+# doi: 10.5281/zenodo.XXXXXXX   # inserted at deposit

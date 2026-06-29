@@ -1,0 +1,12 @@
+{"_meta": {"group": "D30", "optimizer": "muon", "seed": 0, "d_model": 256, "vocab_size": 61, "train_frac": 0.5, "commutator_density": 0.7, "group_order": 60}}
+{"step": 0, "train_loss": 4.167582035064697, "train_acc": 0.015000000596046448, "test_loss": 4.164865016937256, "test_acc": 0.022777779027819633, "wn_total": 43.83033957504761, "wn_hidden": 25.066722789999176}
+{"step": 100, "train_loss": 0.0033150038216263056, "train_acc": 1.0, "test_loss": 0.4912712275981903, "test_acc": 0.8372222185134888, "wn_total": 57.55309549425599, "wn_hidden": 46.85703439899347}
+{"step": 200, "train_loss": 0.0028517150785773993, "train_acc": 1.0, "test_loss": 0.0032168326433748007, "test_acc": 1.0, "wn_total": 53.90681096522964, "wn_hidden": 44.46413811086295}
+{"step": 300, "train_loss": 0.0012129460228607059, "train_acc": 1.0, "test_loss": 0.0013701155548915267, "test_acc": 1.0, "wn_total": 38.38453730226536, "wn_hidden": 26.202135280054048}
+{"step": 400, "train_loss": 0.0004708266642410308, "train_acc": 1.0, "test_loss": 0.0005306418752297759, "test_acc": 1.0, "wn_total": 35.613618075630995, "wn_hidden": 24.326904775879964}
+{"step": 500, "train_loss": 0.0005344740930013359, "train_acc": 1.0, "test_loss": 0.8027885556221008, "test_acc": 0.7927777767181396, "wn_total": 39.678344322753475, "wn_hidden": 30.801385883015932}
+{"step": 600, "train_loss": 0.0001230035413755104, "train_acc": 1.0, "test_loss": 0.010487828403711319, "test_acc": 0.9961111545562744, "wn_total": 49.8502638075276, "wn_hidden": 44.09336016919942}
+{"step": 700, "train_loss": 0.0003409990749787539, "train_acc": 1.0, "test_loss": 0.06299196928739548, "test_acc": 0.9838889241218567, "wn_total": 38.33666087503466, "wn_hidden": 31.488211227204737}
+{"step": 800, "train_loss": 0.009543710388243198, "train_acc": 0.9994444847106934, "test_loss": 0.07750646024942398, "test_acc": 0.9833333492279053, "wn_total": 41.708274281235205, "wn_hidden": 36.34217522736287}
+{"step": 900, "train_loss": 0.00016094482271000743, "train_acc": 1.0, "test_loss": 0.0021914171520620584, "test_acc": 0.9994444847106934, "wn_total": 48.70474743372761, "wn_hidden": 44.54038189330734}
+{"_summary": {"group": "D30", "optimizer": "muon", "seed": 0, "d_model": 256, "train_frac": 0.5, "group_order": 60, "commutator_density": 0.7, "memorize_step": 100, "grok_step": 200, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 0.9994444847106934, "norm_growth_ratio": 1.7768729588806693, "n_params": 1607424, "elapsed_sec": 40.97138237953186, "stopped_step": 900}}

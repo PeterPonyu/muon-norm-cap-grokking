@@ -1,0 +1,14 @@
+{"_meta": {"group": "Z60", "optimizer": "adamw", "seed": 4, "d_model": 256, "vocab_size": 61, "train_frac": 0.5, "commutator_density": 0.0, "group_order": 60}}
+{"step": 0, "train_loss": 4.1669769287109375, "train_acc": 0.012777778320014477, "test_loss": 4.175417423248291, "test_acc": 0.015000000596046448, "wn_total": 43.83732032736339, "wn_hidden": 25.076448663793894}
+{"step": 100, "train_loss": 0.005710598547011614, "train_acc": 1.0, "test_loss": 2.6104416847229004, "test_acc": 0.4283333420753479, "wn_total": 43.67503496861369, "wn_hidden": 27.633958356512426}
+{"step": 200, "train_loss": 0.003266638610512018, "train_acc": 1.0, "test_loss": 2.1225244998931885, "test_acc": 0.5161111354827881, "wn_total": 39.931273407202674, "wn_hidden": 25.312843452289922}
+{"step": 300, "train_loss": 0.0014867885038256645, "train_acc": 1.0, "test_loss": 1.4608724117279053, "test_acc": 0.6244444847106934, "wn_total": 36.68627176068486, "wn_hidden": 23.239045505521315}
+{"step": 400, "train_loss": 0.0073460484854876995, "train_acc": 1.0, "test_loss": 0.24990855157375336, "test_acc": 0.945555567741394, "wn_total": 35.887922596499145, "wn_hidden": 24.089803686676188}
+{"step": 500, "train_loss": 0.0039021470583975315, "train_acc": 1.0, "test_loss": 0.0816606879234314, "test_acc": 0.9883333444595337, "wn_total": 32.86538973004641, "wn_hidden": 21.93912191454263}
+{"step": 600, "train_loss": 0.0018321488751098514, "train_acc": 1.0, "test_loss": 0.017096800729632378, "test_acc": 0.9977778196334839, "wn_total": 30.298500733417825, "wn_hidden": 19.986633220913525}
+{"step": 700, "train_loss": 0.03959095850586891, "train_acc": 1.0, "test_loss": 0.08906310796737671, "test_acc": 0.9972222447395325, "wn_total": 30.458613390389317, "wn_hidden": 21.324033396415484}
+{"step": 800, "train_loss": 0.008044114336371422, "train_acc": 1.0, "test_loss": 0.013946264050900936, "test_acc": 1.0, "wn_total": 28.1696977447004, "wn_hidden": 19.579415512478985}
+{"step": 900, "train_loss": 0.0037114133592694998, "train_acc": 1.0, "test_loss": 0.005376309156417847, "test_acc": 1.0, "wn_total": 26.08133650192465, "wn_hidden": 17.83833444590997}
+{"step": 1000, "train_loss": 3.0659236907958984, "train_acc": 0.27666667103767395, "test_loss": 3.483921527862549, "test_acc": 0.18666666746139526, "wn_total": 24.620477115575017, "wn_hidden": 16.570032328710518}
+{"step": 1100, "train_loss": 0.01052722055464983, "train_acc": 1.0, "test_loss": 0.014987769536674023, "test_acc": 1.0, "wn_total": 25.806810940959483, "wn_hidden": 18.78748117878695}
+{"_summary": {"group": "Z60", "optimizer": "adamw", "seed": 4, "d_model": 256, "train_frac": 0.5, "group_order": 60, "commutator_density": 0.0, "memorize_step": 100, "grok_step": 500, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 0.7492082084937675, "n_params": 1607424, "elapsed_sec": 41.47842621803284, "stopped_step": 1100}}

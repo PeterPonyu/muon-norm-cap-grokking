@@ -1,0 +1,20 @@
+{"_meta": {"group": "D30", "optimizer": "adamw", "seed": 2, "d_model": 256, "vocab_size": 61, "train_frac": 0.5, "commutator_density": 0.7, "group_order": 60}}
+{"step": 0, "train_loss": 4.16343879699707, "train_acc": 0.013333333656191826, "test_loss": 4.165032863616943, "test_acc": 0.018888888880610466, "wn_total": 43.83699880514155, "wn_hidden": 25.079710723084773}
+{"step": 100, "train_loss": 0.00569793488830328, "train_acc": 1.0, "test_loss": 5.163508892059326, "test_acc": 0.09777778387069702, "wn_total": 43.65447420064213, "wn_hidden": 27.56813873948639}
+{"step": 200, "train_loss": 0.003255055518820882, "train_acc": 1.0, "test_loss": 5.056275844573975, "test_acc": 0.11611111462116241, "wn_total": 39.95474804525208, "wn_hidden": 25.305173628384196}
+{"step": 300, "train_loss": 1.1756176948547363, "train_acc": 0.7416666746139526, "test_loss": 4.8746442794799805, "test_acc": 0.02500000037252903, "wn_total": 37.456264993952175, "wn_hidden": 24.25296336679134}
+{"step": 400, "train_loss": 0.0064521534368395805, "train_acc": 1.0, "test_loss": 4.60481071472168, "test_acc": 0.13722223043441772, "wn_total": 35.94027515270926, "wn_hidden": 23.98127453176175}
+{"step": 500, "train_loss": 0.0031879902817308903, "train_acc": 1.0, "test_loss": 4.538235664367676, "test_acc": 0.1572222262620926, "wn_total": 33.047867948646065, "wn_hidden": 21.952238582214044}
+{"step": 600, "train_loss": 0.001393184415064752, "train_acc": 1.0, "test_loss": 4.5809102058410645, "test_acc": 0.17944444715976715, "wn_total": 30.605554748807183, "wn_hidden": 20.134939262728594}
+{"step": 700, "train_loss": 0.09158428758382797, "train_acc": 1.0, "test_loss": 3.289783477783203, "test_acc": 0.17666667699813843, "wn_total": 31.133097303615244, "wn_hidden": 21.896776357488186}
+{"step": 800, "train_loss": 0.008420245721936226, "train_acc": 1.0, "test_loss": 2.8369619846343994, "test_acc": 0.2888889014720917, "wn_total": 29.073099208573236, "wn_hidden": 20.376568692907483}
+{"step": 900, "train_loss": 0.0038316138088703156, "train_acc": 1.0, "test_loss": 2.232954978942871, "test_acc": 0.41833335161209106, "wn_total": 27.01584862095566, "wn_hidden": 18.77818511988817}
+{"step": 1000, "train_loss": 0.020670201629400253, "train_acc": 1.0, "test_loss": 0.8235211968421936, "test_acc": 0.7588889002799988, "wn_total": 28.127113933890268, "wn_hidden": 20.649219672766748}
+{"step": 1100, "train_loss": 0.007244615349918604, "train_acc": 1.0, "test_loss": 0.38576218485832214, "test_acc": 0.8911111354827881, "wn_total": 26.21065991696348, "wn_hidden": 19.021049785183255}
+{"step": 1200, "train_loss": 0.0031027705408632755, "train_acc": 1.0, "test_loss": 0.11936526745557785, "test_acc": 0.9711111187934875, "wn_total": 24.65543015495356, "wn_hidden": 17.55624079909445}
+{"step": 1300, "train_loss": 0.018486129119992256, "train_acc": 1.0, "test_loss": 0.06759095937013626, "test_acc": 0.996666669845581, "wn_total": 26.372154962904933, "wn_hidden": 19.81739785096969}
+{"step": 1400, "train_loss": 0.00660892715677619, "train_acc": 1.0, "test_loss": 0.021345175802707672, "test_acc": 0.9983333349227905, "wn_total": 24.612773398562737, "wn_hidden": 18.135000022149857}
+{"step": 1500, "train_loss": 1.539727807044983, "train_acc": 0.5488889217376709, "test_loss": 1.9833694696426392, "test_acc": 0.40222224593162537, "wn_total": 23.97325347381716, "wn_hidden": 17.71193452307979}
+{"step": 1600, "train_loss": 0.016637805849313736, "train_acc": 1.0, "test_loss": 0.04285942018032074, "test_acc": 0.9983333349227905, "wn_total": 25.24016964695713, "wn_hidden": 19.305132994688925}
+{"step": 1700, "train_loss": 0.007391034159809351, "train_acc": 1.0, "test_loss": 0.019348500296473503, "test_acc": 0.9994444847106934, "wn_total": 23.688036734423495, "wn_hidden": 17.635253561504534}
+{"_summary": {"group": "D30", "optimizer": "adamw", "seed": 2, "d_model": 256, "train_frac": 0.5, "group_order": 60, "commutator_density": 0.7, "memorize_step": 100, "grok_step": 1200, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 0.9994444847106934, "norm_growth_ratio": 0.7031681408219775, "n_params": 1607424, "elapsed_sec": 64.27035641670227, "stopped_step": 1700}}

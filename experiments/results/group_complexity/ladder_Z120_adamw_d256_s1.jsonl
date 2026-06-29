@@ -1,0 +1,10 @@
+{"_meta": {"group": "Z120", "optimizer": "adamw", "seed": 1, "d_model": 256, "vocab_size": 121, "train_frac": 0.5, "commutator_density": 0.0, "group_order": 120}}
+{"step": 0, "train_loss": 4.847600936889648, "train_acc": 0.009166667237877846, "test_loss": 4.8448686599731445, "test_acc": 0.0076388888992369175, "wn_total": 43.98217850412856, "wn_hidden": 25.083777435359206}
+{"step": 100, "train_loss": 0.016079429537057877, "train_acc": 1.0, "test_loss": 0.5415076613426208, "test_acc": 0.8943055868148804, "wn_total": 44.892580028871116, "wn_hidden": 28.064060125334393}
+{"step": 200, "train_loss": 0.005277578718960285, "train_acc": 1.0, "test_loss": 0.14971323311328888, "test_acc": 0.9854167103767395, "wn_total": 41.26431922341449, "wn_hidden": 25.76170172123205}
+{"step": 300, "train_loss": 0.002030238276347518, "train_acc": 1.0, "test_loss": 0.03043368086218834, "test_acc": 0.9972222447395325, "wn_total": 38.09371836046376, "wn_hidden": 23.6421756777886}
+{"step": 400, "train_loss": 0.009984426200389862, "train_acc": 1.0, "test_loss": 0.013813238590955734, "test_acc": 1.0, "wn_total": 37.198235050708824, "wn_hidden": 23.920620696648726}
+{"step": 500, "train_loss": 0.0046213530004024506, "train_acc": 1.0, "test_loss": 0.006252301391214132, "test_acc": 1.0, "wn_total": 34.29800548256486, "wn_hidden": 21.756468041348448}
+{"step": 600, "train_loss": 3.0869758129119873, "train_acc": 0.2991666793823242, "test_loss": 3.2597172260284424, "test_acc": 0.25874999165534973, "wn_total": 32.04385173968675, "wn_hidden": 19.901336782211242}
+{"step": 700, "train_loss": 0.008520612493157387, "train_acc": 1.0, "test_loss": 0.010088390670716763, "test_acc": 1.0, "wn_total": 31.97370228385992, "wn_hidden": 21.108832137033378}
+{"_summary": {"group": "Z120", "optimizer": "adamw", "seed": 1, "d_model": 256, "train_frac": 0.5, "group_order": 120, "commutator_density": 0.0, "memorize_step": 100, "grok_step": 200, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 0.8415332256647051, "n_params": 1638144, "elapsed_sec": 103.33552861213684, "stopped_step": 700}}

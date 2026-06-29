@@ -1,0 +1,11 @@
+{"_meta": {"group": "S5", "optimizer": "muon", "seed": 0, "d_model": 256, "vocab_size": 121, "train_frac": 0.5, "commutator_density": 0.9416666666666667, "group_order": 120}}
+{"step": 0, "train_loss": 4.837706565856934, "train_acc": 0.010138888843357563, "test_loss": 4.841864585876465, "test_acc": 0.007777777966111898, "wn_total": 43.96887620746472, "wn_hidden": 25.064780647600998}
+{"step": 100, "train_loss": 0.0027812612242996693, "train_acc": 1.0, "test_loss": 3.989976644515991, "test_acc": 0.14083333313465118, "wn_total": 56.13070640988949, "wn_hidden": 44.140072590569915}
+{"step": 200, "train_loss": 0.017488785088062286, "train_acc": 0.9987500309944153, "test_loss": 2.354806900024414, "test_acc": 0.4276388883590698, "wn_total": 47.47428606880988, "wn_hidden": 35.42009973978295}
+{"step": 300, "train_loss": 0.0008136013639159501, "train_acc": 1.0, "test_loss": 0.0017620385624468327, "test_acc": 1.0, "wn_total": 48.497708458836115, "wn_hidden": 38.31158759818252}
+{"step": 400, "train_loss": 0.0019445797661319375, "train_acc": 1.0, "test_loss": 0.020479749888181686, "test_acc": 0.9979166984558105, "wn_total": 40.42025233696373, "wn_hidden": 28.997749570148656}
+{"step": 500, "train_loss": 0.011424588970839977, "train_acc": 1.0, "test_loss": 0.09255881607532501, "test_acc": 0.9840278029441833, "wn_total": 46.076837469141395, "wn_hidden": 37.70295906899873}
+{"step": 600, "train_loss": 0.00027668135589919984, "train_acc": 1.0, "test_loss": 0.0003529211680870503, "test_acc": 1.0, "wn_total": 53.55292985485273, "wn_hidden": 47.20404344793434}
+{"step": 700, "train_loss": 0.0008229716331698, "train_acc": 1.0, "test_loss": 0.001801958424039185, "test_acc": 1.0, "wn_total": 45.14438977976567, "wn_hidden": 37.92249626087726}
+{"step": 800, "train_loss": 0.0006777319358661771, "train_acc": 1.0, "test_loss": 0.0007832010742276907, "test_acc": 1.0, "wn_total": 46.653192735144266, "wn_hidden": 40.72030896637321}
+{"_summary": {"group": "S5", "optimizer": "muon", "seed": 0, "d_model": 256, "train_frac": 0.5, "group_order": 120, "commutator_density": 0.9416666666666667, "memorize_step": 100, "grok_step": 300, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 1.624602646194338, "n_params": 1638144, "elapsed_sec": 50.618921995162964, "stopped_step": 800}}

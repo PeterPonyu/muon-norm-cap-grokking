@@ -1,0 +1,282 @@
+{
+  "namespace": "experiments/results/muon_plasticity_p5_bridge",
+  "config": {
+    "arm": "proj_shift",
+    "n_tasks": 30,
+    "steps_per_task": 120,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "summary": {
+    "adamw_warm": {
+      "n": 3,
+      "median_mean_fit": 67.25925925925925,
+      "median_n_tasks_fit": 28.0,
+      "median_final_feat_eff_rank": 19.184560775756836,
+      "median_final_dead_frac": 0.935546875,
+      "last_task_fit_count": 0
+    },
+    "adamw_cold": {
+      "n": 3,
+      "median_mean_fit": 29.466666666666665,
+      "median_n_tasks_fit": 30.0,
+      "median_final_feat_eff_rank": 183.62083435058594,
+      "median_final_dead_frac": 0.01953125,
+      "last_task_fit_count": 3
+    },
+    "muon_warm": {
+      "n": 3,
+      "median_mean_fit": 35.63333333333333,
+      "median_n_tasks_fit": 30.0,
+      "median_final_feat_eff_rank": 209.71258544921875,
+      "median_final_dead_frac": 0.0,
+      "last_task_fit_count": 3
+    },
+    "muon_cold": {
+      "n": 3,
+      "median_mean_fit": 15.233333333333333,
+      "median_n_tasks_fit": 30.0,
+      "median_final_feat_eff_rank": 195.8776397705078,
+      "median_final_dead_frac": 0.0,
+      "last_task_fit_count": 3
+    },
+    "sgdm_warm": {
+      "n": 3,
+      "median_mean_fit": 77.04347826086956,
+      "median_n_tasks_fit": 23.0,
+      "median_final_feat_eff_rank": 16.980693817138672,
+      "median_final_dead_frac": 0.021484375,
+      "last_task_fit_count": 0
+    },
+    "sgdm_cold": {
+      "n": 3,
+      "median_mean_fit": 29.1,
+      "median_n_tasks_fit": 30.0,
+      "median_final_feat_eff_rank": 178.4980926513672,
+      "median_final_dead_frac": 0.01953125,
+      "last_task_fit_count": 3
+    }
+  },
+  "rows": [
+    {
+      "optimizer": "adamw",
+      "start": "cold",
+      "seed": 0,
+      "mean_fit": 29.466666666666665,
+      "n_tasks_fit": 30,
+      "first": 24,
+      "last": 32,
+      "final_feat_eff_rank": 184.3539276123047,
+      "final_dead_frac": 0.01953125,
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_cold_s0_T30K120.jsonl"
+    },
+    {
+      "optimizer": "adamw",
+      "start": "cold",
+      "seed": 1,
+      "mean_fit": 29.966666666666665,
+      "n_tasks_fit": 30,
+      "first": 26,
+      "last": 27,
+      "final_feat_eff_rank": 183.62083435058594,
+      "final_dead_frac": 0.0390625,
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_cold_s1_T30K120.jsonl"
+    },
+    {
+      "optimizer": "adamw",
+      "start": "cold",
+      "seed": 2,
+      "mean_fit": 29.3,
+      "n_tasks_fit": 30,
+      "first": 34,
+      "last": 32,
+      "final_feat_eff_rank": 182.7301788330078,
+      "final_dead_frac": 0.013671875,
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_cold_s2_T30K120.jsonl"
+    },
+    {
+      "optimizer": "adamw",
+      "start": "warm",
+      "seed": 0,
+      "mean_fit": 68.10714285714286,
+      "n_tasks_fit": 28,
+      "first": 18,
+      "last": null,
+      "final_feat_eff_rank": 13.7011079788208,
+      "final_dead_frac": 0.94921875,
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_warm_s0_T30K120.jsonl"
+    },
+    {
+      "optimizer": "adamw",
+      "start": "warm",
+      "seed": 1,
+      "mean_fit": 67.25925925925925,
+      "n_tasks_fit": 27,
+      "first": 31,
+      "last": null,
+      "final_feat_eff_rank": 19.184560775756836,
+      "final_dead_frac": 0.92578125,
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_warm_s1_T30K120.jsonl"
+    },
+    {
+      "optimizer": "adamw",
+      "start": "warm",
+      "seed": 2,
+      "mean_fit": 64.57142857142857,
+      "n_tasks_fit": 28,
+      "first": 34,
+      "last": null,
+      "final_feat_eff_rank": 21.357288360595703,
+      "final_dead_frac": 0.935546875,
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_warm_s2_T30K120.jsonl"
+    },
+    {
+      "optimizer": "muon",
+      "start": "cold",
+      "seed": 0,
+      "mean_fit": 15.066666666666666,
+      "n_tasks_fit": 30,
+      "first": 9,
+      "last": 16,
+      "final_feat_eff_rank": 195.8776397705078,
+      "final_dead_frac": 0.0,
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_cold_s0_T30K120.jsonl"
+    },
+    {
+      "optimizer": "muon",
+      "start": "cold",
+      "seed": 1,
+      "mean_fit": 15.266666666666667,
+      "n_tasks_fit": 30,
+      "first": 15,
+      "last": 16,
+      "final_feat_eff_rank": 196.1133270263672,
+      "final_dead_frac": 0.005859375,
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_cold_s1_T30K120.jsonl"
+    },
+    {
+      "optimizer": "muon",
+      "start": "cold",
+      "seed": 2,
+      "mean_fit": 15.233333333333333,
+      "n_tasks_fit": 30,
+      "first": 16,
+      "last": 15,
+      "final_feat_eff_rank": 193.06082153320312,
+      "final_dead_frac": 0.0,
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_cold_s2_T30K120.jsonl"
+    },
+    {
+      "optimizer": "muon",
+      "start": "warm",
+      "seed": 0,
+      "mean_fit": 35.63333333333333,
+      "n_tasks_fit": 30,
+      "first": 13,
+      "last": 39,
+      "final_feat_eff_rank": 209.71258544921875,
+      "final_dead_frac": 0.0,
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_warm_s0_T30K120.jsonl"
+    },
+    {
+      "optimizer": "muon",
+      "start": "warm",
+      "seed": 1,
+      "mean_fit": 36.5,
+      "n_tasks_fit": 30,
+      "first": 17,
+      "last": 39,
+      "final_feat_eff_rank": 210.2400360107422,
+      "final_dead_frac": 0.0,
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_warm_s1_T30K120.jsonl"
+    },
+    {
+      "optimizer": "muon",
+      "start": "warm",
+      "seed": 2,
+      "mean_fit": 35.56666666666667,
+      "n_tasks_fit": 30,
+      "first": 16,
+      "last": 41,
+      "final_feat_eff_rank": 208.7778778076172,
+      "final_dead_frac": 0.0,
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_warm_s2_T30K120.jsonl"
+    },
+    {
+      "optimizer": "sgdm",
+      "start": "cold",
+      "seed": 0,
+      "mean_fit": 28.666666666666668,
+      "n_tasks_fit": 30,
+      "first": 20,
+      "last": 30,
+      "final_feat_eff_rank": 179.9730682373047,
+      "final_dead_frac": 0.01953125,
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_cold_s0_T30K120.jsonl"
+    },
+    {
+      "optimizer": "sgdm",
+      "start": "cold",
+      "seed": 1,
+      "mean_fit": 29.1,
+      "n_tasks_fit": 30,
+      "first": 30,
+      "last": 31,
+      "final_feat_eff_rank": 178.4980926513672,
+      "final_dead_frac": 0.025390625,
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_cold_s1_T30K120.jsonl"
+    },
+    {
+      "optimizer": "sgdm",
+      "start": "cold",
+      "seed": 2,
+      "mean_fit": 29.3,
+      "n_tasks_fit": 30,
+      "first": 34,
+      "last": 29,
+      "final_feat_eff_rank": 177.00204467773438,
+      "final_dead_frac": 0.013671875,
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_cold_s2_T30K120.jsonl"
+    },
+    {
+      "optimizer": "sgdm",
+      "start": "warm",
+      "seed": 0,
+      "mean_fit": 77.04347826086956,
+      "n_tasks_fit": 23,
+      "first": 21,
+      "last": null,
+      "final_feat_eff_rank": 28.6654109954834,
+      "final_dead_frac": 0.013671875,
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_warm_s0_T30K120.jsonl"
+    },
+    {
+      "optimizer": "sgdm",
+      "start": "warm",
+      "seed": 1,
+      "mean_fit": 76.45,
+      "n_tasks_fit": 20,
+      "first": 31,
+      "last": null,
+      "final_feat_eff_rank": 16.980693817138672,
+      "final_dead_frac": 0.021484375,
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_warm_s1_T30K120.jsonl"
+    },
+    {
+      "optimizer": "sgdm",
+      "start": "warm",
+      "seed": 2,
+      "mean_fit": 78.1304347826087,
+      "n_tasks_fit": 23,
+      "first": 31,
+      "last": null,
+      "final_feat_eff_rank": 8.900331497192383,
+      "final_dead_frac": 0.8046875,
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_warm_s2_T30K120.jsonl"
+    }
+  ],
+  "interpretation": "Cold-start controls fit all 30 tasks quickly, so warm-start slowdown/censoring is continual plasticity loss rather than intrinsic late-task difficulty; Muon remains a warm-start extender, not a cure, because it slows relative to its cold-start control."
+}

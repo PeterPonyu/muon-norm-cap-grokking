@@ -1,0 +1,21 @@
+{
+  "title": "Norm growth is a byproduct, not the cause, of Muon-accelerated grokking",
+  "description": "Code and result logs for a causal norm-cap test of Muon-accelerated grokking on tiny transformers. Code is MIT; result logs CC-BY-4.0. Figure/manuscript sources not included; large standard datasets not bundled.",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Fu, Zeyu",
+      "orcid": "0009-0001-8329-0108",
+      "affiliation": "Army Medical University, Chongqing, China"
+    }
+  ],
+  "keywords": [
+    "grokking",
+    "Muon",
+    "optimizers",
+    "delayed generalization",
+    "reproducibility"
+  ]
+}

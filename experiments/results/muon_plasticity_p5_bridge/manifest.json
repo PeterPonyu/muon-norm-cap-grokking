@@ -1,0 +1,100 @@
+{
+  "cells": [
+    {
+      "name": "muon_proj_shift_warm_s0_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_warm_s0_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "muon_proj_shift_warm_s1_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_warm_s1_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "muon_proj_shift_warm_s2_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_warm_s2_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "adamw_proj_shift_warm_s0_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_warm_s0_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "adamw_proj_shift_warm_s1_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_warm_s1_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "adamw_proj_shift_warm_s2_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_warm_s2_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "sgdm_proj_shift_warm_s0_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_warm_s0_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "sgdm_proj_shift_warm_s1_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_warm_s1_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "sgdm_proj_shift_warm_s2_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_warm_s2_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "muon_proj_shift_cold_s0_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_cold_s0_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "muon_proj_shift_cold_s1_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_cold_s1_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "muon_proj_shift_cold_s2_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/muon_proj_shift_cold_s2_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "adamw_proj_shift_cold_s0_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_cold_s0_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "adamw_proj_shift_cold_s1_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_cold_s1_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "adamw_proj_shift_cold_s2_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/adamw_proj_shift_cold_s2_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "sgdm_proj_shift_cold_s0_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_cold_s0_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "sgdm_proj_shift_cold_s1_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_cold_s1_T30K120.jsonl",
+      "done": true
+    },
+    {
+      "name": "sgdm_proj_shift_cold_s2_T30K120",
+      "path": "experiments/results/muon_plasticity_p5_bridge/sgdm_proj_shift_cold_s2_T30K120.jsonl",
+      "done": true
+    }
+  ],
+  "cfg": {
+    "n_tasks": 30,
+    "steps_per_task": 120,
+    "lam_iters": 6,
+    "probe_n": 256
+  }
+}

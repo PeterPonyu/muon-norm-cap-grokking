@@ -1,0 +1,10 @@
+{"_meta": {"group": "D60", "optimizer": "muon", "seed": 1, "d_model": 256, "vocab_size": 121, "train_frac": 0.5, "commutator_density": 0.725, "group_order": 120}}
+{"step": 0, "train_loss": 4.851046085357666, "train_acc": 0.0069444444961845875, "test_loss": 4.841125011444092, "test_acc": 0.009861111640930176, "wn_total": 43.98217850412856, "wn_hidden": 25.083777435359206}
+{"step": 100, "train_loss": 0.0027597120497375727, "train_acc": 1.0, "test_loss": 0.06268028169870377, "test_acc": 0.9901388883590698, "wn_total": 56.635256758524555, "wn_hidden": 44.999616663677585}
+{"step": 200, "train_loss": 0.003031487576663494, "train_acc": 1.0, "test_loss": 0.0032840408384799957, "test_acc": 1.0, "wn_total": 54.12075044335677, "wn_hidden": 44.11362827292554}
+{"step": 300, "train_loss": 0.0016919112531468272, "train_acc": 1.0, "test_loss": 0.0017298773163929582, "test_acc": 1.0, "wn_total": 40.589895570923964, "wn_hidden": 28.313968443526175}
+{"step": 400, "train_loss": 0.00031746269087307155, "train_acc": 1.0, "test_loss": 0.001937874243594706, "test_acc": 0.9997222423553467, "wn_total": 50.47752418610375, "wn_hidden": 41.86195202135914}
+{"step": 500, "train_loss": 0.0003531099937390536, "train_acc": 1.0, "test_loss": 0.0003554270078893751, "test_acc": 1.0, "wn_total": 53.804024354774974, "wn_hidden": 47.001756351200925}
+{"step": 600, "train_loss": 0.001829505548812449, "train_acc": 1.0, "test_loss": 0.021727722138166428, "test_acc": 0.9965277910232544, "wn_total": 35.948808670418735, "wn_hidden": 25.001514732248932}
+{"step": 700, "train_loss": 0.000170205719769001, "train_acc": 1.0, "test_loss": 0.0002133681991836056, "test_acc": 1.0, "wn_total": 53.88293880772458, "wn_hidden": 48.003450667008735}
+{"_summary": {"group": "D60", "optimizer": "muon", "seed": 1, "d_model": 256, "train_frac": 0.5, "group_order": 120, "commutator_density": 0.725, "memorize_step": 100, "grok_step": 100, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 1.913724947955444, "n_params": 1638144, "elapsed_sec": 44.059075593948364, "stopped_step": 700}}

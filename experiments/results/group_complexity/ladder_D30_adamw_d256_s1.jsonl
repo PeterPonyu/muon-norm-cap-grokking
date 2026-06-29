@@ -1,0 +1,20 @@
+{"_meta": {"group": "D30", "optimizer": "adamw", "seed": 1, "d_model": 256, "vocab_size": 61, "train_frac": 0.5, "commutator_density": 0.7, "group_order": 60}}
+{"step": 0, "train_loss": 4.161275386810303, "train_acc": 0.013888888992369175, "test_loss": 4.145153045654297, "test_acc": 0.015555555932223797, "wn_total": 43.84396957599419, "wn_hidden": 25.091304256069073}
+{"step": 100, "train_loss": 0.005584179423749447, "train_acc": 1.0, "test_loss": 5.249886989593506, "test_acc": 0.05055555701255798, "wn_total": 43.67978121810491, "wn_hidden": 27.586330915534013}
+{"step": 200, "train_loss": 0.0032241756562143564, "train_acc": 1.0, "test_loss": 5.006308555603027, "test_acc": 0.0716666653752327, "wn_total": 39.96354154450809, "wn_hidden": 25.29620398137455}
+{"step": 300, "train_loss": 2.272493600845337, "train_acc": 0.4194444417953491, "test_loss": 6.065268516540527, "test_acc": 0.009999999776482582, "wn_total": 37.05264475240391, "wn_hidden": 23.6680720229917}
+{"step": 400, "train_loss": 0.006394234951585531, "train_acc": 1.0, "test_loss": 3.9240305423736572, "test_acc": 0.15611112117767334, "wn_total": 35.923347010935, "wn_hidden": 23.962114512288444}
+{"step": 500, "train_loss": 0.0033010574989020824, "train_acc": 1.0, "test_loss": 3.4397764205932617, "test_acc": 0.2177777886390686, "wn_total": 33.01352825042857, "wn_hidden": 21.910819672191074}
+{"step": 600, "train_loss": 0.001430650008842349, "train_acc": 1.0, "test_loss": 2.976548194885254, "test_acc": 0.30000001192092896, "wn_total": 30.566209200751032, "wn_hidden": 20.08323771769238}
+{"step": 700, "train_loss": 0.0006328989984467626, "train_acc": 1.0, "test_loss": 2.554180145263672, "test_acc": 0.38555556535720825, "wn_total": 28.494628976079674, "wn_hidden": 18.418611374907133}
+{"step": 800, "train_loss": 0.01153787411749363, "train_acc": 1.0, "test_loss": 1.453282356262207, "test_acc": 0.5627778172492981, "wn_total": 29.648326915186374, "wn_hidden": 20.96920730387782}
+{"step": 900, "train_loss": 0.00489016342908144, "train_acc": 1.0, "test_loss": 0.7666329145431519, "test_acc": 0.7883333563804626, "wn_total": 27.450165301213094, "wn_hidden": 19.264141115338678}
+{"step": 1000, "train_loss": 0.002202119678258896, "train_acc": 1.0, "test_loss": 0.2710389196872711, "test_acc": 0.9294444918632507, "wn_total": 25.62172927971434, "wn_hidden": 17.708230853812694}
+{"step": 1100, "train_loss": 0.9599746465682983, "train_acc": 0.8333333730697632, "test_loss": 2.21374773979187, "test_acc": 0.34388890862464905, "wn_total": 26.786704133223047, "wn_hidden": 19.988689419185423}
+{"step": 1200, "train_loss": 0.010708109475672245, "train_acc": 1.0, "test_loss": 0.06931859254837036, "test_acc": 0.995555579662323, "wn_total": 26.404394007377586, "wn_hidden": 19.726179074630732}
+{"step": 1300, "train_loss": 0.004776058252900839, "train_acc": 1.0, "test_loss": 0.019348682835698128, "test_acc": 0.9988889098167419, "wn_total": 24.618677069643773, "wn_hidden": 18.089369485725953}
+{"step": 1400, "train_loss": 0.015854183584451675, "train_acc": 1.0, "test_loss": 0.03768252581357956, "test_acc": 0.9988889098167419, "wn_total": 26.09163033226449, "wn_hidden": 19.937702094222736}
+{"step": 1500, "train_loss": 0.006518476642668247, "train_acc": 1.0, "test_loss": 0.014249577187001705, "test_acc": 0.9994444847106934, "wn_total": 24.332422803568985, "wn_hidden": 18.191026942103722}
+{"step": 1600, "train_loss": 0.002850026125088334, "train_acc": 1.0, "test_loss": 0.004982560407370329, "test_acc": 1.0, "wn_total": 23.006299372695093, "wn_hidden": 16.628420771832552}
+{"step": 1700, "train_loss": 0.01554432138800621, "train_acc": 1.0, "test_loss": 0.025727562606334686, "test_acc": 1.0, "wn_total": 25.31588349758555, "wn_hidden": 19.587407997660204}
+{"_summary": {"group": "D30", "optimizer": "adamw", "seed": 1, "d_model": 256, "train_frac": 0.5, "group_order": 60, "commutator_density": 0.7, "memorize_step": 100, "grok_step": 1200, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 0.7806452704794097, "n_params": 1607424, "elapsed_sec": 64.90242791175842, "stopped_step": 1700}}

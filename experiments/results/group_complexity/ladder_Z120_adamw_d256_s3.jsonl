@@ -1,0 +1,11 @@
+{"_meta": {"group": "Z120", "optimizer": "adamw", "seed": 3, "d_model": 256, "vocab_size": 121, "train_frac": 0.5, "commutator_density": 0.0, "group_order": 120}}
+{"step": 0, "train_loss": 4.8509416580200195, "train_acc": 0.006666666828095913, "test_loss": 4.8475446701049805, "test_acc": 0.009305555373430252, "wn_total": 43.98278882129266, "wn_hidden": 25.08846910521758}
+{"step": 100, "train_loss": 0.023490041494369507, "train_acc": 1.0, "test_loss": 1.5949105024337769, "test_acc": 0.5879166722297668, "wn_total": 45.64675140290258, "wn_hidden": 28.874860920096346}
+{"step": 200, "train_loss": 0.006544971372932196, "train_acc": 1.0, "test_loss": 0.7642212510108948, "test_acc": 0.839305579662323, "wn_total": 42.14729693998988, "wn_hidden": 26.646578681150917}
+{"step": 300, "train_loss": 0.001899994327686727, "train_acc": 1.0, "test_loss": 0.08847349137067795, "test_acc": 0.9938889145851135, "wn_total": 38.95695946098923, "wn_hidden": 24.54989685068001}
+{"step": 400, "train_loss": 0.011791182681918144, "train_acc": 1.0, "test_loss": 0.016552966088056564, "test_acc": 1.0, "wn_total": 37.8772172878812, "wn_hidden": 24.65340485493154}
+{"step": 500, "train_loss": 0.005724356044083834, "train_acc": 1.0, "test_loss": 0.007588450331240892, "test_acc": 1.0, "wn_total": 34.924335793240125, "wn_hidden": 22.406813482756753}
+{"step": 600, "train_loss": 0.031497448682785034, "train_acc": 1.0, "test_loss": 0.040095970034599304, "test_acc": 1.0, "wn_total": 34.36673477561598, "wn_hidden": 22.750543336353623}
+{"step": 700, "train_loss": 0.008185985498130322, "train_acc": 1.0, "test_loss": 0.009886258281767368, "test_acc": 1.0, "wn_total": 32.02092366049027, "wn_hidden": 20.91619100701082}
+{"step": 800, "train_loss": 0.0034927597735077143, "train_acc": 1.0, "test_loss": 0.004236611537635326, "test_acc": 1.0, "wn_total": 30.032226775869628, "wn_hidden": 19.0934824573609}
+{"_summary": {"group": "Z120", "optimizer": "adamw", "seed": 3, "d_model": 256, "train_frac": 0.5, "group_order": 120, "commutator_density": 0.0, "memorize_step": 100, "grok_step": 300, "grokked": true, "final_train_acc": 1.0, "final_test_acc": 1.0, "norm_growth_ratio": 0.7610461354690662, "n_params": 1638144, "elapsed_sec": 117.90816593170166, "stopped_step": 800}}
