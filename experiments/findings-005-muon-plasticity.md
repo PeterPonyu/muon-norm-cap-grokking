@@ -77,3 +77,6 @@ grid).
 `results/figures-005/`: `fig_fit_speed.png` (P1/P2), `fig_spectra.png` (P3/P4
 trajectories), `fig_dissociation.png` (the weight-vs-feature retention map),
 `plasticity_verdicts.json`.
+
+## Traceability (added 2026-06-29)
+Paper A's continual-learning section additionally reports the **P5 warm/cold-start bridge** (Table 3) and the **permuted-MNIST 150-task** benchmark non-transfer; these red-team additions are NOT in the original synthetic-arm write-up above but are backed by logged runs: `results/muon_plasticity_p5_bridge/` (P5 bridge) and `results/muon_plasticity_perm_mnist_ext/` + `results/muon_plasticity_mnist{,_lrctl}/` (permuted-MNIST). The permuted-MNIST non-transfer is a scope boundary (negative for the plasticity claim) and is reported as such in the manuscript.
