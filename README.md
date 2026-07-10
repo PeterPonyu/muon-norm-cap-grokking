@@ -14,5 +14,12 @@ scratch (GPU recommended): `python experiments/<study>/run_*.py`. Runs are seede
 numpy. All inputs are synthetic and fully specified in the code, except large
 standard datasets (MNIST / WikiText) which are not bundled.
 
+## Scale-hardening additions (v1.3, 2026-07)
+- `experiments/s5_normctl/run_20260708_capscale.py` + `experiments/results/s5_normctl_scale/` (112 runs):
+  norm-cap dose-response across modulus rungs p in {97,251,337} (capscale, 52 runs) and the
+  S5 width {128,256,512} x depth {2,4} x ceiling {inf,1} grid (capwd, 60 runs).
+- `experiments/group_complexity/run_20260708_adam_nowd.py` + `experiments/results/group_complexity_nowd/`
+  (30 runs): plain-Adam (lambda=0) taxonomy arm over the group ladder.
+
 ## License
 Code: MIT (`LICENSE`). Result logs: CC BY 4.0. See `CITATION.cff`.
