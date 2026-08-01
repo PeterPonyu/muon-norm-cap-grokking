@@ -1,0 +1,324 @@
+{
+ "arm": "A-DF",
+ "n_runs": 32,
+ "runs": [
+  {
+   "name": "adf_add_kinf_s70",
+   "file": "adf_add_kinf_s70.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 70,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_kinf_s71",
+   "file": "adf_add_kinf_s71.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 71,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_kinf_s72",
+   "file": "adf_add_kinf_s72.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 72,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_kinf_s73",
+   "file": "adf_add_kinf_s73.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 73,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_kinf_s74",
+   "file": "adf_add_kinf_s74.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 74,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_kinf_s75",
+   "file": "adf_add_kinf_s75.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 75,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_kinf_s76",
+   "file": "adf_add_kinf_s76.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 76,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_kinf_s77",
+   "file": "adf_add_kinf_s77.jsonl",
+   "task": "add",
+   "ceiling_k": "inf",
+   "seed": 77,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s70",
+   "file": "adf_add_k1_s70.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 70,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s71",
+   "file": "adf_add_k1_s71.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 71,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s72",
+   "file": "adf_add_k1_s72.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 72,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s73",
+   "file": "adf_add_k1_s73.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 73,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s74",
+   "file": "adf_add_k1_s74.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 74,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s75",
+   "file": "adf_add_k1_s75.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 75,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s76",
+   "file": "adf_add_k1_s76.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 76,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_add_k1_s77",
+   "file": "adf_add_k1_s77.jsonl",
+   "task": "add",
+   "ceiling_k": 1.0,
+   "seed": 77,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s70",
+   "file": "adf_D60_kinf_s70.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 70,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s71",
+   "file": "adf_D60_kinf_s71.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 71,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s72",
+   "file": "adf_D60_kinf_s72.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 72,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s73",
+   "file": "adf_D60_kinf_s73.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 73,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s74",
+   "file": "adf_D60_kinf_s74.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 74,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s75",
+   "file": "adf_D60_kinf_s75.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 75,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s76",
+   "file": "adf_D60_kinf_s76.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 76,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_kinf_s77",
+   "file": "adf_D60_kinf_s77.jsonl",
+   "task": "D60",
+   "ceiling_k": "inf",
+   "seed": 77,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s70",
+   "file": "adf_D60_k1_s70.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 70,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s71",
+   "file": "adf_D60_k1_s71.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 71,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s72",
+   "file": "adf_D60_k1_s72.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 72,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s73",
+   "file": "adf_D60_k1_s73.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 73,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s74",
+   "file": "adf_D60_k1_s74.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 74,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s75",
+   "file": "adf_D60_k1_s75.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 75,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s76",
+   "file": "adf_D60_k1_s76.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 76,
+   "steps": 20000,
+   "eval_every": 5
+  },
+  {
+   "name": "adf_D60_k1_s77",
+   "file": "adf_D60_k1_s77.jsonl",
+   "task": "D60",
+   "ceiling_k": 1.0,
+   "seed": 77,
+   "steps": 20000,
+   "eval_every": 5
+  }
+ ],
+ "purpose": "defloor mod-add and D60 ratios whose prior CI lower bound touched 1.0",
+ "tasks": [
+  "add",
+  "D60"
+ ],
+ "caps": [
+  "inf",
+  1.0
+ ],
+ "seed_block": [
+  70,
+  77
+ ],
+ "seed_rationale": "70-77 disjoint from prior A arms (0-59) and A-G3 (60-64)",
+ "eval_every": 5,
+ "d60_reuse": "tools/run_20260705_gapA_normaccel.py trainer and operating point",
+ "add_reuse": "grokking.train.run + run_s5_normctl.make_builder",
+ "bootstrap": {
+  "resamples": 20000,
+  "unit": "seed",
+  "intervals": [
+   "percentile",
+   "BCa"
+  ]
+ },
+ "est_gpu_hours": {
+  "expected": 1.35,
+  "ceiling": 40.44
+ },
+ "sentinel": "_summary in jsonl tail"
+}

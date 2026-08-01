@@ -1,0 +1,748 @@
+{
+ "sa10": {
+  "config_shared": {
+   "amp_bf16": true,
+   "batch_size": 64,
+   "beta1": 0.9,
+   "beta2": 0.98,
+   "budget_tokens": 300000000,
+   "capacity": "large",
+   "device": "cuda",
+   "eval_every": 250,
+   "family": "sa10",
+   "lam": 0.0,
+   "lr": 0.0003,
+   "lr_probe_note": "lrs from 500-step sa10 probe 2026-07-17; see stier/ETA.md; same (lr, muon_lr) across all muon-family arms \u2014 cap/sphere is the only factor",
+   "muon_lr": 0.01,
+   "n_params": 9985920,
+   "seq_len": 256,
+   "steps": 18311,
+   "val_batches": 8,
+   "vocab": 256,
+   "weight_decay": 0.01
+  },
+  "config_differing_across_arms": {
+   "arm": {
+    "muon": "muon",
+    "adamw": "adamw",
+    "cap1": "cap1",
+    "cap2": "cap2",
+    "sphere": "sphere"
+   },
+   "ceiling_k": {
+    "muon": 0.0,
+    "adamw": 0.0,
+    "cap1": 1.0,
+    "cap2": 2.0,
+    "sphere": 0.0
+   },
+   "seed": {
+    "muon": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    },
+    "adamw": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    },
+    "cap1": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    },
+    "cap2": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    },
+    "sphere": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    }
+   },
+   "shard": {
+    "muon": {
+     "0": "ts_shard0.pt",
+     "1": "ts_shard1.pt",
+     "2": "ts_shard2.pt"
+    },
+    "adamw": {
+     "0": "ts_shard0.pt",
+     "1": "ts_shard1.pt",
+     "2": "ts_shard2.pt"
+    },
+    "cap1": {
+     "0": "ts_shard0.pt",
+     "1": "ts_shard1.pt",
+     "2": "ts_shard2.pt"
+    },
+    "cap2": {
+     "0": "ts_shard0.pt",
+     "1": "ts_shard1.pt",
+     "2": "ts_shard2.pt"
+    },
+    "sphere": {
+     "0": "ts_shard0.pt",
+     "1": "ts_shard1.pt",
+     "2": "ts_shard2.pt"
+    }
+   }
+  },
+  "max_tokens_per_run": {
+   "muon_s0": 300007424,
+   "muon_s1": 300007424,
+   "muon_s2": 300007424,
+   "adamw_s0": 300007424,
+   "adamw_s1": 300007424,
+   "adamw_s2": 300007424,
+   "cap1_s0": 300007424,
+   "cap1_s1": 300007424,
+   "cap1_s2": 300007424,
+   "cap2_s0": 300007424,
+   "cap2_s1": 300007424,
+   "cap2_s2": 300007424,
+   "sphere_s0": 300007424,
+   "sphere_s1": 300007424,
+   "sphere_s2": 300007424
+  },
+  "matched_tokens": 300007424,
+  "final_val_loss_at_matched_tokens": {
+   "muon": {
+    "per_seed": [
+     0.5878,
+     0.5816,
+     0.5713
+    ],
+    "median": 0.5816,
+    "at_tokens": [
+     300007424,
+     300007424,
+     300007424
+    ]
+   },
+   "adamw": {
+    "per_seed": [
+     0.5968,
+     0.5951,
+     0.5847
+    ],
+    "median": 0.5951,
+    "at_tokens": [
+     300007424,
+     300007424,
+     300007424
+    ]
+   },
+   "cap1": {
+    "per_seed": [
+     0.7716,
+     0.768,
+     0.7666
+    ],
+    "median": 0.768,
+    "at_tokens": [
+     300007424,
+     300007424,
+     300007424
+    ]
+   },
+   "cap2": {
+    "per_seed": [
+     0.668,
+     0.6634,
+     0.6577
+    ],
+    "median": 0.6634,
+    "at_tokens": [
+     300007424,
+     300007424,
+     300007424
+    ]
+   },
+   "sphere": {
+    "per_seed": [
+     0.7723,
+     0.7674,
+     0.7624
+    ],
+    "median": 0.7674,
+    "at_tokens": [
+     300007424,
+     300007424,
+     300007424
+    ]
+   }
+  },
+  "trajectory_median_val_loss": {
+   "10pct": {
+    "muon": 0.7003,
+    "adamw": 0.8352,
+    "cap1": 0.8299,
+    "cap2": 0.7362,
+    "sphere": 0.8286
+   },
+   "25pct": {
+    "muon": 0.6375,
+    "adamw": 0.7009,
+    "cap1": 0.7983,
+    "cap2": 0.6972,
+    "sphere": 0.7948
+   },
+   "50pct": {
+    "muon": 0.6056,
+    "adamw": 0.6428,
+    "cap1": 0.7806,
+    "cap2": 0.6789,
+    "sphere": 0.7783
+   },
+   "75pct": {
+    "muon": 0.5897,
+    "adamw": 0.6132,
+    "cap1": 0.7684,
+    "cap2": 0.6685,
+    "sphere": 0.7688
+   },
+   "100pct": {
+    "muon": 0.5816,
+    "adamw": 0.5951,
+    "cap1": 0.768,
+    "cap2": 0.6634,
+    "sphere": 0.7674
+   }
+  },
+  "hidden_norms": {
+   "muon": [
+    {
+     "init": 62.08,
+     "final": 397.07,
+     "final_over_init": 6.396
+    },
+    {
+     "init": 62.06,
+     "final": 397.27,
+     "final_over_init": 6.402
+    },
+    {
+     "init": 62.06,
+     "final": 397.42,
+     "final_over_init": 6.403
+    }
+   ],
+   "adamw": [
+    {
+     "init": 62.08,
+     "final": 130.33,
+     "final_over_init": 2.099
+    },
+    {
+     "init": 62.06,
+     "final": 128.26,
+     "final_over_init": 2.067
+    },
+    {
+     "init": 62.06,
+     "final": 129.79,
+     "final_over_init": 2.091
+    }
+   ],
+   "cap1": [
+    {
+     "init": 62.08,
+     "final": 62.08,
+     "final_over_init": 1.0,
+     "cap_k": 1.0,
+     "cap_binds_at_tokens": 0
+    },
+    {
+     "init": 62.06,
+     "final": 62.06,
+     "final_over_init": 1.0,
+     "cap_k": 1.0,
+     "cap_binds_at_tokens": 0
+    },
+    {
+     "init": 62.06,
+     "final": 62.06,
+     "final_over_init": 1.0,
+     "cap_k": 1.0,
+     "cap_binds_at_tokens": 0
+    }
+   ],
+   "cap2": [
+    {
+     "init": 62.08,
+     "final": 124.16,
+     "final_over_init": 2.0,
+     "cap_k": 2.0,
+     "cap_binds_at_tokens": 16384000
+    },
+    {
+     "init": 62.06,
+     "final": 124.11,
+     "final_over_init": 2.0,
+     "cap_k": 2.0,
+     "cap_binds_at_tokens": 16384000
+    },
+    {
+     "init": 62.06,
+     "final": 124.13,
+     "final_over_init": 2.0,
+     "cap_k": 2.0,
+     "cap_binds_at_tokens": 16384000
+    }
+   ],
+   "sphere": [
+    {
+     "init": 62.08,
+     "final": 62.08,
+     "final_over_init": 1.0,
+     "max_abs_dev_from_init": 0.0
+    },
+    {
+     "init": 62.06,
+     "final": 62.06,
+     "final_over_init": 1.0,
+     "max_abs_dev_from_init": 0.0
+    },
+    {
+     "init": 62.06,
+     "final": 62.06,
+     "final_over_init": 1.0,
+     "max_abs_dev_from_init": 0.0
+    }
+   ]
+  },
+  "early_phase_muon_vs_adamw": [
+   {
+    "tokens": 4096000,
+    "muon_med": 1.0603,
+    "adamw_med": 1.9123
+   },
+   {
+    "tokens": 8192000,
+    "muon_med": 0.8588,
+    "adamw_med": 1.277
+   },
+   {
+    "tokens": 12288000,
+    "muon_med": 0.7903,
+    "adamw_med": 1.0798
+   },
+   {
+    "tokens": 16384000,
+    "muon_med": 0.7534,
+    "adamw_med": 0.9842
+   },
+   {
+    "tokens": 20480000,
+    "muon_med": 0.7316,
+    "adamw_med": 0.9202
+   },
+   {
+    "tokens": 24576000,
+    "muon_med": 0.7118,
+    "adamw_med": 0.868
+   },
+   {
+    "tokens": 28672000,
+    "muon_med": 0.7003,
+    "adamw_med": 0.8352
+   },
+   {
+    "tokens": 32768000,
+    "muon_med": 0.6928,
+    "adamw_med": 0.8081
+   }
+  ],
+  "tokens_per_s_median": {
+   "muon": 703109,
+   "adamw": 925200,
+   "cap1": 689630,
+   "cap2": 686872,
+   "sphere": 689824
+  },
+  "paired_final_differences": {
+   "adamw_minus_muon": {
+    "per_seed": [
+     0.009,
+     0.0135,
+     0.0134
+    ],
+    "median": 0.0134
+   },
+   "cap1_minus_muon": {
+    "per_seed": [
+     0.1838,
+     0.1864,
+     0.1953
+    ],
+    "median": 0.1864
+   },
+   "cap2_minus_muon": {
+    "per_seed": [
+     0.0802,
+     0.0818,
+     0.0864
+    ],
+    "median": 0.0818
+   },
+   "sphere_minus_muon": {
+    "per_seed": [
+     0.1845,
+     0.1858,
+     0.1911
+    ],
+    "median": 0.1858
+   },
+   "sphere_minus_cap1": {
+    "per_seed": [
+     0.0007,
+     -0.0006,
+     -0.0042
+    ],
+    "median": -0.0006
+   }
+  }
+ },
+ "sa50": {
+  "config_shared": {
+   "amp_bf16": true,
+   "batch_size": 64,
+   "beta1": 0.9,
+   "beta2": 0.98,
+   "budget_tokens": 600000000,
+   "capacity": "xxl",
+   "device": "cuda",
+   "eval_every": 250,
+   "family": "sa50",
+   "lam": 0.0,
+   "lr": 0.0003,
+   "lr_probe_note": "lrs from 500-step sa10 probe 2026-07-17; see stier/ETA.md; same (lr, muon_lr) across all muon-family arms \u2014 cap/sphere is the only factor",
+   "muon_lr": 0.01,
+   "n_params": 57239040,
+   "seq_len": 256,
+   "steps": 36622,
+   "val_batches": 8,
+   "vocab": 256,
+   "weight_decay": 0.01
+  },
+  "config_differing_across_arms": {
+   "arm": {
+    "muon": "muon",
+    "adamw": "adamw",
+    "cap1": "cap1",
+    "cap2": "cap2"
+   },
+   "ceiling_k": {
+    "muon": 0.0,
+    "adamw": 0.0,
+    "cap1": 1.0,
+    "cap2": 2.0
+   },
+   "seed": {
+    "muon": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    },
+    "adamw": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    },
+    "cap1": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    },
+    "cap2": {
+     "0": 0,
+     "1": 1,
+     "2": 2
+    }
+   },
+   "shard": {
+    "muon": {
+     "0": "fwe_stream_shard0.pt",
+     "1": "fwe_stream_shard1.pt",
+     "2": "fwe_stream_shard0.pt"
+    },
+    "adamw": {
+     "0": "fwe_stream_shard0.pt",
+     "1": "fwe_stream_shard1.pt",
+     "2": "fwe_stream_shard0.pt"
+    },
+    "cap1": {
+     "0": "fwe_stream_shard0.pt",
+     "1": "fwe_stream_shard1.pt",
+     "2": "fwe_stream_shard0.pt"
+    },
+    "cap2": {
+     "0": "fwe_stream_shard0.pt",
+     "1": "fwe_stream_shard1.pt",
+     "2": "fwe_stream_shard0.pt"
+    }
+   }
+  },
+  "max_tokens_per_run": {
+   "muon_s0": 600014848,
+   "muon_s1": 600014848,
+   "muon_s2": 600014848,
+   "adamw_s0": 600014848,
+   "adamw_s1": 600014848,
+   "adamw_s2": 600014848,
+   "cap1_s0": 600014848,
+   "cap1_s1": 600014848,
+   "cap1_s2": 600014848,
+   "cap2_s0": 600014848,
+   "cap2_s1": 600014848,
+   "cap2_s2": 600014848
+  },
+  "matched_tokens": 600014848,
+  "final_val_loss_at_matched_tokens": {
+   "muon": {
+    "per_seed": [
+     0.9525,
+     1.0348,
+     0.9551
+    ],
+    "median": 0.9551,
+    "at_tokens": [
+     600014848,
+     600014848,
+     600014848
+    ]
+   },
+   "adamw": {
+    "per_seed": [
+     0.9318,
+     1.0083,
+     0.9302
+    ],
+    "median": 0.9318,
+    "at_tokens": [
+     600014848,
+     600014848,
+     600014848
+    ]
+   },
+   "cap1": {
+    "per_seed": [
+     1.1541,
+     1.247,
+     1.1616
+    ],
+    "median": 1.1616,
+    "at_tokens": [
+     600014848,
+     600014848,
+     600014848
+    ]
+   },
+   "cap2": {
+    "per_seed": [
+     1.0372,
+     1.1266,
+     1.0449
+    ],
+    "median": 1.0449,
+    "at_tokens": [
+     600014848,
+     600014848,
+     600014848
+    ]
+   }
+  },
+  "trajectory_median_val_loss": {
+   "10pct": {
+    "muon": 1.0859,
+    "adamw": 1.1467,
+    "cap1": 1.2023,
+    "cap2": 1.1189
+   },
+   "25pct": {
+    "muon": 1.0172,
+    "adamw": 1.0398,
+    "cap1": 1.1799,
+    "cap2": 1.0786
+   },
+   "50pct": {
+    "muon": 0.9799,
+    "adamw": 0.9783,
+    "cap1": 1.1719,
+    "cap2": 1.0594
+   },
+   "75pct": {
+    "muon": 0.9647,
+    "adamw": 0.9527,
+    "cap1": 1.1644,
+    "cap2": 1.0493
+   },
+   "100pct": {
+    "muon": 0.9551,
+    "adamw": 0.9318,
+    "cap1": 1.1616,
+    "cap2": 1.0449
+   }
+  },
+  "hidden_norms": {
+   "muon": [
+    {
+     "init": 150.5,
+     "final": 756.25,
+     "final_over_init": 5.025
+    },
+    {
+     "init": 150.5,
+     "final": 755.28,
+     "final_over_init": 5.019
+    },
+    {
+     "init": 150.53,
+     "final": 757.78,
+     "final_over_init": 5.034
+    }
+   ],
+   "adamw": [
+    {
+     "init": 150.5,
+     "final": 433.62,
+     "final_over_init": 2.881
+    },
+    {
+     "init": 150.5,
+     "final": 434.52,
+     "final_over_init": 2.887
+    },
+    {
+     "init": 150.53,
+     "final": 432.49,
+     "final_over_init": 2.873
+    }
+   ],
+   "cap1": [
+    {
+     "init": 150.5,
+     "final": 150.5,
+     "final_over_init": 1.0,
+     "cap_k": 1.0,
+     "cap_binds_at_tokens": 0
+    },
+    {
+     "init": 150.5,
+     "final": 150.5,
+     "final_over_init": 1.0,
+     "cap_k": 1.0,
+     "cap_binds_at_tokens": 0
+    },
+    {
+     "init": 150.53,
+     "final": 150.53,
+     "final_over_init": 1.0,
+     "cap_k": 1.0,
+     "cap_binds_at_tokens": 0
+    }
+   ],
+   "cap2": [
+    {
+     "init": 150.5,
+     "final": 301.0,
+     "final_over_init": 2.0,
+     "cap_k": 2.0,
+     "cap_binds_at_tokens": 32768000
+    },
+    {
+     "init": 150.5,
+     "final": 300.99,
+     "final_over_init": 2.0,
+     "cap_k": 2.0,
+     "cap_binds_at_tokens": 32768000
+    },
+    {
+     "init": 150.53,
+     "final": 301.07,
+     "final_over_init": 2.0,
+     "cap_k": 2.0,
+     "cap_binds_at_tokens": 32768000
+    }
+   ]
+  },
+  "early_phase_muon_vs_adamw": [
+   {
+    "tokens": 4096000,
+    "muon_med": 1.4991,
+    "adamw_med": 2.544
+   },
+   {
+    "tokens": 8192000,
+    "muon_med": 1.3233,
+    "adamw_med": 2.0308
+   },
+   {
+    "tokens": 12288000,
+    "muon_med": 1.2407,
+    "adamw_med": 1.5946
+   },
+   {
+    "tokens": 16384000,
+    "muon_med": 1.2046,
+    "adamw_med": 1.4454
+   },
+   {
+    "tokens": 20480000,
+    "muon_med": 1.1784,
+    "adamw_med": 1.3753
+   },
+   {
+    "tokens": 24576000,
+    "muon_med": 1.1628,
+    "adamw_med": 1.3311
+   },
+   {
+    "tokens": 28672000,
+    "muon_med": 1.1419,
+    "adamw_med": 1.2849
+   },
+   {
+    "tokens": 32768000,
+    "muon_med": 1.1321,
+    "adamw_med": 1.256
+   }
+  ],
+  "tokens_per_s_median": {
+   "muon": 199561,
+   "adamw": 234640,
+   "cap1": 194527,
+   "cap2": 195096
+  },
+  "paired_final_differences": {
+   "adamw_minus_muon": {
+    "per_seed": [
+     -0.0207,
+     -0.0265,
+     -0.0249
+    ],
+    "median": -0.0249
+   },
+   "cap1_minus_muon": {
+    "per_seed": [
+     0.2016,
+     0.2122,
+     0.2065
+    ],
+    "median": 0.2065
+   },
+   "cap2_minus_muon": {
+    "per_seed": [
+     0.0847,
+     0.0918,
+     0.0898
+    ],
+    "median": 0.0898
+   }
+  }
+ }
+}

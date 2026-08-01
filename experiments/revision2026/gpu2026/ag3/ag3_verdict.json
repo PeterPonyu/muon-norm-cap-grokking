@@ -1,0 +1,212 @@
+{
+ "root": ".",
+ "n_planned": 50,
+ "n_read": 50,
+ "absent": [],
+ "partial": [],
+ "per_op": {
+  "s5": {
+   "muon": {
+    "n": 5,
+    "n_grok": 5,
+    "n_censored": 0,
+    "budget": 20000,
+    "median_grok_step": 3950,
+    "median_is_censored": false,
+    "grok_steps": [
+     2300,
+     3900,
+     3950,
+     5750,
+     6200
+    ],
+    "final_test_acc_median": 0.9997684955596924,
+    "final_wn_hidden_median": 306.730611000287
+   },
+   "specflat": {
+    "n": 5,
+    "n_grok": 5,
+    "n_censored": 0,
+    "budget": 20000,
+    "median_grok_step": 3800,
+    "median_is_censored": false,
+    "grok_steps": [
+     2650,
+     3250,
+     3800,
+     4300,
+     9350
+    ],
+    "final_test_acc_median": 0.9993055462837219,
+    "final_wn_hidden_median": 179.0991004806243
+   },
+   "randorth": {
+    "n": 5,
+    "n_grok": 0,
+    "n_censored": 5,
+    "budget": 20000,
+    "median_grok_step": null,
+    "median_is_censored": true,
+    "grok_steps": [],
+    "final_test_acc_median": 0.16458332538604736,
+    "final_wn_hidden_median": 161.97041069414402
+   },
+   "specinv": {
+    "n": 5,
+    "n_grok": 0,
+    "n_censored": 5,
+    "budget": 20000,
+    "median_grok_step": null,
+    "median_is_censored": true,
+    "grok_steps": [],
+    "final_test_acc_median": 0.05532407388091087,
+    "final_wn_hidden_median": 422.96920245808366
+   },
+   "adamw": {
+    "n": 5,
+    "n_grok": 0,
+    "n_censored": 5,
+    "budget": 20000,
+    "median_grok_step": null,
+    "median_is_censored": true,
+    "grok_steps": [],
+    "final_test_acc_median": 0.008912037126719952,
+    "final_wn_hidden_median": 23.27394771881014
+   }
+  },
+  "add": {
+   "muon": {
+    "n": 5,
+    "n_grok": 5,
+    "n_censored": 0,
+    "budget": 20000,
+    "median_grok_step": 100,
+    "median_is_censored": false,
+    "grok_steps": [
+     100,
+     100,
+     100,
+     100,
+     100
+    ],
+    "final_test_acc_median": 1.0,
+    "final_wn_hidden_median": 148.54392463640752
+   },
+   "specflat": {
+    "n": 5,
+    "n_grok": 5,
+    "n_censored": 0,
+    "budget": 20000,
+    "median_grok_step": 100,
+    "median_is_censored": false,
+    "grok_steps": [
+     100,
+     100,
+     100,
+     100,
+     100
+    ],
+    "final_test_acc_median": 1.0,
+    "final_wn_hidden_median": 153.46002034483863
+   },
+   "randorth": {
+    "n": 5,
+    "n_grok": 5,
+    "n_censored": 0,
+    "budget": 20000,
+    "median_grok_step": 5700,
+    "median_is_censored": false,
+    "grok_steps": [
+     2100,
+     5450,
+     5700,
+     5950,
+     9400
+    ],
+    "final_test_acc_median": 0.9801594018936157,
+    "final_wn_hidden_median": 126.64278944402663
+   },
+   "specinv": {
+    "n": 5,
+    "n_grok": 5,
+    "n_censored": 0,
+    "budget": 20000,
+    "median_grok_step": 2950,
+    "median_is_censored": false,
+    "grok_steps": [
+     2550,
+     2800,
+     2950,
+     3300,
+     3350
+    ],
+    "final_test_acc_median": 0.9991142153739929,
+    "final_wn_hidden_median": 210.9180074905627
+   },
+   "adamw": {
+    "n": 5,
+    "n_grok": 5,
+    "n_censored": 0,
+    "budget": 20000,
+    "median_grok_step": 3450,
+    "median_is_censored": false,
+    "grok_steps": [
+     1400,
+     2750,
+     3450,
+     4950,
+     5150
+    ],
+    "final_test_acc_median": 0.9991142153739929,
+    "final_wn_hidden_median": 19.598566524966223
+   }
+  }
+ },
+ "verdicts": [
+  {
+   "op": "s5",
+   "checks": [
+    {
+     "name": "positive control (specflat ~ muon)",
+     "verdict": "PASS",
+     "detail": "grok 5/5 vs muon 5/5; median ratio 0.96x (bar 2.0x)",
+     "blocking": false
+    },
+    {
+     "name": "negative control (randorth != muon)",
+     "verdict": "MECHANISM IS GEOMETRY",
+     "detail": "randorth grok 0/5, never groks within 20000 vs muon 5/5, median 3950"
+    },
+    {
+     "name": "probe (specinv: aligned but anti-spectral)",
+     "verdict": "FLATTENING REQUIRED",
+     "detail": "specinv grok 0/5, never groks within 20000"
+    }
+   ],
+   "positive_control": "PASS"
+  },
+  {
+   "op": "add",
+   "checks": [
+    {
+     "name": "positive control (specflat ~ muon)",
+     "verdict": "PASS",
+     "detail": "grok 5/5 vs muon 5/5; median ratio 1.00x (bar 2.0x)",
+     "blocking": false
+    },
+    {
+     "name": "negative control (randorth != muon)",
+     "verdict": "MECHANISM IS GEOMETRY",
+     "detail": "randorth grok 5/5, median 5700 vs muon 5/5, median 100"
+    },
+    {
+     "name": "probe (specinv: aligned but anti-spectral)",
+     "verdict": "ALIGNMENT SUFFICES",
+     "detail": "specinv grok 5/5, median 2950"
+    }
+   ],
+   "positive_control": "PASS"
+  }
+ ],
+ "posctrl_factor": 2.0
+}

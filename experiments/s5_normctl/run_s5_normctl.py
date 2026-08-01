@@ -5,7 +5,7 @@ restatement of the orthogonalized update (fixed spectral norm ⇒ Frobenius norm
 inflates every step) rather than a mechanism. This runner is the manipulated-cause
 arm: cap the hidden-matrix growth and ask whether grokking survives.
 
-RED-TEAM-CORRECTED design (agent ac44b66b, see tier2-normctl-muon-design.md):
+RED-TEAM-CORRECTED design:
 - DOSE-RESPONSE is primary: ceiling k ∈ {∞ (vanilla Muon = growth control), 3, 2,
   1.5, 1}. Only a MONOTONE grok-vs-ceiling curve distinguishes "growth causal" from
   a single confounded flat point.

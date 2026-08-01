@@ -1,0 +1,416 @@
+{
+  "P1-A1_s5_lrcross": {
+    "adamw_crossed": {
+      "n": 8,
+      "grok_frac": "0/8",
+      "median_grok_step": null,
+      "grok_steps_sorted": [],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.02,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "adamw"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "adamw_native": {
+      "n": 8,
+      "grok_frac": "0/8",
+      "median_grok_step": null,
+      "grok_steps_sorted": [],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "adamw"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "muon_crossed": {
+      "n": 8,
+      "grok_frac": "0/8",
+      "median_grok_step": null,
+      "grok_steps_sorted": [],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.001
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "muon_native": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 2625.0,
+      "grok_steps_sorted": [
+        2000,
+        2100,
+        2550,
+        2600,
+        2650,
+        3300,
+        4250,
+        7750
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    }
+  },
+  "P1-A2_capfine": {
+    "k1": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 257.5,
+      "grok_steps_sorted": [
+        235,
+        240,
+        245,
+        255,
+        260,
+        325,
+        365,
+        460
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        5
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "kinf": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 2657.5,
+      "grok_steps_sorted": [
+        1815,
+        2010,
+        2155,
+        2465,
+        2850,
+        3000,
+        3735,
+        7830
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        5
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    }
+  },
+  "P2-A1m_add_lrcross": {
+    "adamw_crossed": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 6250.0,
+      "grok_steps_sorted": [
+        2500,
+        2850,
+        5650,
+        5750,
+        6750,
+        8000,
+        10750,
+        11900
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.02,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "add"
+      ],
+      "optimizer": [
+        "adamw"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "adamw_native": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 3375.0,
+      "grok_steps_sorted": [
+        1450,
+        1500,
+        3250,
+        3250,
+        3500,
+        4150,
+        4650,
+        4700
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "add"
+      ],
+      "optimizer": [
+        "adamw"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "muon_crossed": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 400.0,
+      "grok_steps_sorted": [
+        350,
+        350,
+        400,
+        400,
+        400,
+        400,
+        450,
+        450
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.001
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "add"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "muon_native": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 100.0,
+      "grok_steps_sorted": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        50
+      ],
+      "op": [
+        "add"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    }
+  },
+  "P2-A2r_capdose": {
+    "adamw": {
+      "n": 8,
+      "grok_frac": "0/8",
+      "median_grok_step": null,
+      "grok_steps_sorted": [],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        5
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "adamw"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "k2": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 405.0,
+      "grok_steps_sorted": [
+        335,
+        345,
+        385,
+        395,
+        415,
+        415,
+        620,
+        1300
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        5
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    },
+    "k4": {
+      "n": 8,
+      "grok_frac": "8/8",
+      "median_grok_step": 810.0,
+      "grok_steps_sorted": [
+        685,
+        715,
+        740,
+        805,
+        815,
+        870,
+        1095,
+        3130
+      ],
+      "summary_vs_recompute_mismatches": [],
+      "lr_muonlr": [
+        [
+          0.001,
+          0.02
+        ]
+      ],
+      "eval_every": [
+        5
+      ],
+      "op": [
+        "s5"
+      ],
+      "optimizer": [
+        "muon"
+      ],
+      "cap_k": [
+        "None"
+      ]
+    }
+  }
+}

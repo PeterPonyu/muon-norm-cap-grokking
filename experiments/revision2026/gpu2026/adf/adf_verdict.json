@@ -1,0 +1,95 @@
+{
+ "n_runs": 32,
+ "tasks_seen": [
+  "D60",
+  "add"
+ ],
+ "bootstrap_resamples": 20000,
+ "entries": [
+  {
+   "task": "add",
+   "n_uncapped": 8,
+   "n_capped": 8,
+   "uncapped_per_seed": {
+    "70": 70,
+    "71": 70,
+    "72": 60,
+    "73": 65,
+    "74": 60,
+    "75": 65,
+    "76": 65,
+    "77": 65
+   },
+   "capped_per_seed": {
+    "70": 60,
+    "71": 60,
+    "72": 60,
+    "73": 55,
+    "74": 55,
+    "75": 55,
+    "76": 55,
+    "77": 55
+   },
+   "nongrok_uncapped": 0,
+   "nongrok_capped": 0,
+   "median_uncapped": 65.0,
+   "median_capped": 55.0,
+   "inference_status": "complete_uncensored",
+   "ratio": 1.1818181818181819,
+   "ci95_percentile": [
+    1.0833333333333333,
+    1.2272727272727273
+   ],
+   "ci95_bca": [
+    1.0869565217391304,
+    1.2727272727272727
+   ]
+  },
+  {
+   "task": "D60",
+   "n_uncapped": 8,
+   "n_capped": 8,
+   "uncapped_per_seed": {
+    "70": 190,
+    "71": 205,
+    "72": 185,
+    "73": 220,
+    "74": 190,
+    "75": 195,
+    "76": 240,
+    "77": 245
+   },
+   "capped_per_seed": {
+    "70": 80,
+    "71": 80,
+    "72": 80,
+    "73": 80,
+    "74": 75,
+    "75": 80,
+    "76": 90,
+    "77": 90
+   },
+   "nongrok_uncapped": 0,
+   "nongrok_capped": 0,
+   "median_uncapped": 200.0,
+   "median_capped": 80.0,
+   "inference_status": "complete_uncensored",
+   "ratio": 2.5,
+   "ci95_percentile": [
+    2.235294117647059,
+    2.9666935483870946
+   ],
+   "ci95_bca": [
+    2.264705882352941,
+    3.0
+   ]
+  }
+ ],
+ "grid_validation": {
+  "complete": true,
+  "missing": [],
+  "extra": [],
+  "duplicates": [],
+  "expected_n": 32
+ }
+}

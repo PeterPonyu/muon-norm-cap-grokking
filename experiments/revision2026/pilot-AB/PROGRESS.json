@@ -1,0 +1,21 @@
+{
+ "blocks": {
+  "p1a1_lrcross": {
+   "done": 32,
+   "total": 32
+  },
+  "p1a2_capfine": {
+   "done": 16,
+   "total": 16
+  },
+  "p1b1_fp32ladder": {
+   "done": 28,
+   "total": 28
+  }
+ },
+ "updated": "2026-07-17 11:55:53",
+ "updated_epoch": 1784260553.4096496,
+ "last_change_epoch": 1784260553.4096024,
+ "stall_min": 0.0,
+ "all_done": true
+}

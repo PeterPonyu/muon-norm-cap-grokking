@@ -1,0 +1,25 @@
+{
+ "blocks": {
+  "p2a1m_lrcross_add": {
+   "done": 32,
+   "total": 32
+  },
+  "p2a2r_capfine": {
+   "done": 24,
+   "total": 24
+  },
+  "p2b1r_probmse": {
+   "done": 21,
+   "total": 21
+  },
+  "p2b1r_p251": {
+   "done": 28,
+   "total": 28
+  }
+ },
+ "updated": "2026-07-17 13:22:22",
+ "updated_epoch": 1784265742.0257661,
+ "last_change_epoch": 1784265742.025724,
+ "stall_min": 0.0,
+ "all_done": true
+}
