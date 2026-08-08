@@ -13,7 +13,7 @@ os.environ.setdefault('MKL_NUM_THREADS', '2')
 os.environ.setdefault('OPENBLAS_NUM_THREADS', '2')
 os.environ.setdefault('NUMEXPR_NUM_THREADS', '2')
 
-ROOT = Path('/home/zeyufu/Desktop/dl-research')
+ROOT = Path(__file__).resolve().parents[2]
 EXP = ROOT / 'experiments' / 'muon_plasticity'
 OUT = ROOT / 'experiments' / 'results' / 'muon_plasticity_perm_mnist_ext'
 if str(EXP) in sys.path:

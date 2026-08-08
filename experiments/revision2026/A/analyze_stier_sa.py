@@ -19,9 +19,10 @@ Computes, per family:
   - early phase: muon vs adamw val loss at each of the first 8 eval points
   - tokens/s median per arm (sanity)
 """
+from pathlib import Path
 import json, glob, os, statistics
 
-BASE = "/home/zeyufu/Desktop/dl-research/experiments/revision2026/stier-AB"
+BASE = str(Path(__file__).resolve().parents[3] / 'experiments' / 'revision2026' / 'stier-AB')
 FAMILIES = {
     "sa10": ["muon", "adamw", "cap1", "cap2", "sphere"],
     "sa50": ["muon", "adamw", "cap1", "cap2"],

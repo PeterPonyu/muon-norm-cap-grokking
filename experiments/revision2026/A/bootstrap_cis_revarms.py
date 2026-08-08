@@ -12,11 +12,12 @@ Entries:
   - mod-add lr-cross: AdamW/Muon ratio at each hidden-lr operating point
     (1e-3 and 2e-2) and at each optimizer's native point.
 """
+from pathlib import Path
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bootstrap_cis as bc
 
-BASE = "/home/zeyufu/Desktop/dl-research/experiments/revision2026"
+BASE = str(Path(__file__).resolve().parents[3] / 'experiments' / 'revision2026')
 OUT = os.path.join(BASE, "A")
 
 def arm(folder, pattern, expect_n=8, allow_nongrok=False):

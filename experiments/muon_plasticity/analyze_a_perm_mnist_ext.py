@@ -4,7 +4,7 @@ import glob, json, os
 from pathlib import Path
 from statistics import median
 
-ROOT=Path('/home/zeyufu/Desktop/dl-research')
+ROOT=Path(__file__).resolve().parents[2]
 R=ROOT/'experiments/results'
 OUT=R/'muon_plasticity_perm_mnist_ext'
 VERDICT=OUT/'perm_mnist_ext_verdict.json'

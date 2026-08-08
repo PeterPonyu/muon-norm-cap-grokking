@@ -25,10 +25,11 @@ Mann-Whitney U for the s5_normctl-vs-capwd_d128_L2 batch comparison.
 CPU-only, stdlib+numpy(+scipy if available). Output: bootstrap_cis.json + .csv here.
 """
 from __future__ import annotations
+from pathlib import Path
 import glob, json, math, os, re
 import numpy as np
 
-RES = "/home/zeyufu/Desktop/dl-research/experiments/results"
+RES = str(Path(__file__).resolve().parents[3] / 'experiments' / 'results')
 OUT = os.path.dirname(os.path.abspath(__file__))
 RNG = np.random.default_rng(20260716)
 B = 20000
