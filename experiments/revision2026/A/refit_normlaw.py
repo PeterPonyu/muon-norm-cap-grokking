@@ -17,10 +17,11 @@ check against using the final row only.
 CPU-only. Output: refit_normlaw.json here.
 """
 from __future__ import annotations
+from pathlib import Path
 import glob, json, math, os, re
 import numpy as np
 
-RES = "/home/zeyufu/Desktop/dl-research/experiments/results/ieee_gap_20260705/A/normlaw"
+RES = str(Path(__file__).resolve().parents[3] / 'experiments' / 'results' / 'ieee_gap_20260705' / 'A' / 'normlaw')
 OUT = os.path.dirname(os.path.abspath(__file__))
 LAM = {"0p001": 0.001, "0p003": 0.003, "0p01": 0.01, "0p03": 0.03, "0p1": 0.1, "0p3": 0.3}
 

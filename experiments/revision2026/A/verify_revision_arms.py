@@ -13,10 +13,11 @@ Reports per-arm: n, grok fraction, median grok step (over grokked runs and
 over all runs treating non-grok as censored/inf -> median only if fraction>0.5),
 plus the _meta lr/muon_lr/eval_every/op audit.
 """
+from pathlib import Path
 import json, glob, os, statistics, sys
 from collections import defaultdict
 
-BASE = "/home/zeyufu/Desktop/dl-research/experiments/revision2026"
+BASE = str(Path(__file__).resolve().parents[3] / 'experiments' / 'revision2026')
 ARMS = {
     "P1-A1_s5_lrcross": os.path.join(BASE, "pilot-AB/p1a1_lrcross"),
     "P1-A2_capfine":    os.path.join(BASE, "pilot-AB/p1a2_capfine"),
