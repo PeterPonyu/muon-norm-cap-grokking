@@ -1,0 +1,48 @@
+name: Pages contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "portal/**"
+      - "papers/FIGURE-INDEX.json"
+      - "papers/figs/summaries/**"
+      - "papers/figs/previews/**"
+      - ".github/workflows/pages.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validators
+        run: pip install jsonschema PyYAML
+      - name: Validate index and copy portal
+        run: bash portal/build.sh
+      - name: Artifact hygiene
+        run: |
+          test ! -d _site/experiments
+          test ! -d _site/.omc
+          test ! -f _site/main.pdf
+          test ! -f _site/manuscript.pdf
+
+  deploy:
+    if: false
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pages deploy disabled
+        run: echo "GitHub Pages is not enabled; deploy stays gated."

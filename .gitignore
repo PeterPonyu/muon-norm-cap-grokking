@@ -17,3 +17,10 @@ muon-norm-cap-grokking-v*.tar.gz
 .env.*
 credentials*
 *.pem
+
+# compiled figure tiers (pointer contract)
+papers/figs/tex/
+papers/figs/vec/
+papers/figs/**/*.png
+_site/
+.mypy_cache/

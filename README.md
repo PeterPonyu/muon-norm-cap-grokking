@@ -1,11 +1,16 @@
 # Muon-accelerated grokking: causal norm-cap test — code & data
 
-Reproducibility archive: **experiment code and per-run result logs only**.
-Manuscript and write-up/derivation documents are intentionally **not** included.
+Repository: https://github.com/PeterPonyu/muon-norm-cap-grokking
+
+Reproducibility archive: experiment code, per-run result logs, and a **pointer**
+manuscript tree (`papers/`) that references untracked TikZ/PDF build products.
+Venue-flat figure PDFs and compiled `main.pdf` are not included.
 
 ## Contents
 - `experiments/<study>/` — runner / analysis code per sub-experiment.
 - `experiments/results/` — per-run logs (JSON/JSONL) behind every reported number.
+- `papers/` — pointer `main.tex`, `FIGURE-INDEX.json`, and summary JSON.
+- `portal/` — instrument-chrome source (GitHub Pages is not enabled).
 
 ## Reproducing
 The committed per-run logs are the recorded outputs. To re-run a study from

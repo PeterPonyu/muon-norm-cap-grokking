@@ -1,0 +1,128 @@
+{
+  "paper_id": "A",
+  "github": "PeterPonyu/muon-norm-cap-grokking",
+  "zenodo_concept_doi": "10.5281/zenodo.21020291",
+  "pipeline": "papers/figs/PIPELINE.md",
+  "figures": [
+    {
+      "id": "A_gap_normlaw",
+      "label": "fig:gap_normlaw",
+      "generator": "figs/make_gap20260705_figs_r.R",
+      "summary": "summaries/A_gap_normlaw.json",
+      "preview_svg": "previews/A_gap_normlaw.svg",
+      "tex_build": "figs/tex/A_gap_normlaw.tex",
+      "vec_build": "figs/vec/A_gap_normlaw.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_gap_normcap",
+      "label": "fig:gap_normcap",
+      "generator": "figs/make_gap20260705_figs_r.R",
+      "summary": "summaries/A_gap_normcap.json",
+      "preview_svg": "previews/A_gap_normcap.svg",
+      "tex_build": "figs/tex/A_gap_normcap.tex",
+      "vec_build": "figs/vec/A_gap_normcap.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_normctl",
+      "label": "fig:normctl",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "summaries/A_normctl.json",
+      "preview_svg": "previews/A_normctl.svg",
+      "tex_build": "figs/tex/A_normctl.tex",
+      "vec_build": "figs/vec/A_normctl.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_normctl_timecourse",
+      "label": "fig:normctl_tc",
+      "generator": "figs/make_A_new_figs_r.R",
+      "summary": "summaries/A_normctl_timecourse.json",
+      "preview_svg": "previews/A_normctl_timecourse.svg",
+      "tex_build": "figs/tex/A_normctl_timecourse.tex",
+      "vec_build": "figs/vec/A_normctl_timecourse.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_floor",
+      "label": "fig:floor",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "summaries/A_floor.json",
+      "preview_svg": "previews/A_floor.svg",
+      "tex_build": "figs/tex/A_floor.tex",
+      "vec_build": "figs/vec/A_floor.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_norm_discriminator",
+      "label": "fig:norm_disc",
+      "generator": "figs/make_A_new_figs_r.R",
+      "summary": "summaries/A_norm_discriminator.json",
+      "preview_svg": "previews/A_norm_discriminator.svg",
+      "tex_build": "figs/tex/A_norm_discriminator.tex",
+      "vec_build": "figs/vec/A_norm_discriminator.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_lmc",
+      "label": "fig:lmc",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "summaries/A_lmc.json",
+      "preview_svg": "previews/A_lmc.svg",
+      "tex_build": "figs/tex/A_lmc.tex",
+      "vec_build": "figs/vec/A_lmc.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_sink",
+      "label": "fig:sink",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "summaries/A_sink.json",
+      "preview_svg": "previews/A_sink.svg",
+      "tex_build": "figs/tex/A_sink.tex",
+      "vec_build": "figs/vec/A_sink.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_plasticity",
+      "label": "fig:plasticity",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "summaries/A_plasticity.json",
+      "preview_svg": "previews/A_plasticity.svg",
+      "tex_build": "figs/tex/A_plasticity.tex",
+      "vec_build": "figs/vec/A_plasticity.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_synth",
+      "label": "fig:synth",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "summaries/A_synth.json",
+      "preview_svg": "previews/A_synth.svg",
+      "tex_build": "figs/tex/A_synth.tex",
+      "vec_build": "figs/vec/A_synth.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_landscape",
+      "label": "fig:landscape",
+      "generator": "figs/make_A_landscape.py",
+      "summary": null,
+      "preview_svg": "previews/A_landscape.svg",
+      "tex_build": "figs/tex/A_landscape.tex",
+      "vec_build": "figs/vec/A_landscape.pdf",
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_scheme",
+      "label": "fig:scheme",
+      "generator": "figs/GENERATORS.md#scheme",
+      "summary": null,
+      "preview_svg": "previews/A_scheme.svg",
+      "tex_build": "figs/tex/A_scheme.tex",
+      "vec_build": "figs/vec/A_scheme.pdf",
+      "venue_flat_name": null
+    }
+  ]
+}

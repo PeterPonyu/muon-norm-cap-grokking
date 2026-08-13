@@ -1,0 +1,188 @@
+{
+  "artifact": "A_normctl_timecourse",
+  "generated_from_manifest": "papers/figs/figure_manifest.yaml",
+  "layout": "balanced-2x2",
+  "panel_count": 4,
+  "panels": [
+    {
+      "id": "a",
+      "metrics": {
+        "final_hidden_norm": {
+          "k1_s0": 12.525341496028464,
+          "k1_s1": 12.558172495942063,
+          "k1_s2": 12.519264634934103,
+          "k1_s3": 12.545621949518894,
+          "k1_s4": 12.518012153718322,
+          "k1_s5": 12.549603803239611,
+          "k1_s6": 12.54369254030183,
+          "k1_s7": 12.555613001173443,
+          "kinf_s0": 309.6159821399476,
+          "kinf_s1": 313.29353662003723,
+          "kinf_s2": 318.7618223144584,
+          "kinf_s3": 328.65614228746927,
+          "kinf_s4": 259.7043541462099,
+          "kinf_s5": 288.6001885786914,
+          "kinf_s6": 293.16047351650576,
+          "kinf_s7": 332.094760470021
+        }
+      },
+      "question": "How does hidden norm evolve under the cap?",
+      "sources": [
+        "experiments/results/s5_normctl/k1_s0.jsonl",
+        "experiments/results/s5_normctl/k1_s1.jsonl",
+        "experiments/results/s5_normctl/k1_s2.jsonl",
+        "experiments/results/s5_normctl/k1_s3.jsonl",
+        "experiments/results/s5_normctl/k1_s4.jsonl",
+        "experiments/results/s5_normctl/k1_s5.jsonl",
+        "experiments/results/s5_normctl/k1_s6.jsonl",
+        "experiments/results/s5_normctl/k1_s7.jsonl",
+        "experiments/results/s5_normctl/kinf_s0.jsonl",
+        "experiments/results/s5_normctl/kinf_s1.jsonl",
+        "experiments/results/s5_normctl/kinf_s2.jsonl",
+        "experiments/results/s5_normctl/kinf_s3.jsonl",
+        "experiments/results/s5_normctl/kinf_s4.jsonl",
+        "experiments/results/s5_normctl/kinf_s5.jsonl",
+        "experiments/results/s5_normctl/kinf_s6.jsonl",
+        "experiments/results/s5_normctl/kinf_s7.jsonl"
+      ]
+    },
+    {
+      "id": "b",
+      "metrics": {
+        "grok_steps": {
+          "k1": [
+            350,
+            250,
+            300,
+            400,
+            400,
+            550,
+            300,
+            300
+          ],
+          "kinf": [
+            9750,
+            2600,
+            2650,
+            5850,
+            4100,
+            4000,
+            1950,
+            3050
+          ]
+        }
+      },
+      "question": "How quickly does the seed population grok?",
+      "sources": [
+        "experiments/results/s5_normctl/k1_s0.jsonl",
+        "experiments/results/s5_normctl/k1_s1.jsonl",
+        "experiments/results/s5_normctl/k1_s2.jsonl",
+        "experiments/results/s5_normctl/k1_s3.jsonl",
+        "experiments/results/s5_normctl/k1_s4.jsonl",
+        "experiments/results/s5_normctl/k1_s5.jsonl",
+        "experiments/results/s5_normctl/k1_s6.jsonl",
+        "experiments/results/s5_normctl/k1_s7.jsonl",
+        "experiments/results/s5_normctl/kinf_s0.jsonl",
+        "experiments/results/s5_normctl/kinf_s1.jsonl",
+        "experiments/results/s5_normctl/kinf_s2.jsonl",
+        "experiments/results/s5_normctl/kinf_s3.jsonl",
+        "experiments/results/s5_normctl/kinf_s4.jsonl",
+        "experiments/results/s5_normctl/kinf_s5.jsonl",
+        "experiments/results/s5_normctl/kinf_s6.jsonl",
+        "experiments/results/s5_normctl/kinf_s7.jsonl"
+      ]
+    },
+    {
+      "id": "c",
+      "metrics": {
+        "grok_steps": {
+          "k1": [
+            350,
+            250,
+            300,
+            400,
+            400,
+            550,
+            300,
+            300
+          ],
+          "kinf": [
+            9750,
+            2600,
+            2650,
+            5850,
+            4100,
+            4000,
+            1950,
+            3050
+          ]
+        },
+        "median": {
+          "k1": 325.0,
+          "kinf": 3525.0
+        }
+      },
+      "question": "How variable are paired grok steps across seeds?",
+      "sources": [
+        "experiments/results/s5_normctl/k1_s0.jsonl",
+        "experiments/results/s5_normctl/k1_s1.jsonl",
+        "experiments/results/s5_normctl/k1_s2.jsonl",
+        "experiments/results/s5_normctl/k1_s3.jsonl",
+        "experiments/results/s5_normctl/k1_s4.jsonl",
+        "experiments/results/s5_normctl/k1_s5.jsonl",
+        "experiments/results/s5_normctl/k1_s6.jsonl",
+        "experiments/results/s5_normctl/k1_s7.jsonl",
+        "experiments/results/s5_normctl/kinf_s0.jsonl",
+        "experiments/results/s5_normctl/kinf_s1.jsonl",
+        "experiments/results/s5_normctl/kinf_s2.jsonl",
+        "experiments/results/s5_normctl/kinf_s3.jsonl",
+        "experiments/results/s5_normctl/kinf_s4.jsonl",
+        "experiments/results/s5_normctl/kinf_s5.jsonl",
+        "experiments/results/s5_normctl/kinf_s6.jsonl",
+        "experiments/results/s5_normctl/kinf_s7.jsonl"
+      ]
+    },
+    {
+      "id": "d",
+      "metrics": {
+        "final_test_acc": {
+          "k1_s0": 1.0,
+          "k1_s1": 0.9998842477798462,
+          "k1_s2": 1.0,
+          "k1_s3": 1.0,
+          "k1_s4": 1.0,
+          "k1_s5": 0.9994212985038757,
+          "k1_s6": 0.9990740418434143,
+          "k1_s7": 0.9994212985038757,
+          "kinf_s0": 0.9993055462837219,
+          "kinf_s1": 1.0,
+          "kinf_s2": 0.9991897940635681,
+          "kinf_s3": 0.9993055462837219,
+          "kinf_s4": 0.9990740418434143,
+          "kinf_s5": 0.9991897940635681,
+          "kinf_s6": 1.0,
+          "kinf_s7": 0.9998842477798462
+        }
+      },
+      "question": "Does validation accuracy separate from norm growth?",
+      "sources": [
+        "experiments/results/s5_normctl/k1_s0.jsonl",
+        "experiments/results/s5_normctl/k1_s1.jsonl",
+        "experiments/results/s5_normctl/k1_s2.jsonl",
+        "experiments/results/s5_normctl/k1_s3.jsonl",
+        "experiments/results/s5_normctl/k1_s4.jsonl",
+        "experiments/results/s5_normctl/k1_s5.jsonl",
+        "experiments/results/s5_normctl/k1_s6.jsonl",
+        "experiments/results/s5_normctl/k1_s7.jsonl",
+        "experiments/results/s5_normctl/kinf_s0.jsonl",
+        "experiments/results/s5_normctl/kinf_s1.jsonl",
+        "experiments/results/s5_normctl/kinf_s2.jsonl",
+        "experiments/results/s5_normctl/kinf_s3.jsonl",
+        "experiments/results/s5_normctl/kinf_s4.jsonl",
+        "experiments/results/s5_normctl/kinf_s5.jsonl",
+        "experiments/results/s5_normctl/kinf_s6.jsonl",
+        "experiments/results/s5_normctl/kinf_s7.jsonl"
+      ]
+    }
+  ]
+}

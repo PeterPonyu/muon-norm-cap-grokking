@@ -1,0 +1,3288 @@
+{
+  "artifact": "A_norm_discriminator",
+  "generated_from_manifest": "papers/figs/figure_manifest.yaml",
+  "layout": "balanced-2x2",
+  "panel_count": 4,
+  "panels": [
+    {
+      "id": "a",
+      "metrics": {
+        "rows": [
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 0.908259819913814,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 1.7262018341480176,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.2325508934912621,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.010555556043982506,
+            "group": "A5",
+            "norm_growth_ratio": 1.8528517059297156,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.1458164406728972,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.842861700939359,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.755433704467024,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.8362966634065292,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.79274233655757,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.9994444847106934,
+            "group": "A5",
+            "norm_growth_ratio": 1.8065223405389381,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0016666667070239782,
+            "group": "A5",
+            "norm_growth_ratio": 0.016024557011888253,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0027777778450399637,
+            "group": "A5",
+            "norm_growth_ratio": 0.020969722577170148,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 0.014249433867672634,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7934927256565638,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7806452704794097,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 0.7031681408219775,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7460009499151916,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.1055604717322545,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7768729588806693,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.861122535743176,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9411980661433434,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9341007225811901,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7791234655761923,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.03097960477226895,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.04222222417593002,
+            "group": "D30",
+            "norm_growth_ratio": 0.018553275868507604,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 0.70452991978316,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7842397554298836,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7530973198295949,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7757046055757433,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.626179532753063,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9997222423553467,
+            "group": "D60",
+            "norm_growth_ratio": 0.987859451140696,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 1.913724947955444,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9993056058883667,
+            "group": "D60",
+            "norm_growth_ratio": 1.633887392564047,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 1.8295418479929946,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 2.021569450919207,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006527777761220932,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.005833333358168602,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006666666828095913,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006388889160007238,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006111111491918564,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7996937935773771,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8005309334705589,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.9587488892485124,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8840082307210345,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8256931035505568,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.624602646194338,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.6045335361527102,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.792028301221504,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7913264297645877,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.3731852028811522,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006805555894970894,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006527777761220932,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.0062500000931322575,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7477672133418373,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.8415332256647051,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7827375348691255,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7610461354690662,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 0.6875428266409437,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 1.8300947120024913,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9276374903951163,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.7650913432886084,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9997222423553467,
+            "group": "Z120",
+            "norm_growth_ratio": 1.897826365511123,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9476831561511811,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006527777761220932,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006388889160007238,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006111111491918564,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.007083333563059568,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006666666828095913,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7276655849587704,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.674280021834121,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7469772533682749,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7615042612354043,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7492082084937675,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 1.6647164519859092,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.9455291125303656,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.8527125001942312,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.1784405671599654,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.8434251272156787,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011111111380159855,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.0055555556900799274,
+            "group": "Z60",
+            "norm_growth_ratio": 0.00867367039521997,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011666666716337204,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          }
+        ]
+      },
+      "question": "How does norm growth vary across the group ladder?",
+      "sources": [
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s4.jsonl"
+      ]
+    },
+    {
+      "id": "b",
+      "metrics": {
+        "rows": [
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 0.908259819913814,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 1.7262018341480176,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.2325508934912621,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.010555556043982506,
+            "group": "A5",
+            "norm_growth_ratio": 1.8528517059297156,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.1458164406728972,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.842861700939359,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.755433704467024,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.8362966634065292,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.79274233655757,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.9994444847106934,
+            "group": "A5",
+            "norm_growth_ratio": 1.8065223405389381,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0016666667070239782,
+            "group": "A5",
+            "norm_growth_ratio": 0.016024557011888253,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0027777778450399637,
+            "group": "A5",
+            "norm_growth_ratio": 0.020969722577170148,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 0.014249433867672634,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7934927256565638,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7806452704794097,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 0.7031681408219775,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7460009499151916,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.1055604717322545,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7768729588806693,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.861122535743176,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9411980661433434,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9341007225811901,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7791234655761923,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.03097960477226895,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.04222222417593002,
+            "group": "D30",
+            "norm_growth_ratio": 0.018553275868507604,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 0.70452991978316,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7842397554298836,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7530973198295949,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7757046055757433,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.626179532753063,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9997222423553467,
+            "group": "D60",
+            "norm_growth_ratio": 0.987859451140696,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 1.913724947955444,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9993056058883667,
+            "group": "D60",
+            "norm_growth_ratio": 1.633887392564047,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 1.8295418479929946,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 2.021569450919207,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006527777761220932,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.005833333358168602,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006666666828095913,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006388889160007238,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006111111491918564,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7996937935773771,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8005309334705589,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.9587488892485124,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8840082307210345,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8256931035505568,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.624602646194338,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.6045335361527102,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.792028301221504,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7913264297645877,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.3731852028811522,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006805555894970894,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006527777761220932,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.0062500000931322575,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7477672133418373,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.8415332256647051,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7827375348691255,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7610461354690662,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 0.6875428266409437,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 1.8300947120024913,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9276374903951163,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.7650913432886084,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9997222423553467,
+            "group": "Z120",
+            "norm_growth_ratio": 1.897826365511123,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9476831561511811,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006527777761220932,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006388889160007238,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006111111491918564,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.007083333563059568,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006666666828095913,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7276655849587704,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.674280021834121,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7469772533682749,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7615042612354043,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7492082084937675,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 1.6647164519859092,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.9455291125303656,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.8527125001942312,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.1784405671599654,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.8434251272156787,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011111111380159855,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.0055555556900799274,
+            "group": "Z60",
+            "norm_growth_ratio": 0.00867367039521997,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011666666716337204,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          }
+        ]
+      },
+      "question": "What per-seed variation lies behind the medians?",
+      "sources": [
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s4.jsonl"
+      ]
+    },
+    {
+      "id": "c",
+      "metrics": {
+        "rows": [
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 0.908259819913814,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 1.7262018341480176,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.2325508934912621,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.010555556043982506,
+            "group": "A5",
+            "norm_growth_ratio": 1.8528517059297156,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.1458164406728972,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.842861700939359,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.755433704467024,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.8362966634065292,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.79274233655757,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.9994444847106934,
+            "group": "A5",
+            "norm_growth_ratio": 1.8065223405389381,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0016666667070239782,
+            "group": "A5",
+            "norm_growth_ratio": 0.016024557011888253,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0027777778450399637,
+            "group": "A5",
+            "norm_growth_ratio": 0.020969722577170148,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 0.014249433867672634,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7934927256565638,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7806452704794097,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 0.7031681408219775,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7460009499151916,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.1055604717322545,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7768729588806693,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.861122535743176,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9411980661433434,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9341007225811901,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7791234655761923,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.03097960477226895,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.04222222417593002,
+            "group": "D30",
+            "norm_growth_ratio": 0.018553275868507604,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 0.70452991978316,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7842397554298836,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7530973198295949,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7757046055757433,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.626179532753063,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9997222423553467,
+            "group": "D60",
+            "norm_growth_ratio": 0.987859451140696,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 1.913724947955444,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9993056058883667,
+            "group": "D60",
+            "norm_growth_ratio": 1.633887392564047,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 1.8295418479929946,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 2.021569450919207,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006527777761220932,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.005833333358168602,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006666666828095913,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006388889160007238,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006111111491918564,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7996937935773771,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8005309334705589,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.9587488892485124,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8840082307210345,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8256931035505568,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.624602646194338,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.6045335361527102,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.792028301221504,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7913264297645877,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.3731852028811522,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006805555894970894,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006527777761220932,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.0062500000931322575,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7477672133418373,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.8415332256647051,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7827375348691255,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7610461354690662,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 0.6875428266409437,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 1.8300947120024913,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9276374903951163,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.7650913432886084,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9997222423553467,
+            "group": "Z120",
+            "norm_growth_ratio": 1.897826365511123,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9476831561511811,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006527777761220932,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006388889160007238,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006111111491918564,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.007083333563059568,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006666666828095913,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7276655849587704,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.674280021834121,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7469772533682749,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7615042612354043,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7492082084937675,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 1.6647164519859092,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.9455291125303656,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.8527125001942312,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.1784405671599654,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.8434251272156787,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011111111380159855,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.0055555556900799274,
+            "group": "Z60",
+            "norm_growth_ratio": 0.00867367039521997,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011666666716337204,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          }
+        ]
+      },
+      "question": "Is grok success specific to one optimizer family?",
+      "sources": [
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s4.jsonl"
+      ]
+    },
+    {
+      "id": "d",
+      "metrics": {
+        "rows": [
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 0.908259819913814,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 1.7262018341480176,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.2325508934912621,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.010555556043982506,
+            "group": "A5",
+            "norm_growth_ratio": 1.8528517059297156,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.1458164406728972,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.842861700939359,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.755433704467024,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.8362966634065292,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 1.0,
+            "group": "A5",
+            "norm_growth_ratio": 1.79274233655757,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.9994444847106934,
+            "group": "A5",
+            "norm_growth_ratio": 1.8065223405389381,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0016666667070239782,
+            "group": "A5",
+            "norm_growth_ratio": 0.016024557011888253,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.0027777778450399637,
+            "group": "A5",
+            "norm_growth_ratio": 0.020969722577170148,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.011666666716337204,
+            "group": "A5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9166666666666666,
+            "final_test_acc": 0.004444444552063942,
+            "group": "A5",
+            "norm_growth_ratio": 0.014249433867672634,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7934927256565638,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7806452704794097,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 0.7031681408219775,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 0.7460009499151916,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.1055604717322545,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7768729588806693,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.861122535743176,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9411980661433434,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 1.0,
+            "group": "D30",
+            "norm_growth_ratio": 1.9341007225811901,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.9994444847106934,
+            "group": "D30",
+            "norm_growth_ratio": 1.7791234655761923,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.03097960477226895,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.04222222417593002,
+            "group": "D30",
+            "norm_growth_ratio": 0.018553275868507604,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.7,
+            "final_test_acc": 0.012777778320014477,
+            "group": "D30",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 0.70452991978316,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7842397554298836,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7530973198295949,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.7757046055757433,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 0.626179532753063,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9997222423553467,
+            "group": "D60",
+            "norm_growth_ratio": 0.987859451140696,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 1.913724947955444,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9993056058883667,
+            "group": "D60",
+            "norm_growth_ratio": 1.633887392564047,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.9998611211776733,
+            "group": "D60",
+            "norm_growth_ratio": 1.8295418479929946,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 1.0,
+            "group": "D60",
+            "norm_growth_ratio": 2.021569450919207,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006527777761220932,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.005833333358168602,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006666666828095913,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006388889160007238,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.725,
+            "final_test_acc": 0.006111111491918564,
+            "group": "D60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7996937935773771,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8005309334705589,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.9587488892485124,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8840082307210345,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.8256931035505568,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.624602646194338,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.6045335361527102,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 1.792028301221504,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 1.0,
+            "group": "S5",
+            "norm_growth_ratio": 0.7913264297645877,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.9998611211776733,
+            "group": "S5",
+            "norm_growth_ratio": 1.3731852028811522,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006805555894970894,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006666666828095913,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.006527777761220932,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.9416666666666667,
+            "final_test_acc": 0.0062500000931322575,
+            "group": "S5",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7477672133418373,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.8415332256647051,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7827375348691255,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 0.7610461354690662,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 0.6875428266409437,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9998611211776733,
+            "group": "Z120",
+            "norm_growth_ratio": 1.8300947120024913,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9276374903951163,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.7650913432886084,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9997222423553467,
+            "group": "Z120",
+            "norm_growth_ratio": 1.897826365511123,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z120",
+            "norm_growth_ratio": 1.9476831561511811,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006527777761220932,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006388889160007238,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006111111491918564,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.007083333563059568,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.006666666828095913,
+            "group": "Z120",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7276655849587704,
+            "optimizer": "adamw",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.674280021834121,
+            "optimizer": "adamw",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7469772533682749,
+            "optimizer": "adamw",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7615042612354043,
+            "optimizer": "adamw",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.7492082084937675,
+            "optimizer": "adamw",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 1.6647164519859092,
+            "optimizer": "muon",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 0.9455291125303656,
+            "optimizer": "muon",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 1.0,
+            "group": "Z60",
+            "norm_growth_ratio": 0.8527125001942312,
+            "optimizer": "muon",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.1784405671599654,
+            "optimizer": "muon",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.9994444847106934,
+            "group": "Z60",
+            "norm_growth_ratio": 1.8434251272156787,
+            "optimizer": "muon",
+            "seed": 4
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011111111380159855,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 0
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.0055555556900799274,
+            "group": "Z60",
+            "norm_growth_ratio": 0.00867367039521997,
+            "optimizer": "sgdm",
+            "seed": 1
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 2
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.011666666716337204,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 3
+          },
+          {
+            "commutator_density": 0.0,
+            "final_test_acc": 0.010555556043982506,
+            "group": "Z60",
+            "norm_growth_ratio": 0.0,
+            "optimizer": "sgdm",
+            "seed": 4
+          }
+        ]
+      },
+      "question": "Is norm growth a monotone complexity law?",
+      "sources": [
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_A5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D30_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_D60_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_S5_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z120_sgdm_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_adamw_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_muon_d256_s4.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s0.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s1.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s2.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s3.jsonl",
+        "experiments/results/group_complexity/ladder_Z60_sgdm_d256_s4.jsonl"
+      ]
+    }
+  ]
+}

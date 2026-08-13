@@ -20,4 +20,8 @@ keywords:
 license: MIT
 version: 1.0.0
 date-released: '2026-06-29'
-doi: 10.5281/zenodo.21020292
+doi: 10.5281/zenodo.21020291
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21020292
+    description: This version's archived snapshot

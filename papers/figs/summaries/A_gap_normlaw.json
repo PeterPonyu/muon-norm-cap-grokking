@@ -1,0 +1,239 @@
+{
+  "artifact": "A_gap_normlaw",
+  "generated_from_manifest": "papers/figs/figure_manifest.yaml",
+  "layout": "balanced-2x2",
+  "panel_count": 4,
+  "panels": [
+    {
+      "id": "a",
+      "metrics": {
+        "adamw": {
+          "consistent_with_inv_lambda": false,
+          "intercept": 1.4268121980249022,
+          "median_wn_by_lambda": {
+            "0.001": 22.147346224803787,
+            "0.003": 22.504710085920472,
+            "0.01": 22.650388077701795,
+            "0.03": 20.683883950248173,
+            "0.1": 22.399867916569253,
+            "0.3": 29.399414370666207
+          },
+          "n_points": 30,
+          "r2": 0.3058517988352355,
+          "se_slope": 0.00977041495523121,
+          "slope": 0.03431795834783741
+        },
+        "muon": {
+          "consistent_with_inv_lambda": false,
+          "intercept": 1.4110806792545083,
+          "median_wn_by_lambda": {
+            "0.001": 536.0697759503887,
+            "0.003": 495.8242151647598,
+            "0.01": 161.25521260197635,
+            "0.03": 91.91834557926029,
+            "0.1": 57.041944329881936,
+            "0.3": 57.5018742794902
+          },
+          "n_points": 30,
+          "r2": 0.8696044518731272,
+          "se_slope": 0.0317193589175062,
+          "slope": -0.4334439165270583
+        }
+      },
+      "question": "Does the norm relation hold in the raw sweep?",
+      "sources": [
+        "experiments/results/ieee_gap_20260705/A/verdict_gapA.json"
+      ]
+    },
+    {
+      "id": "b",
+      "metrics": {
+        "adamw": {
+          "intercept": 1.4268121980249022,
+          "n": 30,
+          "r2": 0.3058517988352354,
+          "se": 0.009770414955231212,
+          "slope": 0.0343179583478374,
+          "tests": {
+            "vs_minus0p5_roteq": {
+              "abs_sigma_away": 54.68733526632421,
+              "p": 5.2371628908561494e-30,
+              "t": 54.68733526632421,
+              "target": -0.5
+            },
+            "vs_minus1_prop1": {
+              "abs_sigma_away": 105.86223441759243,
+              "p": 5.336796948808322e-38,
+              "t": 105.86223441759243,
+              "target": -1.0
+            }
+          }
+        },
+        "muon": {
+          "intercept": 1.4110806792545083,
+          "n": 30,
+          "r2": 0.8696044518731272,
+          "se": 0.0317193589175062,
+          "slope": -0.43344391652705827,
+          "tests": {
+            "vs_minus0p5_roteq": {
+              "abs_sigma_away": 2.0982795915275836,
+              "p": 0.04502665811040359,
+              "t": 2.0982795915275836,
+              "target": -0.5
+            },
+            "vs_minus1_prop1": {
+              "abs_sigma_away": 17.861523776265678,
+              "p": 7.700044734532199e-17,
+              "t": 17.861523776265678,
+              "target": -1.0
+            }
+          }
+        }
+      },
+      "question": "What slope and interval does the primary refit give?",
+      "sources": [
+        "experiments/revision2026/A/refit_normlaw.json"
+      ]
+    },
+    {
+      "id": "c",
+      "metrics": {
+        "adamw": {
+          "se": 0.009770414955231212,
+          "slope": 0.0343179583478374,
+          "vs_minus0p5": {
+            "abs_sigma_away": 54.68733526632421,
+            "p": 5.2371628908561494e-30,
+            "t": 54.68733526632421,
+            "target": -0.5
+          },
+          "vs_minus1": {
+            "abs_sigma_away": 105.86223441759243,
+            "p": 5.336796948808322e-38,
+            "t": 105.86223441759243,
+            "target": -1.0
+          }
+        },
+        "muon": {
+          "se": 0.0317193589175062,
+          "slope": -0.43344391652705827,
+          "vs_minus0p5": {
+            "abs_sigma_away": 2.0982795915275836,
+            "p": 0.04502665811040359,
+            "t": 2.0982795915275836,
+            "target": -0.5
+          },
+          "vs_minus1": {
+            "abs_sigma_away": 17.861523776265678,
+            "p": 7.700044734532199e-17,
+            "t": 17.861523776265678,
+            "target": -1.0
+          }
+        }
+      },
+      "question": "How do the fitted slopes compare with the idealized inverse-decay exponent?",
+      "sources": [
+        "experiments/results/ieee_gap_20260705/A/verdict_gapA.json",
+        "experiments/revision2026/A/refit_normlaw.json"
+      ]
+    },
+    {
+      "id": "d",
+      "metrics": {
+        "adamw": {
+          "drop_lam0p001": {
+            "intercept": 1.4449848329238193,
+            "n": 25,
+            "r2": 0.3805916451618606,
+            "se": 0.013235163458358633,
+            "slope": 0.049754724177508855,
+            "tests": {
+              "vs_minus0p5_roteq": {
+                "abs_sigma_away": 41.53743366352704,
+                "p": 3.8781186985298707e-23,
+                "t": 41.53743366352704,
+                "target": -0.5
+              },
+              "vs_minus1_prop1": {
+                "abs_sigma_away": 79.31558438853575,
+                "p": 1.4910203939726113e-29,
+                "t": 79.31558438853575,
+                "target": -1.0
+              }
+            }
+          },
+          "drop_lam0p3": {
+            "intercept": 1.3297899515372102,
+            "n": 25,
+            "r2": 0.10038393778503651,
+            "se": 0.004397393139262053,
+            "slope": -0.0070447036114302565,
+            "tests": {
+              "vs_minus0p5_roteq": {
+                "abs_sigma_away": 112.10171134966906,
+                "p": 5.3257205198785874e-33,
+                "t": 112.10171134966906,
+                "target": -0.5
+              },
+              "vs_minus1_prop1": {
+                "abs_sigma_away": 225.80544084698377,
+                "p": 5.472346714843784e-40,
+                "t": 225.80544084698377,
+                "target": -1.0
+              }
+            }
+          }
+        },
+        "muon": {
+          "drop_lam0p001": {
+            "intercept": 1.4061519971866776,
+            "n": 25,
+            "r2": 0.8061918601331298,
+            "se": 0.044741501698116706,
+            "slope": -0.4376305912362134,
+            "tests": {
+              "vs_minus0p5_roteq": {
+                "abs_sigma_away": 1.393994532964277,
+                "p": 0.17664213266018333,
+                "t": 1.393994532964277,
+                "target": -0.5
+              },
+              "vs_minus1_prop1": {
+                "abs_sigma_away": 12.569301150378202,
+                "p": 8.715450148606957e-12,
+                "t": 12.569301150378202,
+                "target": -1.0
+              }
+            }
+          },
+          "drop_lam0p3": {
+            "intercept": 1.2150265073638877,
+            "n": 25,
+            "r2": 0.912352789374363,
+            "se": 0.033414588784561765,
+            "slope": -0.5170260096158287,
+            "tests": {
+              "vs_minus0p5_roteq": {
+                "abs_sigma_away": 0.5095382057700212,
+                "p": 0.6152294220675923,
+                "t": -0.5095382057700212,
+                "target": -0.5
+              },
+              "vs_minus1_prop1": {
+                "abs_sigma_away": 14.453985757481934,
+                "p": 4.962184965862688e-13,
+                "t": 14.453985757481934,
+                "target": -1.0
+              }
+            }
+          }
+        }
+      },
+      "question": "Does the slope survive leave-one-lambda-out sensitivity?",
+      "sources": [
+        "experiments/revision2026/A/refit_normlaw.json"
+      ]
+    }
+  ]
+}

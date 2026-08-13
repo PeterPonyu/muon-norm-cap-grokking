@@ -1,0 +1,18 @@
+name: Visual Ralph (optional)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual-pixel:
+    if: false
+    name: Visual Ralph score >= 90
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gated until reference.png is user-approved
+        run: |
+          echo "Visual Ralph pixel/score jobs stay off until reference.png is approved."
+          exit 1

@@ -1,0 +1,37 @@
+:root {
+  --font-sans: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-ground: #1b1d1f;
+  --color-ink: #e8eaed;
+  --color-trace: #f5a623;
+  --color-cap: #3ec6d8;
+  --space-strip: 0.75rem;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+.instrument {
+  display: block;
+  padding: var(--space-strip);
+  border-bottom: 1px solid var(--color-cap);
+}
+
+.status-strip {
+  font-family: var(--font-mono);
+  color: var(--color-trace);
+}
+
+nav a {
+  color: var(--color-cap);
+  margin-right: 1rem;
+}
+
+code,
+#index-preview {
+  font-family: var(--font-mono);
+}
