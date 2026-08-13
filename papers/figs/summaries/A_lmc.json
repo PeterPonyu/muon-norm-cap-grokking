@@ -1,0 +1,544 @@
+{
+  "artifact": "A_lmc",
+  "generated_from_manifest": "papers/figs/figure_manifest.yaml",
+  "layout": "balanced-2x2",
+  "panel_count": 4,
+  "panels": [
+    {
+      "id": "a",
+      "metrics": {
+        "by_optimizer": {
+          "adamw": {
+            "k_star_per_seed": {
+              "0": null,
+              "1": 8000,
+              "2": 8000,
+              "3": null,
+              "4": null
+            },
+            "locked_by_8000_rate": 0.4,
+            "max": 8000,
+            "median_k_star_imputed": 8000.0,
+            "median_k_star_uncensored_only": 8000.0,
+            "min": 8000,
+            "n": 5,
+            "n_censored": 3
+          },
+          "muon": {
+            "k_star_per_seed": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null,
+              "4": null
+            },
+            "locked_by_8000_rate": 0.0,
+            "max": null,
+            "median_k_star_imputed": 8000.0,
+            "median_k_star_uncensored_only": null,
+            "min": null,
+            "n": 5,
+            "n_censored": 5
+          },
+          "sgdm": {
+            "k_star_per_seed": {
+              "0": 8000,
+              "1": null,
+              "2": null,
+              "3": null,
+              "4": null
+            },
+            "locked_by_8000_rate": 0.2,
+            "max": 8000,
+            "median_k_star_imputed": 8000.0,
+            "median_k_star_uncensored_only": 8000.0,
+            "min": 8000,
+            "n": 5,
+            "n_censored": 4
+          }
+        },
+        "censor_spawn_step": 8000,
+        "distributional_test": {
+          "adamw_locked": 2,
+          "adamw_n": 5,
+          "claim": "basin stays open longer under Muon (lower lock-by-8000 rate)",
+          "fisher_p_adamw_locks_more": 0.22222222222222224,
+          "muon_locked": 0,
+          "muon_n": 5
+        }
+      },
+      "question": "What barriers connect independently trained solutions?",
+      "sources": [
+        "experiments/results/figures-012/lmc_kstar_verdict.json",
+        "experiments/results/lmc_instability/adamw_s0.jsonl",
+        "experiments/results/lmc_instability/adamw_s1.jsonl",
+        "experiments/results/lmc_instability/adamw_s2.jsonl",
+        "experiments/results/lmc_instability/adamw_s3.jsonl",
+        "experiments/results/lmc_instability/adamw_s4.jsonl",
+        "experiments/results/lmc_instability/adamw_s5.jsonl",
+        "experiments/results/lmc_instability/adamw_s6.jsonl",
+        "experiments/results/lmc_instability/adamw_s7.jsonl",
+        "experiments/results/lmc_instability/muon_s0.jsonl",
+        "experiments/results/lmc_instability/muon_s1.jsonl",
+        "experiments/results/lmc_instability/muon_s2.jsonl",
+        "experiments/results/lmc_instability/muon_s3.jsonl",
+        "experiments/results/lmc_instability/muon_s4.jsonl",
+        "experiments/results/lmc_instability/muon_s5.jsonl",
+        "experiments/results/lmc_instability/muon_s6.jsonl",
+        "experiments/results/lmc_instability/muon_s7.jsonl",
+        "experiments/results/lmc_instability/muon_s8.jsonl",
+        "experiments/results/lmc_instability/muon_s9.jsonl",
+        "experiments/results/lmc_instability/sgdm_s0.jsonl",
+        "experiments/results/lmc_instability/sgdm_s1.jsonl",
+        "experiments/results/lmc_instability/sgdm_s2.jsonl",
+        "experiments/results/lmc_instability/sgdm_s3.jsonl",
+        "experiments/results/lmc_instability/sgdm_s4.jsonl"
+      ]
+    },
+    {
+      "id": "b",
+      "metrics": {
+        "adamw": {
+          "k_star_per_seed": {
+            "0": null,
+            "1": 8000,
+            "2": 8000,
+            "3": null,
+            "4": null
+          },
+          "locked_by_8000_rate": 0.4,
+          "max": 8000,
+          "median_k_star_imputed": 8000.0,
+          "median_k_star_uncensored_only": 8000.0,
+          "min": 8000,
+          "n": 5,
+          "n_censored": 3
+        },
+        "muon": {
+          "k_star_per_seed": {
+            "0": null,
+            "1": null,
+            "2": null,
+            "3": null,
+            "4": null
+          },
+          "locked_by_8000_rate": 0.0,
+          "max": null,
+          "median_k_star_imputed": 8000.0,
+          "median_k_star_uncensored_only": null,
+          "min": null,
+          "n": 5,
+          "n_censored": 5
+        },
+        "sgdm": {
+          "k_star_per_seed": {
+            "0": 8000,
+            "1": null,
+            "2": null,
+            "3": null,
+            "4": null
+          },
+          "locked_by_8000_rate": 0.2,
+          "max": 8000,
+          "median_k_star_imputed": 8000.0,
+          "median_k_star_uncensored_only": 8000.0,
+          "min": 8000,
+          "n": 5,
+          "n_censored": 4
+        }
+      },
+      "question": "How do barriers differ by optimizer and seed?",
+      "sources": [
+        "experiments/results/figures-012/lmc_kstar_verdict.json",
+        "experiments/results/lmc_instability/adamw_s0.jsonl",
+        "experiments/results/lmc_instability/adamw_s1.jsonl",
+        "experiments/results/lmc_instability/adamw_s2.jsonl",
+        "experiments/results/lmc_instability/adamw_s3.jsonl",
+        "experiments/results/lmc_instability/adamw_s4.jsonl",
+        "experiments/results/lmc_instability/adamw_s5.jsonl",
+        "experiments/results/lmc_instability/adamw_s6.jsonl",
+        "experiments/results/lmc_instability/adamw_s7.jsonl",
+        "experiments/results/lmc_instability/muon_s0.jsonl",
+        "experiments/results/lmc_instability/muon_s1.jsonl",
+        "experiments/results/lmc_instability/muon_s2.jsonl",
+        "experiments/results/lmc_instability/muon_s3.jsonl",
+        "experiments/results/lmc_instability/muon_s4.jsonl",
+        "experiments/results/lmc_instability/muon_s5.jsonl",
+        "experiments/results/lmc_instability/muon_s6.jsonl",
+        "experiments/results/lmc_instability/muon_s7.jsonl",
+        "experiments/results/lmc_instability/muon_s8.jsonl",
+        "experiments/results/lmc_instability/muon_s9.jsonl",
+        "experiments/results/lmc_instability/sgdm_s0.jsonl",
+        "experiments/results/lmc_instability/sgdm_s1.jsonl",
+        "experiments/results/lmc_instability/sgdm_s2.jsonl",
+        "experiments/results/lmc_instability/sgdm_s3.jsonl",
+        "experiments/results/lmc_instability/sgdm_s4.jsonl"
+      ]
+    },
+    {
+      "id": "c",
+      "metrics": {
+        "completed": [
+          {
+            "barrier_by_spawn": {
+              "0": 5.375480404414702,
+              "100": 5.2421393119730055,
+              "50": 5.414135635830462
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 12000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 1677.4591104984283,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 10,
+            "spawn_steps": [
+              0,
+              50,
+              100
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          },
+          {
+            "barrier_by_spawn": {
+              "0": 5.3207472108188085,
+              "100": 5.3308259495534,
+              "50": 5.234066731762141
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 12000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 709.8909771442413,
+            "elapsed_wall_sec": 710.1096937656403,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 11,
+            "spawn_steps": [
+              0,
+              50,
+              100
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          },
+          {
+            "barrier_by_spawn": {
+              "0": 5.277547275705729,
+              "100": 5.342471205047332,
+              "50": 5.3993500776123255
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 12000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 2441.6557219028473,
+            "elapsed_wall_sec": 2442.1016385555267,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 12,
+            "spawn_steps": [
+              0,
+              50,
+              100
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          },
+          {
+            "barrier_by_spawn": {
+              "0": 5.30754528217949,
+              "100": 5.17834819923155,
+              "50": 5.125822899863124
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 12000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 1773.6512365341187,
+            "elapsed_wall_sec": 1773.6518020629883,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 13,
+            "spawn_steps": [
+              0,
+              50,
+              100
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          },
+          {
+            "barrier_by_spawn": {
+              "0": 5.057785298209637,
+              "100": 5.171655888669193,
+              "50": 5.51463582739234
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 12000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 1795.54287648201,
+            "elapsed_wall_sec": 1795.5443742275238,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 14,
+            "spawn_steps": [
+              0,
+              50,
+              100
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          },
+          {
+            "barrier_by_spawn": {
+              "16000": 2.480836829489334,
+              "24000": 0.9617765000155885,
+              "32000": 0.16083543061202477,
+              "8000": 5.48310346792158
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 40000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 10984.644071102142,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 0,
+            "spawn_steps": [
+              8000,
+              16000,
+              24000,
+              32000
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          },
+          {
+            "barrier_by_spawn": {
+              "16000": 4.423032896462246,
+              "24000": 2.724409924572683,
+              "32000": 2.3445799835062644,
+              "8000": 5.984222715358555
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 40000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 6655.384585142136,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 1,
+            "spawn_steps": [
+              8000,
+              16000,
+              24000,
+              32000
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          },
+          {
+            "barrier_by_spawn": {
+              "16000": 5.922869645568426,
+              "24000": 2.652331042860169,
+              "32000": 1.7170035984599963,
+              "8000": 5.569036727538332
+            },
+            "barrier_points": 11,
+            "barrier_threshold": 0.1,
+            "beta1": 0.9,
+            "beta2": 0.98,
+            "child_end_step": 40000,
+            "child_noise": "perturb",
+            "d_model": 128,
+            "device": "cuda",
+            "elapsed_sec": 2759.773920059204,
+            "init_scale": 1.0,
+            "k_star": null,
+            "lr": 0.001,
+            "minibatch_size": 2048,
+            "mlp_ratio": 4,
+            "muon_lr": 0.02,
+            "n_children": 2,
+            "n_heads": 4,
+            "n_layers": 2,
+            "n_params": 419968,
+            "op": "add",
+            "optimizer": "muon",
+            "p": 97,
+            "perturb_scale": 0.001,
+            "seed": 2,
+            "spawn_steps": [
+              8000,
+              16000,
+              24000,
+              32000
+            ],
+            "train_frac": 0.4,
+            "vocab_size": 98,
+            "weight_decay": 1.0
+          }
+        ],
+        "incomplete": [
+          "muon_s11.jsonl"
+        ]
+      },
+      "question": "Does the later-spawn extension preserve the finding?",
+      "sources": [
+        "experiments/results/lmc_instability_ext/muon_ext_s0.jsonl",
+        "experiments/results/lmc_instability_ext/muon_ext_s1.jsonl",
+        "experiments/results/lmc_instability_ext/muon_ext_s2.jsonl",
+        "experiments/results/ultragoal_20260619_fullattack/a_lmc_extension/muon_s10.jsonl",
+        "experiments/results/ultragoal_20260619_fullattack/a_lmc_extension/muon_s11.jsonl",
+        "experiments/results/ultragoal_20260619_fullattack/a_lmc_extension/summaries.json",
+        "experiments/results/ultragoal_20260619_redteam/a_lmc_short/muon_s11.jsonl",
+        "experiments/results/ultragoal_20260619_redteam/a_lmc_short/summaries.json",
+        "experiments/results/ultragoal_20260620_deepcheck/a_lmc_short/muon_s12.jsonl",
+        "experiments/results/ultragoal_20260620_deepcheck/a_lmc_short/muon_s13.jsonl",
+        "experiments/results/ultragoal_20260620_deepcheck/a_lmc_short/muon_s14.jsonl",
+        "experiments/results/ultragoal_20260620_deepcheck/a_lmc_short/summaries.json"
+      ]
+    },
+    {
+      "id": "d",
+      "metrics": {
+        "headline": "A LMC short audit now has 0/5 Muon k_star hits; no k_star observed in new seeds 12-14.",
+        "n_combined": 5,
+        "n_kstar_present": 0,
+        "zero_success_upper95": 0.4507197283469412
+      },
+      "question": "Does the n=5 robustness check change the distribution?",
+      "sources": [
+        "experiments/results/figures-deepcheck/a_lmc_deepcheck_summary.json",
+        "experiments/results/ultragoal_20260619_fullattack/a_lmc_extension/muon_s10.jsonl",
+        "experiments/results/ultragoal_20260619_redteam/a_lmc_short/muon_s11.jsonl",
+        "experiments/results/ultragoal_20260620_deepcheck/a_lmc_short/muon_s12.jsonl",
+        "experiments/results/ultragoal_20260620_deepcheck/a_lmc_short/muon_s13.jsonl",
+        "experiments/results/ultragoal_20260620_deepcheck/a_lmc_short/muon_s14.jsonl"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "paper_id": "A",
+  "github": "PeterPonyu/muon-norm-cap-grokking",
+  "zenodo_concept_doi": "10.5281/zenodo.21020291",
+  "pipeline": "figs/PIPELINE.md",
+  "figures": [
+    {
+      "id": "A_gap_normlaw",
+      "label": "fig:gap_normlaw",
+      "generator": "figs/make_gap20260705_figs_r.R",
+      "summary": "figs/summaries/A_gap_normlaw.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_gap_normlaw.tex",
+      "vec_build": "figs/vec/A_gap_normlaw.pdf",
+      "caption": "raw sweep; primary refit; slope-versus-theory falsifier; leave-one-lambda-out sensitivity",
+      "caption_panels": [
+        "raw sweep",
+        "primary refit",
+        "slope-versus-theory falsifier",
+        "leave-one-lambda-out sensitivity"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_gap_normcap",
+      "label": "fig:gap_normcap",
+      "generator": "figs/make_gap20260705_figs_r.R",
+      "summary": "figs/summaries/A_gap_normcap.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_gap_normcap.tex",
+      "vec_build": "figs/vec/A_gap_normcap.pdf",
+      "caption": "dose response; paired interval; defloored control; cross-task sensitivity",
+      "caption_panels": [
+        "dose response",
+        "paired interval",
+        "defloored control",
+        "cross-task sensitivity"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_normctl",
+      "label": "fig:normctl",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "figs/summaries/A_normctl.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_normctl.tex",
+      "vec_build": "figs/vec/A_normctl.pdf",
+      "caption": "grok-step comparison; preservation rate; acceleration interval; task boundary",
+      "caption_panels": [
+        "grok-step comparison",
+        "preservation rate",
+        "acceleration interval",
+        "task boundary"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_normctl_timecourse",
+      "label": "fig:normctl_tc",
+      "generator": "figs/make_A_new_figs_r.R",
+      "summary": "figs/summaries/A_normctl_timecourse.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_normctl_timecourse.tex",
+      "vec_build": "figs/vec/A_normctl_timecourse.pdf",
+      "caption": "hidden-norm trajectory; fraction grokked; per-seed timing; validation trajectory",
+      "caption_panels": [
+        "hidden-norm trajectory",
+        "fraction grokked",
+        "per-seed timing",
+        "validation trajectory"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_floor",
+      "label": "fig:floor",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "figs/summaries/A_floor.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_floor.tex",
+      "vec_build": "figs/vec/A_floor.pdf",
+      "caption": "group ladder; per-seed accuracy; time-to-grok; decay-free control",
+      "caption_panels": [
+        "group ladder",
+        "per-seed accuracy",
+        "time-to-grok",
+        "decay-free control"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_norm_discriminator",
+      "label": "fig:norm_disc",
+      "generator": "figs/make_A_new_figs_r.R",
+      "summary": "figs/summaries/A_norm_discriminator.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_norm_discriminator.tex",
+      "vec_build": "figs/vec/A_norm_discriminator.pdf",
+      "caption": "ladder norm growth; per-seed distribution; optimizer-family control; non-monotonicity sensitivity",
+      "caption_panels": [
+        "ladder norm growth",
+        "per-seed distribution",
+        "optimizer-family control",
+        "non-monotonicity sensitivity"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_lmc",
+      "label": "fig:lmc",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "figs/summaries/A_lmc.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_lmc.tex",
+      "vec_build": "figs/vec/A_lmc.pdf",
+      "caption": "barrier distribution; optimizer comparison; spawn extension; n=5 robustness",
+      "caption_panels": [
+        "barrier distribution",
+        "optimizer comparison",
+        "spawn extension",
+        "n=5 robustness"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_sink",
+      "label": "fig:sink",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "figs/summaries/A_sink.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_sink.tex",
+      "vec_build": "figs/vec/A_sink.pdf",
+      "caption": "sink trajectories; seed variation; learning-rate control; depth localization",
+      "caption_panels": [
+        "sink trajectories",
+        "seed variation",
+        "learning-rate control",
+        "depth localization"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_plasticity",
+      "label": "fig:plasticity",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "figs/summaries/A_plasticity.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_plasticity.tex",
+      "vec_build": "figs/vec/A_plasticity.pdf",
+      "caption": "retention dissociation; retention gap; task support; permuted-MNIST boundary",
+      "caption_panels": [
+        "retention dissociation",
+        "retention gap",
+        "task support",
+        "permuted-MNIST boundary"
+      ],
+      "venue_flat_name": null
+    },
+    {
+      "id": "A_synth",
+      "label": "fig:synth",
+      "generator": "figs/make_A_figs_r.R",
+      "summary": "figs/summaries/A_synth.json",
+      "preview_svg": null,
+      "tex_build": "figs/tex/A_synth.tex",
+      "vec_build": "figs/vec/A_synth.pdf",
+      "caption": "growth signature; causal cap; basin lock; diagnostic boundary",
+      "caption_panels": [
+        "growth signature",
+        "causal cap",
+        "basin lock",
+        "diagnostic boundary"
+      ],
+      "venue_flat_name": null
+    }
+  ]
+}

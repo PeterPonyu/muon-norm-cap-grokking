@@ -1,0 +1,436 @@
+{
+  "artifact": "A_normctl",
+  "generated_from_manifest": "papers/figs/figure_manifest.yaml",
+  "layout": "balanced-2x2",
+  "panel_count": 4,
+  "panels": [
+    {
+      "id": "a",
+      "metrics": {
+        "add": {
+          "grok_at_every_ceiling": true,
+          "grok_step_ratio_k1_over_kinf": 1.0,
+          "rows": {
+            "k1": {
+              "grok_step_med": 100.0,
+              "k": 1.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9992913603782654,
+              "wn_hidden_med": 12.54409792990311
+            },
+            "k1p5": {
+              "grok_step_med": 100.0,
+              "k": 1.5,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9994685053825378,
+              "wn_hidden_med": 18.816146958244882
+            },
+            "k2": {
+              "grok_step_med": 100.0,
+              "k": 2.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9995571076869965,
+              "wn_hidden_med": 25.08819549862163
+            },
+            "k3": {
+              "grok_step_med": 100.0,
+              "k": 3.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 37.62489681267334
+            },
+            "kinf": {
+              "grok_step_med": 100.0,
+              "k": null,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 148.74751555015587
+            }
+          },
+          "wn_monotone_decreasing": true
+        },
+        "s5": {
+          "grok_at_every_ceiling": true,
+          "grok_step_ratio_k1_over_kinf": 0.09219858156028368,
+          "rows": {
+            "k1": {
+              "grok_step_med": 325.0,
+              "k": 1.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9999421238899231,
+              "wn_hidden_med": 12.544657244910361
+            },
+            "k1p5": {
+              "grok_step_med": 325.0,
+              "k": 1.5,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 18.81698605109572
+            },
+            "k2": {
+              "grok_step_med": 425.0,
+              "k": 2.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 25.07908180573015
+            },
+            "k3": {
+              "grok_step_med": 575.0,
+              "k": 3.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 37.632320722648984
+            },
+            "kinf": {
+              "grok_step_med": 3525.0,
+              "k": null,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9993055462837219,
+              "wn_hidden_med": 311.4547593799924
+            }
+          },
+          "wn_monotone_decreasing": true
+        }
+      },
+      "question": "How do capped and uncapped grok steps differ?",
+      "sources": [
+        "experiments/results/figures-021/normctl_verdict.json",
+        "experiments/results/s5_normctl/k1_s0.jsonl",
+        "experiments/results/s5_normctl/k1_s1.jsonl",
+        "experiments/results/s5_normctl/k1_s2.jsonl",
+        "experiments/results/s5_normctl/k1_s3.jsonl",
+        "experiments/results/s5_normctl/k1_s4.jsonl",
+        "experiments/results/s5_normctl/k1_s5.jsonl",
+        "experiments/results/s5_normctl/k1_s6.jsonl",
+        "experiments/results/s5_normctl/k1_s7.jsonl",
+        "experiments/results/s5_normctl/k1p5_s0.jsonl",
+        "experiments/results/s5_normctl/k1p5_s1.jsonl",
+        "experiments/results/s5_normctl/k1p5_s2.jsonl",
+        "experiments/results/s5_normctl/k1p5_s3.jsonl",
+        "experiments/results/s5_normctl/k1p5_s4.jsonl",
+        "experiments/results/s5_normctl/k1p5_s5.jsonl",
+        "experiments/results/s5_normctl/k1p5_s6.jsonl",
+        "experiments/results/s5_normctl/k1p5_s7.jsonl",
+        "experiments/results/s5_normctl/k2_s0.jsonl",
+        "experiments/results/s5_normctl/k2_s1.jsonl",
+        "experiments/results/s5_normctl/k2_s2.jsonl",
+        "experiments/results/s5_normctl/k2_s3.jsonl",
+        "experiments/results/s5_normctl/k2_s4.jsonl",
+        "experiments/results/s5_normctl/k2_s5.jsonl",
+        "experiments/results/s5_normctl/k2_s6.jsonl",
+        "experiments/results/s5_normctl/k2_s7.jsonl",
+        "experiments/results/s5_normctl/k3_s0.jsonl",
+        "experiments/results/s5_normctl/k3_s1.jsonl",
+        "experiments/results/s5_normctl/k3_s2.jsonl",
+        "experiments/results/s5_normctl/k3_s3.jsonl",
+        "experiments/results/s5_normctl/k3_s4.jsonl",
+        "experiments/results/s5_normctl/k3_s5.jsonl",
+        "experiments/results/s5_normctl/k3_s6.jsonl",
+        "experiments/results/s5_normctl/k3_s7.jsonl",
+        "experiments/results/s5_normctl/kinf_s0.jsonl",
+        "experiments/results/s5_normctl/kinf_s1.jsonl",
+        "experiments/results/s5_normctl/kinf_s2.jsonl",
+        "experiments/results/s5_normctl/kinf_s3.jsonl",
+        "experiments/results/s5_normctl/kinf_s4.jsonl",
+        "experiments/results/s5_normctl/kinf_s5.jsonl",
+        "experiments/results/s5_normctl/kinf_s6.jsonl",
+        "experiments/results/s5_normctl/kinf_s7.jsonl"
+      ]
+    },
+    {
+      "id": "b",
+      "metrics": {
+        "add": {
+          "k1": 1.0,
+          "k1p5": 1.0,
+          "k2": 1.0,
+          "k3": 1.0,
+          "kinf": 1.0
+        },
+        "s5": {
+          "k1": 1.0,
+          "k1p5": 1.0,
+          "k2": 1.0,
+          "k3": 1.0,
+          "kinf": 1.0
+        }
+      },
+      "question": "What fraction of seeds preserve successful grokking?",
+      "sources": [
+        "experiments/results/figures-021/normctl_verdict.json",
+        "experiments/results/s5_normctl/k1_s0.jsonl",
+        "experiments/results/s5_normctl/k1_s1.jsonl",
+        "experiments/results/s5_normctl/k1_s2.jsonl",
+        "experiments/results/s5_normctl/k1_s3.jsonl",
+        "experiments/results/s5_normctl/k1_s4.jsonl",
+        "experiments/results/s5_normctl/k1_s5.jsonl",
+        "experiments/results/s5_normctl/k1_s6.jsonl",
+        "experiments/results/s5_normctl/k1_s7.jsonl",
+        "experiments/results/s5_normctl/k1p5_s0.jsonl",
+        "experiments/results/s5_normctl/k1p5_s1.jsonl",
+        "experiments/results/s5_normctl/k1p5_s2.jsonl",
+        "experiments/results/s5_normctl/k1p5_s3.jsonl",
+        "experiments/results/s5_normctl/k1p5_s4.jsonl",
+        "experiments/results/s5_normctl/k1p5_s5.jsonl",
+        "experiments/results/s5_normctl/k1p5_s6.jsonl",
+        "experiments/results/s5_normctl/k1p5_s7.jsonl",
+        "experiments/results/s5_normctl/k2_s0.jsonl",
+        "experiments/results/s5_normctl/k2_s1.jsonl",
+        "experiments/results/s5_normctl/k2_s2.jsonl",
+        "experiments/results/s5_normctl/k2_s3.jsonl",
+        "experiments/results/s5_normctl/k2_s4.jsonl",
+        "experiments/results/s5_normctl/k2_s5.jsonl",
+        "experiments/results/s5_normctl/k2_s6.jsonl",
+        "experiments/results/s5_normctl/k2_s7.jsonl",
+        "experiments/results/s5_normctl/k3_s0.jsonl",
+        "experiments/results/s5_normctl/k3_s1.jsonl",
+        "experiments/results/s5_normctl/k3_s2.jsonl",
+        "experiments/results/s5_normctl/k3_s3.jsonl",
+        "experiments/results/s5_normctl/k3_s4.jsonl",
+        "experiments/results/s5_normctl/k3_s5.jsonl",
+        "experiments/results/s5_normctl/k3_s6.jsonl",
+        "experiments/results/s5_normctl/k3_s7.jsonl",
+        "experiments/results/s5_normctl/kinf_s0.jsonl",
+        "experiments/results/s5_normctl/kinf_s1.jsonl",
+        "experiments/results/s5_normctl/kinf_s2.jsonl",
+        "experiments/results/s5_normctl/kinf_s3.jsonl",
+        "experiments/results/s5_normctl/kinf_s4.jsonl",
+        "experiments/results/s5_normctl/kinf_s5.jsonl",
+        "experiments/results/s5_normctl/kinf_s6.jsonl",
+        "experiments/results/s5_normctl/kinf_s7.jsonl"
+      ]
+    },
+    {
+      "id": "c",
+      "metrics": {
+        "base_per_seed": {
+          "0": 9750.0,
+          "1": 2600.0,
+          "2": 2650.0,
+          "3": 5850.0,
+          "4": 4100.0,
+          "5": 4000.0,
+          "6": 1950.0,
+          "7": 3050.0
+        },
+        "ci95_bca": [
+          7.125,
+          19.5
+        ],
+        "ci95_percentile": [
+          6.625,
+          16.714285714285715
+        ],
+        "median_base": 3525.0,
+        "median_treat": 325.0,
+        "n_base": 8,
+        "n_treat": 8,
+        "name": "S5 primary: kinf/k1",
+        "note": "results/s5_normctl, 8 seeds/arm; paper headline 10.8x at k=1",
+        "ratio": 10.846153846153847,
+        "treat_per_seed": {
+          "0": 350.0,
+          "1": 250.0,
+          "2": 300.0,
+          "3": 400.0,
+          "4": 400.0,
+          "5": 550.0,
+          "6": 300.0,
+          "7": 300.0
+        }
+      },
+      "question": "What acceleration interval follows from paired seeds?",
+      "sources": [
+        "experiments/results/s5_normctl/k1_s0.jsonl",
+        "experiments/results/s5_normctl/k1_s1.jsonl",
+        "experiments/results/s5_normctl/k1_s2.jsonl",
+        "experiments/results/s5_normctl/k1_s3.jsonl",
+        "experiments/results/s5_normctl/k1_s4.jsonl",
+        "experiments/results/s5_normctl/k1_s5.jsonl",
+        "experiments/results/s5_normctl/k1_s6.jsonl",
+        "experiments/results/s5_normctl/k1_s7.jsonl",
+        "experiments/results/s5_normctl/kinf_s0.jsonl",
+        "experiments/results/s5_normctl/kinf_s1.jsonl",
+        "experiments/results/s5_normctl/kinf_s2.jsonl",
+        "experiments/results/s5_normctl/kinf_s3.jsonl",
+        "experiments/results/s5_normctl/kinf_s4.jsonl",
+        "experiments/results/s5_normctl/kinf_s5.jsonl",
+        "experiments/results/s5_normctl/kinf_s6.jsonl",
+        "experiments/results/s5_normctl/kinf_s7.jsonl",
+        "experiments/revision2026/A/bootstrap_cis.json"
+      ]
+    },
+    {
+      "id": "d",
+      "metrics": {
+        "A5": {
+          "base_per_seed": {
+            "0": 350.0,
+            "1": 375.0,
+            "2": 375.0,
+            "3": 400.0,
+            "4": 375.0,
+            "5": 350.0,
+            "6": 350.0,
+            "7": 400.0
+          },
+          "ci95_bca": [
+            1.4285714285714286,
+            2.0
+          ],
+          "ci95_percentile": [
+            1.3636363636363635,
+            1.9375
+          ],
+          "median_base": 375.0,
+          "median_treat": 212.5,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "A5: kinf/k1",
+          "note": "results/ieee_gap_20260705/A/normaccel, rung-60, 8 seeds",
+          "ratio": 1.7647058823529411,
+          "treat_per_seed": {
+            "0": 200.0,
+            "1": 175.0,
+            "2": 250.0,
+            "3": 275.0,
+            "4": 200.0,
+            "5": 200.0,
+            "6": 225.0,
+            "7": 275.0
+          }
+        },
+        "D60": {
+          "capped_per_seed": {
+            "70": 80,
+            "71": 80,
+            "72": 80,
+            "73": 80,
+            "74": 75,
+            "75": 80,
+            "76": 90,
+            "77": 90
+          },
+          "ci95_bca": [
+            2.264705882352941,
+            3.0
+          ],
+          "ci95_percentile": [
+            2.235294117647059,
+            2.9666935483870946
+          ],
+          "inference_status": "complete_uncensored",
+          "median_capped": 80.0,
+          "median_uncapped": 200.0,
+          "n_capped": 8,
+          "n_uncapped": 8,
+          "nongrok_capped": 0,
+          "nongrok_uncapped": 0,
+          "ratio": 2.5,
+          "task": "D60",
+          "uncapped_per_seed": {
+            "70": 190,
+            "71": 205,
+            "72": 185,
+            "73": 220,
+            "74": 190,
+            "75": 195,
+            "76": 240,
+            "77": 245
+          }
+        },
+        "S5": {
+          "base_per_seed": {
+            "0": 9750.0,
+            "1": 2600.0,
+            "2": 2650.0,
+            "3": 5850.0,
+            "4": 4100.0,
+            "5": 4000.0,
+            "6": 1950.0,
+            "7": 3050.0
+          },
+          "ci95_bca": [
+            7.125,
+            19.5
+          ],
+          "ci95_percentile": [
+            6.625,
+            16.714285714285715
+          ],
+          "median_base": 3525.0,
+          "median_treat": 325.0,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "S5 primary: kinf/k1",
+          "note": "results/s5_normctl, 8 seeds/arm; paper headline 10.8x at k=1",
+          "ratio": 10.846153846153847,
+          "treat_per_seed": {
+            "0": 350.0,
+            "1": 250.0,
+            "2": 300.0,
+            "3": 400.0,
+            "4": 400.0,
+            "5": 550.0,
+            "6": 300.0,
+            "7": 300.0
+          }
+        },
+        "add": {
+          "capped_per_seed": {
+            "70": 60,
+            "71": 60,
+            "72": 60,
+            "73": 55,
+            "74": 55,
+            "75": 55,
+            "76": 55,
+            "77": 55
+          },
+          "ci95_bca": [
+            1.0869565217391304,
+            1.2727272727272727
+          ],
+          "ci95_percentile": [
+            1.0833333333333333,
+            1.2272727272727273
+          ],
+          "inference_status": "complete_uncensored",
+          "median_capped": 55.0,
+          "median_uncapped": 65.0,
+          "n_capped": 8,
+          "n_uncapped": 8,
+          "nongrok_capped": 0,
+          "nongrok_uncapped": 0,
+          "ratio": 1.1818181818181819,
+          "task": "add",
+          "uncapped_per_seed": {
+            "70": 70,
+            "71": 70,
+            "72": 60,
+            "73": 65,
+            "74": 60,
+            "75": 65,
+            "76": 65,
+            "77": 65
+          }
+        }
+      },
+      "question": "Where does the effect weaken across tasks?",
+      "sources": [
+        "experiments/revision2026/A/bootstrap_cis.json",
+        "experiments/revision2026/gpu2026/adf/adf_verdict.json"
+      ]
+    }
+  ]
+}

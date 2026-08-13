@@ -1,0 +1,18 @@
+name: Visual pixel (optional)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual-pixel:
+    name: Pixel diff vs approved reference
+    if: ${{ vars.VISUAL_REFERENCE_APPROVED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Skip until explicitly enabled
+        run: echo "Optional pixel-diff job; Visual Verdict is the primary gate."

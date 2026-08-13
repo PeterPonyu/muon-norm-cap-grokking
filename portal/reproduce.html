@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Norm-cap instrument — Reproduce</title>
+  <link rel="stylesheet" href="assets/instrument.css">
+</head>
+<body>
+  <div class="instrument-shell">
+    <header class="instrument" role="banner" aria-label="Norm-cap instrument">
+      <div class="status-strip" aria-label="Ceiling status">
+        <div class="status-item"><span class="key">CEILING k</span><span class="val cyan">1.0</span></div>
+        <div class="status-item"><span class="key">S5 GROK STEP</span><span class="val amber">3525 → 325</span></div>
+        <div class="status-item"><span class="key">RATIO</span><span class="val amber">10.8×</span></div>
+        <div class="status-item"><span class="key">BCa 95%</span><span class="val ink">[7.13, 19.5]</span></div>
+      </div>
+      <nav class="module-tabs" aria-label="Instrument modules">
+        <a href="index.html">Cap</a>
+        <a href="dose.html">Dose</a>
+        <a href="floor.html">Floor</a>
+        <a href="lmc.html">LMC</a>
+        <a href="boundary.html">Boundary</a>
+        <a class="is-active" href="reproduce.html" aria-current="page">Reproduce</a>
+      </nav>
+    </header>
+    <main class="stage">
+      <section class="module-page">
+        <article class="panel">
+          <h1>Reproduce</h1>
+          <p>This warehouse publishes pointer TeX and JSON summaries, not a compiled journal PDF. Rebuild vector figures locally via the R → TikZ pipeline.</p>
+          <dl class="kv">
+            <dt>clone</dt><dd>https://github.com/PeterPonyu/muon-norm-cap-grokking</dd>
+            <dt>pointer manuscript</dt><dd>papers/A/main.tex (\input{../figs/figpreamble.tex})</dd>
+            <dt>figure contract</dt><dd>papers/FIGURE-INDEX.json (copied to data/figures.json on build)</dd>
+            <dt>rebuild</dt><dd>papers/figs/PIPELINE.md</dd>
+            <dt>generators</dt><dd>figs/make_A_figs_r.R · figs/make_A_new_figs_r.R · figs/make_gap20260705_figs_r.R</dd>
+            <dt>Zenodo concept</dt><dd>10.5281/zenodo.21020291</dd>
+            <dt>license</dt><dd>MIT (code) · CC BY 4.0 (data + figures)</dd>
+          </dl>
+        </article>
+      </section>
+    </main>
+    <footer class="warehouse">
+      MIT<span class="sep">•</span>CC BY 4.0<span class="sep">•</span>
+      <a href="https://github.com/PeterPonyu/muon-norm-cap-grokking">github.com/PeterPonyu/muon-norm-cap-grokking</a>
+      <span class="sep">•</span>
+      <a href="https://doi.org/10.5281/zenodo.21020291">10.5281/zenodo.21020291</a>
+      <span class="sep">•</span>papers/FIGURE-INDEX.json<span class="sep">•</span>papers/figs/PIPELINE.md
+    </footer>
+  </div>
+  <script src="assets/instrument.js"></script>
+</body>
+</html>

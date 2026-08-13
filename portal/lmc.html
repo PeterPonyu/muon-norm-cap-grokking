@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Norm-cap instrument — LMC</title>
+  <link rel="stylesheet" href="assets/instrument.css">
+</head>
+<body>
+  <div class="instrument-shell">
+    <header class="instrument" role="banner" aria-label="Norm-cap instrument">
+      <div class="status-strip" aria-label="Ceiling status">
+        <div class="status-item"><span class="key">CEILING k</span><span class="val cyan">1.0</span></div>
+        <div class="status-item"><span class="key">S5 GROK STEP</span><span class="val amber">3525 → 325</span></div>
+        <div class="status-item"><span class="key">RATIO</span><span class="val amber">10.8×</span></div>
+        <div class="status-item"><span class="key">BCa 95%</span><span class="val ink">[7.13, 19.5]</span></div>
+      </div>
+      <nav class="module-tabs" aria-label="Instrument modules">
+        <a href="index.html">Cap</a>
+        <a href="dose.html">Dose</a>
+        <a href="floor.html">Floor</a>
+        <a class="is-active" href="lmc.html" aria-current="page">LMC</a>
+        <a href="boundary.html">Boundary</a>
+        <a href="reproduce.html">Reproduce</a>
+      </nav>
+    </header>
+    <main class="stage">
+      <section class="module-page">
+        <article class="panel">
+          <h1>Linear mode connectivity</h1>
+          <p>Muon lock-by-8000 = <span class="mono">0/5</span> (rate 0.0). Scope bound, not a grokking dump. Source <span class="mono">figs/summaries/A_lmc.json</span>.</p>
+          <dl class="kv">
+            <dt>Muon locked_by_8000</dt><dd>0/5</dd>
+            <dt>AdamW locked_by_8000</dt><dd>2/5</dd>
+            <dt>SGDM locked_by_8000</dt><dd>1/5</dd>
+            <dt>censor spawn</dt><dd>step 8000</dd>
+          </dl>
+        </article>
+      </section>
+    </main>
+    <footer class="warehouse">
+      MIT<span class="sep">•</span>CC BY 4.0<span class="sep">•</span>
+      <a href="https://github.com/PeterPonyu/muon-norm-cap-grokking">github.com/PeterPonyu/muon-norm-cap-grokking</a>
+      <span class="sep">•</span>
+      <a href="https://doi.org/10.5281/zenodo.21020291">10.5281/zenodo.21020291</a>
+      <span class="sep">•</span>papers/FIGURE-INDEX.json<span class="sep">•</span>papers/figs/PIPELINE.md
+    </footer>
+  </div>
+  <script src="assets/instrument.js"></script>
+</body>
+</html>

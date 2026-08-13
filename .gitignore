@@ -8,6 +8,7 @@ __pycache__/
 .omc/
 .omx/
 .ruff_cache/
+.pytest_cache/
 .DS_Store
 
 # confidential / local artifacts
@@ -17,3 +18,9 @@ muon-norm-cap-grokking-v*.tar.gz
 .env.*
 credentials*
 *.pem
+
+# compiled figure tiers (pointer contract; never commit venue PDFs)
+papers/figs/tex/
+papers/figs/vec/
+papers/figs/**/*.png
+_site/
