@@ -1,6 +1,4 @@
-/* Paper A — graphite instrument tokens (DESIGN.md SSOT). Not a sibling skin. */
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
-
+/* Paper A graphite instrument tokens (DESIGN.md). next/font owns the faces. */
 :root {
   --ground: #12151A;
   --surface: #1A1F27;
@@ -40,10 +38,9 @@ body {
   height: 100%;
   background: var(--ground);
   color: var(--ink);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans-face), var(--font-sans), sans-serif;
   font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0;
 }
 
 body {
@@ -82,7 +79,7 @@ header.instrument {
 }
 
 .status-item .key {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -91,24 +88,15 @@ header.instrument {
 }
 
 .status-item .val {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  color: var(--muted);
 }
 
 .status-item .val.cyan {
   color: var(--cap-cyan);
-}
-
-.status-item .val.amber {
-  color: var(--trace-amber);
-}
-
-.status-item .val.ink {
-  color: var(--ink);
 }
 
 .module-tabs {
@@ -128,11 +116,10 @@ header.instrument {
   padding: 0 2px;
   text-decoration: none;
   color: var(--muted);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans-face), var(--font-sans), sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.12em;
-  text-transform: none;
   border-bottom: 2px solid transparent;
 }
 
@@ -185,7 +172,7 @@ header.instrument {
 }
 
 .readout-title {
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans-face), var(--font-sans), sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -204,14 +191,12 @@ header.instrument {
 .readout-caption {
   margin-top: auto;
   padding-top: var(--space-2);
-  font-family: var(--font-sans), sans-serif;
   font-size: 13px;
   color: var(--muted);
 }
 
-.readout-caption strong {
-  font-family: var(--font-mono), monospace;
-  font-weight: 500;
+.readout-caption .mono {
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   color: var(--cap-cyan);
 }
 
@@ -223,7 +208,7 @@ header.instrument {
 
 .chart-label {
   fill: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   font-size: 9px;
 }
 
@@ -244,11 +229,10 @@ header.instrument {
   border: 1px solid var(--muted);
   border-radius: 6px;
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.08em;
-  background: transparent;
 }
 
 .chip.is-active {
@@ -262,8 +246,8 @@ header.instrument {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: var(--font-mono), monospace;
-  font-size: 18px;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
+  font-size: 16px;
   font-weight: 500;
   color: var(--muted);
 }
@@ -283,7 +267,7 @@ header.instrument {
   align-items: center;
   padding: 0 var(--space-4);
   border-bottom: 1px solid var(--grid-line);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -302,7 +286,7 @@ header.instrument {
 }
 
 .ledger-row.boundary .verb {
-  color: var(--cap-cyan);
+  color: var(--boundary);
 }
 
 .ledger-row .detail {
@@ -323,7 +307,7 @@ footer.warehouse {
   align-items: center;
   padding: 0 var(--space-4);
   border-top: 1px solid var(--grid-line);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -367,7 +351,6 @@ footer.warehouse a:focus-visible {
 
 .module-page h1 {
   margin: 0 0 var(--space-3);
-  font-family: var(--font-sans), sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -383,7 +366,7 @@ footer.warehouse a:focus-visible {
 }
 
 .module-page .mono {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   color: var(--cap-cyan);
 }
 
@@ -391,7 +374,7 @@ footer.warehouse a:focus-visible {
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: var(--space-2) var(--space-4);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
   font-size: 12px;
 }
 
@@ -403,6 +386,28 @@ footer.warehouse a:focus-visible {
 .kv dd {
   margin: 0;
   color: var(--ink);
+}
+
+.fig-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  font-family: var(--font-mono-face), var(--font-mono), monospace;
+  font-size: 12px;
+}
+
+.fig-list li {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-3);
+  max-width: none;
+  color: var(--muted);
+}
+
+.fig-list .id {
+  color: var(--cap-cyan);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -418,15 +423,6 @@ footer.warehouse a:focus-visible {
     min-height: 100vh;
   }
 
-  .status-strip {
-    height: auto;
-    padding: var(--space-3) var(--space-4);
-  }
-
-  .readout-grid {
-    grid-template-columns: repeat(12, 1fr);
-  }
-
   .readout {
     grid-column: span 6;
   }
@@ -435,6 +431,5 @@ footer.warehouse a:focus-visible {
     white-space: normal;
     height: auto;
     flex: 0 0 auto;
-    padding: var(--space-2) var(--space-4);
   }
 }

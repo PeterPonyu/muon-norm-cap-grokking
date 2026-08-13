@@ -24,3 +24,6 @@ papers/figs/tex/
 papers/figs/vec/
 papers/figs/**/*.png
 _site/
+portal/node_modules/
+portal/.next/
+portal/out/
