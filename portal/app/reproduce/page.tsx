@@ -7,28 +7,20 @@ export default function ReproducePage() {
       <main className="stage">
         <section className="module-page">
           <article className="panel">
-            <h1>Reproduce</h1>
+            <h1>Reproduce-as-rebuild</h1>
             <p>
-              Warehouse door: clone the repo, read the pointer TeX, rebuild figures
-              via the R → TikZ pipeline. This site is not a preprint.
+              Clone the repo and rebuild the instrument channels from the generators
+              below. This site is the live instrument, not an archive dump.
             </p>
             <dl className="kv">
               <dt>clone</dt>
               <dd>https://github.com/PeterPonyu/muon-norm-cap-grokking</dd>
-              <dt>manuscript</dt>
-              <dd>{figureMap.manuscript}</dd>
-              <dt>index</dt>
-              <dd>{figureMap.index}</dd>
-              <dt>schema</dt>
-              <dd>{figureMap.schema}</dd>
-              <dt>pipeline</dt>
-              <dd>{figureMap.pipeline}</dd>
               <dt>Zenodo concept</dt>
               <dd>10.5281/zenodo.21020291</dd>
               <dt>license</dt>
               <dd>MIT (code) · CC BY 4.0 (data + figures)</dd>
             </dl>
-            <p>Figure IDs (paths only):</p>
+            <p>Channel IDs (generators only):</p>
             <ul className="fig-list">
               {figureMap.figures.map((fig) => (
                 <li key={fig.id}>

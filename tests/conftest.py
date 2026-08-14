@@ -33,6 +33,21 @@ EXPORT_ROUTES = (
     "boundary/index.html",
     "reproduce/index.html",
 )
+FORBIDDEN_UI = (
+    "paper",
+    "journal",
+    "document",
+    "manuscript",
+    "submission",
+    "preprint",
+    "peerj",
+    "neurocomputing",
+    "jmlr",
+    "main.tex",
+    "figure-index",
+    "pipeline.md",
+    "warehouse",
+)
 LEAK_PATTERNS = (
     "3525",
     "10.8",

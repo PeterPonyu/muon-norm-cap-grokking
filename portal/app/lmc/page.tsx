@@ -8,14 +8,14 @@ export default function LmcPage() {
           <article className="panel">
             <h1>LMC</h1>
             <p>
-              Architecture slot for linear-mode connectivity. Pointer only — open the
-              warehouse JSON or the pointer manuscript.
+              Linear-mode connectivity slot. Open the LMC summary to inspect the
+              connectivity face.
             </p>
             <dl className="kv">
+              <dt>channel</dt>
+              <dd>linear-mode connectivity</dd>
               <dt>summary</dt>
               <dd className="mono">figs/summaries/A_lmc.json</dd>
-              <dt>manuscript</dt>
-              <dd>papers/A/main.tex</dd>
             </dl>
           </article>
         </section>

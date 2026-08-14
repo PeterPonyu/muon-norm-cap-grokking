@@ -8,9 +8,8 @@ export default function FloorPage() {
           <article className="panel">
             <h1>Floor</h1>
             <p>
-              Architecture slot for the optimizer-family floor channel. Rebuild locally
-              from the generator named in FIGURE-INDEX; this page does not reprint
-              results.
+              Optimizer-family floor channel. Rebuild locally from the generator;
+              this module does not reprint results.
             </p>
             <dl className="kv">
               <dt>summary</dt>

@@ -11,6 +11,7 @@ from conftest import (
     BASE_PATH,
     CONCEPT_DOI,
     EXPORT_ROUTES,
+    FORBIDDEN_UI,
     GITHUB_URL,
     LEAK_PATTERNS,
     NAV_LABELS,
@@ -155,6 +156,47 @@ def test_build_exports_next_out_and_site() -> None:
     assert "caption" not in json.dumps(data)
     assert not (site / "experiments").exists()
     assert not list(site.rglob("main.pdf"))
+
+
+def _visible_html(html: str) -> str:
+    stripped = re.sub(r"<script\b[^>]*>.*?</script>", " ", html, flags=re.I | re.S)
+    stripped = re.sub(r"<style\b[^>]*>.*?</style>", " ", stripped, flags=re.I | re.S)
+    stripped = re.sub(r"<[^>]+>", " ", stripped)
+    return stripped
+
+
+def _forbidden_hits(text: str) -> list[str]:
+    lower = text.lower()
+    return [word for word in FORBIDDEN_UI if word in lower]
+
+
+def test_portal_source_has_no_document_framing() -> None:
+    hits: list[str] = []
+    roots = (
+        PORTAL_DIR / "app",
+        PORTAL_DIR / "components",
+        PORTAL_DIR / "content",
+    )
+    for root in roots:
+        for path in sorted(root.rglob("*")):
+            if path.is_file() and path.suffix.lower() in {".tsx", ".ts", ".css", ".json"}:
+                found = _forbidden_hits(path.read_text(encoding="utf-8", errors="replace"))
+                if found:
+                    hits.append(f"{path.relative_to(PORTAL_DIR)}: {found}")
+    assert hits == [], f"instrument copy still frames a document: {hits}"
+
+
+def test_exported_html_has_no_document_framing() -> None:
+    site = REPO_ROOT / "_site"
+    if not (site / "index.html").is_file():
+        subprocess.run(["bash", str(PORTAL_DIR / "build.sh")], cwd=REPO_ROOT, check=True)
+    hits: list[str] = []
+    for rel in EXPORT_ROUTES:
+        visible = _visible_html((site / rel).read_text(encoding="utf-8"))
+        found = _forbidden_hits(visible)
+        if found:
+            hits.append(f"{rel}: {found}")
+    assert hits == [], f"exported visible copy still frames a document: {hits}"
 
 
 def test_exported_html_uses_basepath_not_user_site_assets() -> None:

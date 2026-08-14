@@ -33,14 +33,11 @@ export function InstrumentShell({
         <ModuleNav active={active} />
       </header>
       {children}
-      <footer className="warehouse">
+      <footer className="instrument-foot">
         MIT<span className="sep">•</span>CC BY 4.0<span className="sep">•</span>
         <a href={GITHUB}>github.com/PeterPonyu/muon-norm-cap-grokking</a>
         <span className="sep">•</span>
         <a href={`https://doi.org/${DOI}`}>{DOI}</a>
-        <span className="sep">•</span>papers/FIGURE-INDEX.json
-        <span className="sep">•</span>papers/figs/PIPELINE.md
-        <span className="sep">•</span>papers/A/main.tex
       </footer>
     </div>
   );

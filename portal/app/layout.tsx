@@ -25,7 +25,7 @@ const plexMono = localFont({
 
 export const metadata = {
   title: "Norm-cap instrument",
-  description: "Warehouse door for the muon-norm-cap-grokking figure pipeline.",
+  description: "Hidden-norm instrument: Cap, Dose, Floor, LMC, Boundary, Reproduce-as-rebuild.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

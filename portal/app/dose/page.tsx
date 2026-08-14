@@ -8,16 +8,14 @@ export default function DosePage() {
           <article className="panel">
             <h1>Dose</h1>
             <p>
-              Architecture slot for the ceiling-dose channel. Numeric series live in
-              the warehouse summaries; this door only names the files.
+              Ceiling-dose channel. How the hidden-norm cap changes with k. This
+              module names the dose series; it does not reprint numeric claims.
             </p>
             <dl className="kv">
-              <dt>index</dt>
-              <dd>papers/FIGURE-INDEX.json</dd>
+              <dt>channel</dt>
+              <dd>ceiling-dose</dd>
               <dt>summary</dt>
               <dd className="mono">figs/summaries/A_gap_normcap.json</dd>
-              <dt>pipeline</dt>
-              <dd>papers/figs/PIPELINE.md</dd>
             </dl>
           </article>
         </section>

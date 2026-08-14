@@ -1,9 +1,4 @@
 {
-  "paper_id": "A",
-  "index": "papers/FIGURE-INDEX.json",
-  "schema": "papers/FIGURE-INDEX.schema.json",
-  "pipeline": "papers/figs/PIPELINE.md",
-  "manuscript": "papers/A/main.tex",
   "figures": [
     {
       "id": "A_gap_normlaw",
