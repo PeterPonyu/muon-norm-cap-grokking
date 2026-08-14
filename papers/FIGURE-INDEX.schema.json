@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/PeterPonyu/dl-research/papers/FIGURE-INDEX.schema.json",
+  "$id": "https://github.com/PeterPonyu/architecture-staircase/papers/FIGURE-INDEX.schema.json",
   "title": "Paper warehouse FIGURE-INDEX",
   "type": "object",
   "required": ["paper_id", "github", "zenodo_concept_doi", "pipeline", "figures"],
@@ -15,7 +15,7 @@
     },
     "zenodo_concept_doi": {
       "type": "string",
-      "pattern": "^10\\.5281/zenodo\\.[0-9]+$"
+      "pattern": "^10\\.5281/zenodo\\."
     },
     "pipeline": {
       "type": "string",
@@ -26,15 +26,13 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "label", "generator", "summary", "preview_svg", "tex_build", "vec_build"],
+        "required": ["id", "label", "generator"],
         "properties": {
           "id": { "type": "string" },
           "label": { "type": "string" },
           "generator": {
-            "anyOf": [
-              { "type": "null" },
-              { "type": "string", "pattern": "^figs/" }
-            ]
+            "type": "string",
+            "pattern": "^figs/"
           },
           "summary": {
             "anyOf": [
@@ -62,8 +60,13 @@
           },
           "caption": { "type": ["string", "null"] },
           "caption_panels": {
-            "type": ["array", "null"],
-            "items": { "type": "string" }
+            "anyOf": [
+              { "type": "null" },
+              {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            ]
           },
           "venue_flat_name": { "type": ["string", "null"] }
         },

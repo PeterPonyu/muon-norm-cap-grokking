@@ -74,9 +74,15 @@ def test_next_app_routes_exist() -> None:
     assert 'basePath: "/muon-norm-cap-grokking"' in config or "basePath: '/muon-norm-cap-grokking'" in config
     assert "trailingSlash: true" in config
     layout = (PORTAL_DIR / "app" / "layout.tsx").read_text(encoding="utf-8")
-    assert "next/font/google" in layout
-    assert "IBM_Plex_Sans" in layout
-    assert "IBM_Plex_Mono" in layout
+    assert "next/font/google" not in layout, "C8: build must not fetch Google Fonts"
+    assert "next/font/local" in layout
+    fonts = PORTAL_DIR / "app" / "fonts"
+    for stem in ("ibm-plex-sans", "ibm-plex-mono"):
+        for weight in ("400", "500", "600"):
+            assert (fonts / f"{stem}-latin-{weight}-normal.woff2").is_file(), (
+                f"C8: missing self-hosted {stem} {weight} woff2"
+            )
+    assert (fonts / "OFL.txt").is_file(), "C8: OFL license must ship with the fonts"
 
 
 def test_module_nav_labels_in_source() -> None:
