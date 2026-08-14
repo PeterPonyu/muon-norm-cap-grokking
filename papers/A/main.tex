@@ -1,0 +1,2293 @@
+%% Bundle A — submission draft, LaTeX (generic article class).
+%% Compile: lualatex x2 (references are an inline thebibliography; no bibtex run).
+%% LuaLaTeX is the canonical engine since the 2026-06-28 R-TikZ figure migration
+%% (newtx takes its fontspec/TermesX route here). The IEEE/PeerJ workspaces use
+%% pdflatex instead -- see papers/VERSIONS.md.
+%% Self-contained: figures are standalone vector PDFs in figures/; bibliography is inline (thebibliography). No external ../figs or ../references.bib dependency.
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+% defaultfeatures={Renderer=Node}: newtxtext forces Renderer=Basic under LuaTeX,
+% which drops the TeX ``/'' ligatures (quotes rendered as two single-quote glyphs);
+% the Node renderer restores them.
+\usepackage[defaultfeatures={Renderer=Node}]{newtxtext}
+\usepackage{newtxmath}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage[round]{natbib}
+\usepackage{xcolor}
+\usepackage{hyperref}
+% Muted colored links instead of default boxed links
+\definecolor{linknavy}{RGB}{28,60,120}
+\hypersetup{
+colorlinks=true, linkcolor=linknavy, citecolor=linknavy, urlcolor=linknavy,
+  pdftitle={Muon's accelerated grokking survives--and speeds up under--a causal hidden-norm cap},
+  pdfauthor={Zeyu Fu},
+  pdfsubject={Causal norm-cap controls for Muon-accelerated grokking in small transformers},
+  pdfkeywords={grokking, Muon optimizer, hidden norm, causal intervention, transformers, reproducibility}
+}
+\usepackage{tablefootnote}
+\usepackage{orcidlink}
+\let\openbox\relax
+\usepackage{amsthm}
+\usepackage[framemethod=default]{mdframed}
+\input{../figs/figpreamble.tex}
+
+% Numbered Remark environment with a light box (upright body for readability).
+% The environment is still named `proposition' internally so the existing
+% \label/\ref keys resolve unchanged; only the printed heading is "Remark",
+% reflecting that the growth-floor argument is heuristic rather than a formal
+% proposition (its quantitative exponent is rejected by our own refit).
+\theoremstyle{definition}
+\newtheorem{proposition}{Remark}
+\mdfdefinestyle{propstyle}{%
+  linecolor=black!40, linewidth=0.6pt,
+  backgroundcolor=black!3,
+  innertopmargin=6pt, innerbottommargin=6pt,
+  innerleftmargin=8pt, innerrightmargin=8pt,
+  skipabove=6pt, skipbelow=6pt
+}
+
+% Tighter float placement to reduce whitespace
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+
+\begin{document}
+
+\title{A causal norm cap preserves---and can accelerate---Muon grokking}
+\author{Zeyu Fu\,\orcidlink{0009-0001-8329-0108}\\
+State Key Laboratory of Trauma and Chemical Poisoning, Institute of Combined Injury,\\
+Chongqing Engineering Research Center for Nanomedicine, College of Preventive Medicine,\\
+Army Medical University, Chongqing, China\\
+\href{mailto:fuzeyu09@gmail.com}{fuzeyu09@gmail.com}}
+\date{}
+
+\maketitle
+
+\begin{abstract}
+The Muon optimizer orthogonalizes each parameter update and, on small algorithmic
+tasks, sharply shortens the grokking delay---the long lag before a memorizing
+network suddenly generalizes. Muon-trained networks also grow their hidden-weight
+norms rather than contracting them, but the existing evidence linking this growth
+to the mechanism is correlational. We test the causal reading directly: on a shared
+420k-parameter two-layer transformer we impose a downward-only Frobenius ceiling,
+capping hidden-weight-norm growth at $k\cdot\|W\|_{\mathrm{init}}$ without
+inflating weights or cancelling weight decay. Suppressing the growth never delays
+or blocks grokking at any ceiling down to $k=1$, and on the non-abelian $S_5$ task
+it accelerates grokking by roughly an order of magnitude (median grok step
+$3525\to325$; seed-level bootstrap 95\% percentile CI $6.6$--$16.7\times$), with a
+dose-response monotone in the ceiling. This preserve-and-accelerate pattern
+replicates across tasks, widths, depths, and modular-addition scales, and a
+learning-rate crossing control shows the acceleration is a property of the
+(optimizer, learning-rate-regime) pair rather than an artifact of rate assignment.
+Weight-norm growth is therefore dispensable for Muon's fast grokking---its removal
+accelerates it---and, on the task where the optimizer choice is decisive, the
+optimizer-dependence reduces to the spectrum-flattening geometry of the update:
+on $S_5$ an exact-SVD flattening reproduces Muon while energy-matched random
+semi-orthogonal and spectrum-inverted updates never grok. A growth-floor argument
+explains why orthogonalized updates force monotone norm growth under Muon and not
+AdamW. Bounding dissociations and a real-text arm---where the same cap costs
+validation loss dose-dependently---delimit the account's scope: preserve-and-accelerate
+is a grokking-regime result, not a general norm-control recipe.
+\end{abstract}
+
+\vspace{4pt}\noindent\textbf{Keywords:} grokking; Muon; orthogonalized updates; weight decay; training dynamics; implicit bias; mode connectivity; grokking delay
+
+%% Highlights (Elsevier highlights go in a separate file; kept here as a comment)
+%% \begin{highlights}
+%% \item A downward-only norm cap preserves Muon grokking 8/8 yet accelerates it ~10x.
+%% \item So Muon's norm growth is a byproduct of orthogonalized updates, not the cause.
+%% \item A growth-floor proposition explains why fixed-energy updates force norm growth.
+%% \item S5 grokking at effective rank 111/128 refutes a universal rank-compression law.
+%% \item Two bounding dissociations and an SGDM floor bound the account; causal claims only where arms support.
+%% \end{highlights}
+
+\section{Introduction}
+\label{sec:intro}
+
+\paragraph{Motivation and gap.}
+Grokking---the phenomenon where a network first memorizes then, much later, suddenly
+generalizes \citep{power2022grokking}---has become a sharp lens for studying the
+dynamics of generalization. Weight decay ($\lambda$) is the canonical clock: Omnigrok
+\citep{liu2023omnigrok} shows that constraining weight norms to a sphere speeds
+grokking, and a growing body of work ties the delay to norm growth under decoupled
+weight decay \citep{loshchilov2019adamw,liu2023omnigrok,khanh2026normseparation,thilak2022slingshot}.
+Mechanistic interpretability work
+on modular arithmetic \citep{nanda2023progress} reveals discrete Fourier circuits as
+the generalizing algorithm, with the ``excluded loss'' and ``restricted loss'' as
+continuous progress measures that underlie the sharp accuracy transition.
+Against this backdrop, \citet{tveit2025muongrokking} showed that Muon---an optimizer
+that orthogonalizes each update via Newton--Schulz iteration \citep{jordan2024muon,bernstein2024modular}---sharply
+accelerates grokking, and competing mechanistic
+stories have been advanced: a flat/uniform-spectrum
+dynamics account \citep{beneventano2026spectraldynamics}, and a skeptical view that
+the precise spectral geometry is not what matters---alignment and step-size optimality
+suffice \citep{shumaylov2026muonnotspecial}.
+What is missing is twofold. First, an interventional test of whether Muon's
+empirically observed norm growth is the mechanism behind faster grokking or merely
+a byproduct of the orthogonalized update---the existing evidence is correlational.
+Second, a cross-phenomenon characterization of how the growth route differs
+from AdamW's contraction route across related phenomena ($S_5$ non-abelian grokking,
+linear mode connectivity (LMC), massive activations, and continual-learning plasticity),
+which would show whether the route is a coherent signature or a one-task artifact.
+We supply both.
+
+\paragraph{Contributions.}
+We give a cross-phenomenon empirical signature of a non-contraction
+``growth'' route on a shared testbed, with AdamW \citep{loshchilov2019adamw}
+(contraction baseline) and SGDM (plain momentum) controls, and---where the data
+support it---a manipulated-cause arm.  Concretely:
+\begin{enumerate}
+  \item \textbf{Causal intervention on the norm.} A downward-only Frobenius ceiling
+    $\|W\|\leq k\cdot\|W\|_{\mathrm{init}}$ preserves grokking 8/8 at every $k$
+    including $k=1$ and accelerates it ${\sim}10\times$ on $S_5$ (grok step $3525\to325$;
+    bootstrap 95\% percentile CI $6.6$--$16.7\times$, with bias-corrected and accelerated (BCa) intervals for every
+    ratio in Table~\ref{tab:ci}).
+    On $S_5$ the acceleration reaches $15.8$--$38\times$ across a $4\times$ width
+    range and at network depth 4 (largest at depth 4). The
+    preserve-and-accelerate pattern replicates on two further non-abelian tasks
+    ($1.76\times$ on $A_5$, $2.50\times$ on $D_{60}$ under defloored measurement)
+    and at $100\%$ survival on modular-addition scales up to
+    $p{=}337$ (a $1.18\times$ acceleration there), closing the single-task objection.
+    Norm growth is therefore not necessary for grokking under Muon---and its
+    removal accelerates it---a byproduct of orthogonalized updates rather than
+    the generalization mechanism (Section~\ref{sec:causal}).
+  \item \textbf{Growth-route signatures.} Memorization-to-grokking norm growth
+    ($6.5\pm0.7\times$ on $S_5$, measured on the route-diagnostic arm; the
+    uncapped runs of the norm-cap arm give $6.26\pm0.84\times$ independently),
+    representation rotation ($70$--$80^\circ$), and later linear-mode-connectivity
+    basin commitment (0/5 seeds locked by step 8000 vs.\ 2/5 for AdamW), measured
+    as a descriptive cross-phenomenon signature.
+  \item \textbf{A growth-floor argument} (Remark~\ref{prop:growthfloor})
+    shows that the fixed per-step Frobenius energy of orthogonalized updates forces
+    monotone norm growth under Muon and is absent under AdamW, giving the growth
+    a sign-and-scaling rationale without predicting the empirical magnitude. We
+    state it as a remark rather than a proposition because our own refit rejects
+    its quantitative exponent.
+  \item \textbf{Bounding phenomena.} Massive activations track effective step
+    size, not per-update orthogonalization; plasticity under continual training
+    extends---but does not cure---on a synthetic arm via a feature-rank (not
+    weight-spectrum) dissociation that does not transfer to the permuted-MNIST
+    benchmark (both in Section~\ref{sec:lmc}); a de-confounded group ladder plus
+    the companion-reported SGDM trainability floor
+    (Section~\ref{sec:floor}), which together license the ``orthogonalization not
+    necessary'' reading, with a plain-Adam arm sharpening the family ordering into
+    a spectrum (decay-free Adam fails selectively on the non-abelian rungs); and a
+    five-arm update-geometry control (Section~\ref{sec:geom}) that localizes the
+    effect to spectrum flattening on $S_5$ while showing the geometry sets only
+    speed on modular addition. These bound the account rather than exemplify it.
+\end{enumerate}
+We do not adjudicate the spectral-geometry theory debate. The route is a
+descriptive signature, not a claimed unique cause of generalization.
+The published grokking-acceleration literature is thin
+(Figure~\ref{fig:landscape}; Table~\ref{tab:accel-landscape}): a single controlled optimizer-swap result, a handful of
+gradient-filtering methods, and an architectural transfer route via Kolmogorov--Arnold
+representations \citep{park2025kagrokking}, none of which test what the acceleration causally depends
+on. That gap is what this paper's norm-cap intervention fills. Figure~\ref{fig:scheme} summarizes the design and the causal chain.
+Unlike the descriptive timing sweeps elsewhere in this line of work, this paper is
+defined by a single primary causal manipulation---a downward-only Frobenius ceiling
+that falsifies a specific named mechanism (norm growth), together with its two-sided
+constant-norm-sphere control---and contains no timing-sweep
+result; the precision$\times$objective$\times$decay characterization of the grokking
+clock is a separate, observational study routed elsewhere.
+
+\begin{figure}[t]
+\centering
+\figtikz[0.82\linewidth]{A_landscape}
+\caption{The published grokking-acceleration landscape (the data of
+Table~\ref{tab:accel-landscape}). Factors span intervention categories and are not
+directly comparable: the controlled optimizer-swap evidence is a single study
+\citep{tveit2025muongrokking}, gradient filtering is a distinct category, Omnigrok's
+sphere \citep{liu2023omnigrok} reports no single factor, and no measurement exists for
+second-order optimizers. Our norm cap enters as a causal intervention, not one more
+point in a meta-distribution.}
+\label{fig:landscape}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Published grokking accelerators (Section~\ref{sec:intro}); visualized in Figure~\ref{fig:landscape} (Section~\ref{sec:related}).
+Factors and metrics are as reported; ``---'' = not reported as a single factor.
+The Metric column mixes each study's own reporting unit (epochs, iterations, or
+optimizer steps) under its own task and budget, so the acceleration factors are
+not directly comparable across rows.}
+\label{tab:accel-landscape}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.21\linewidth}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}l>{\raggedright\arraybackslash}p{0.20\linewidth}@{}}
+\toprule
+Study & Intervention & Task & Metric & Acceleration \\
+\midrule
+\citet{tveit2025muongrokking} & optimizer swap (Muon) & mod-arith ($\times7$) & epochs & $153.09\!\to\!102.89$ ($1.49\times$) \\
+\citet{lee2024grokfast} & gradient filtering & mod-add $p{=}97$ & iters & $>50\times$ \\
+\citet{zhou2025neuralgrok} & gradient transform & mod-arith & steps & $4330\!\to\!1467$ ($2.95\times$) \\
+\citet{walker2025grokalign} & Jacobian regulariser & MNIST & steps & $7.56\times$ (CE) \\
+\citet{liu2023omnigrok} & constant-norm sphere & mod-add$+$ & --- & delay ${\approx}$ eliminated \\
+\citet{park2025kagrokking} & KA-representation transfer (architectural) & arithmetic ops & --- & reported, no single factor \\
+\textbf{This work} & norm-cap (causal) & $S_5$ & steps & $3525\!\to\!325$ (${\sim}10\times$) \\
+Shampoo \citep{gupta2018shampoo} / SOAP & second-order & --- & --- & no published study \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The remainder of the paper proceeds as follows. Section~\ref{sec:setup} describes
+the shared testbed. Section~\ref{sec:results} reports the two-route classification
+(Section~\ref{sec:routes}), the $S_5$ growth signature and its causal norm-cap test
+(Section~\ref{sec:causal}), the SGDM-floor controls
+(Section~\ref{sec:floor}), and the bounding phenomena---linear-mode connectivity,
+massive activations, and continual-learning plasticity
+(Section~\ref{sec:lmc}).
+Sections~\ref{sec:synthesis}--\ref{sec:discussion}
+synthesize and discuss the picture, and Section~\ref{sec:limitations} states the
+boundaries explicitly.
+
+\section{Methods}
+\label{sec:setup}
+
+All phenomena share a 420k-parameter two-layer GrokTransformer, so that
+optimizer-to-optimizer differences are not confounded by capacity. The phenomena
+are: (i)~modular-addition grokking; (ii)~$S_5$ group composition (the non-abelian symmetric group on 5 elements);
+(iii)~continual-learning plasticity; (iv)~attention-sink/massive activations; and
+(v)~spawn-fork linear-mode connectivity. We compare three optimizers throughout:
+AdamW (a contraction baseline via decoupled weight decay), Muon (orthogonalized
+momentum), and SGDM (plain momentum); Muon and SGDM differ only in whether the
+hidden-matrix momentum is orthogonalized, applied through a hybrid parameter split
+so that embeddings and biases are handled identically across the two. The shared
+hyperparameter configuration is given in Table~\ref{tab:hparams}.
+
+\begin{table}[htbp]
+\centering
+\caption{Shared hyperparameter configuration for all three optimizers
+(Section~\ref{sec:setup}). Values without a symbol come from the paper text;
+$\dagger$~=~taken from the released code and the archived run logs.
+The weight-decay axis $\lambda$ is swept as the primary variable in
+Section~\ref{sec:routes}. Under the hybrid parameter split, Muon and SGDM apply
+their rate to the hidden matrices while embeddings and biases ride the AdamW
+side at $10^{-3}$. The learning-rate control arm of Section~\ref{sec:sink}
+sweeps additional operating points (separate row below); each arm's exact rates
+are fixed in its logged configuration. A dedicated learning-rate crossing
+control (Section~\ref{sec:lrcross}, Table~\ref{tab:lrcross}) shows that the
+differing native rates do not manufacture the optimizer comparison:
+transplanting the hidden-matrix rates between AdamW and Muon rescues neither
+optimizer.}
+\label{tab:hparams}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Parameter & AdamW & Muon & SGDM \\
+\midrule
+Hidden-matrix lr (headline arms)
+  & $10^{-3}$$^\dagger$
+  & $2\times10^{-2}$$^\dagger$
+  & $2\times10^{-2}$$^\dagger$ \\
+\quad lr-control arm only
+  & $3\times10^{-3}$
+  & $5\times10^{-3}$
+  & --- \\
+Weight decay $\lambda$
+  & \multicolumn{3}{c}{swept ($\lambda \geq 0$); standard value $0.01^\dagger$} \\
+AdamW $(\beta_1,\beta_2)$
+  & $(0.9,\,0.98)^\dagger$
+  & $(0.9,\,0.98)^\dagger$ (AdamW side)
+  & $(0.9,\,0.98)^\dagger$ (AdamW side) \\
+Hidden-matrix momentum
+  & ---
+  & $0.95$ Nesterov$^\dagger$
+  & $0.95$ Nesterov$^\dagger$ \\
+Newton--Schulz steps
+  & ---
+  & $5^\dagger$
+  & --- (plain SGD-momentum) \\
+Train fraction
+  & \multicolumn{3}{c}{$0.4$ of ordered pairs (modular / group arms)$^\dagger$;
+    held fixed across optimizers} \\
+Total steps
+  & \multicolumn{3}{c}{$20{,}000$ (grokking / norm-cap / sphere arms)$^\dagger$;
+    $30{,}000$ group ladder$^\dagger$; $10{,}000$ $\lambda$-sweep$^\dagger$} \\
+Eval cadence
+  & \multicolumn{3}{c}{50 steps (group ladder: 100; $A_5$/$D_{60}$ cap arms: 25;
+    $\lambda$-sweep: 200; fine-grained check: 5)} \\
+Init scale
+  & \multicolumn{3}{c}{1.0 (large-init variant: 3.0)} \\
+Grok threshold
+  & \multicolumn{3}{c}{0.95 validation accuracy} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The modular-addition and group-composition arms use full-batch updates on the
+train split of size $0.4\,|\mathcal{X}|$; architecture defaults are
+$d_{\mathrm{model}}{=}128$, $n_{\mathrm{heads}}{=}4$, $n_{\mathrm{layers}}{=}2$
+(${\approx}420$k parameters). Per-phenomenon
+probes are described in each section. Unless stated otherwise, reported quantities
+are medians over seeds; the grokking delay is $T = T_{\mathrm{grok}} -
+T_{\mathrm{mem}}$, where $T_{\mathrm{mem}}$ and $T_{\mathrm{grok}}$ are the first
+steps at which train and validation accuracy cross threshold. Because evaluation
+is periodic, every step-valued quantity is quantized to its arm's evaluation
+grid: a reported grok step $T$ is the first evaluation past the crossing, so the
+true crossing lies in $(T-\Delta,\,T]$ for cadence $\Delta$, and every step
+ratio inherits this $\pm\Delta$ resolution; where a denominator sits at the
+evaluation floor (e.g.\ modular addition under Muon), the ratio is reported only
+as a bound. The
+norm-controlled Muon arm (Section~\ref{sec:causal}) imposes a downward-only
+per-matrix Frobenius ceiling $\|W\|\leq k\cdot\|W\|_{\mathrm{init}}$ that caps
+growth without inflating weights, so it does not cancel decoupled weight decay
+and isolates the effect of suppressing upward drift alone.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Two empirically separable routes to grokking}
+\label{sec:routes}
+
+On modular-addition grokking, AdamW at zero weight decay still groks (5/5; delay
+ratio $50\pm38$). The spread is one-seed-driven: seed s2 sits at delay 93 versus
+22--37 for the rest, so dropping s2 gives $29\pm8$. This is generalization without
+contraction-via-decay. Muon, by contrast, follows a growth route with a far shorter
+delay: the apparent ``near-zero'' Muon delay is an artifact of the 50-step
+evaluation floor, and at an evaluation cadence of 5 steps the true Muon delay is
+10--40 steps (ratio 1.1--2.0). This double-route classification is the empirical
+foundation for what follows; the route is descriptive, not a claimed
+mechanism (Fig.~\ref{fig:two_route}).
+
+\begin{figure}[t]
+\centering
+\figtikz[\linewidth]{A_scheme}
+\caption{Study design and headline finding. A shared 420k-parameter testbed
+(modular addition and $S_5$ composition) separates three optimizers into a
+contraction route (AdamW), a growth route (Muon), and a family floor (SGDM).
+Two causal interventions on the hidden-weight norm---a downward-only ceiling and a
+two-sided constant-norm sphere applied to all three optimizers---show that
+eliminating the norm trajectory preserves and accelerates Muon's grokking while
+neither rescuing AdamW and SGDM on $S_5$ nor slowing Muon: the growth is not
+necessary for generalization---a byproduct of the orthogonalized update geometry.
+Two bounding dissociations (massive activations, plasticity) sharpen the
+account's scope. Dashed arrows and $n$ counts are detailed in the sections indicated.}
+\label{fig:scheme}
+\end{figure}
+
+Figure~\ref{fig:s5_route} gives the corresponding route diagnostic on the
+non-abelian $S_5$ task used below: the same hidden-norm growth and representation
+rotation signatures are present before the causal norm cap is imposed.
+
+\subsection{Growth signature on non-abelian \texorpdfstring{$S_5$}{S5} and a causal test}
+\label{sec:causal}
+
+Every Muon grok event on $S_5$ shows memorization-to-grokking hidden-norm growth
+of $6.5\pm0.7$ ($\|W_{\mathrm{hidden}}\|$ at $T_{\mathrm{grok}}$ over its value
+at $T_{\mathrm{mem}}$; a different quantity from the end-of-run/initialization
+ratio of the group-ladder discriminator, Fig.~\ref{fig:norm_disc}), versus
+0/20 growth-signature events for AdamW and SGDM. Norm growth is thus the route
+discriminator, not a necessity claim: AdamW does not grok in this specific $S_5$
+route-diagnostic budget, although separate $S_5$ ladder controls show AdamW can grok
+under other settings (a hyperparameter rescue map, Fig.~\ref{fig:rescue}, recovers
+AdamW grokking on $S_5$ at high weight decay while SGDM never recovers). Three
+AdamW--$S_5$ tallies recur in this paper and differ only in arm, not in
+phenomenon: $0/5$ in this 20{,}000-step route-diagnostic arm, $0/8$ in the
+equally short-budget sphere, fine-cadence, and rate-crossing controls
+(Sections~\ref{sec:causal} and~\ref{sec:lrcross}), and $5/5$ on the
+30{,}000-step dataset-size-controlled rung-120 ladder of
+Section~\ref{sec:floor}, whose longer budget and dataset-size-controlled
+training set are what recover AdamW. SGDM fails to
+train $S_5$ at all---an optimizer-family floor, not a complexity threshold
+(Section~\ref{sec:floor}; cf.\ \citealp{dragutinovic2026usemuon}). Representation
+rotation of 70--80$^\circ$ accompanies it, but the rotation rate overlaps AdamW's, so
+rotation is a noisy corroborator, not a clean discriminator. Grokking occurs at
+effective rank 111/128, refuting a universal ``grokking $\Leftrightarrow$
+rank-compression'' reading: the memorizing solution's stable rank is lower
+(${\approx}23$).
+
+\begin{mdframed}[style=propstyle,nobreak=true]
+\begin{proposition}[Growth-floor for orthogonalized-update norm growth]
+\label{prop:growthfloor}
+\emph{Assumptions.}
+(A1) Each hidden-matrix update is orthogonalized so that its applied increment is
+$\Delta W = -\eta\,s\,U$ with $U$ semi-orthogonal ($\sigma_i(U)\approx 1$) and
+$s = \max(1,\,d_{\mathrm{out}}/d_{\mathrm{in}})^{1/2}$ a fixed shape scale
+(Newton--Schulz output; \citealp{jordan2024muon,bernstein2024modular}).
+(A2) Weight decay is decoupled and small at the swept $\lambda$, removing
+$\eta\lambda\|W\|$ per step.
+(A3) Momentum $\beta=0.95$ induces positive step-to-step correlation
+(coherence factor $\rho\in(0,1]$).
+(A4) Curvature does not systematically anti-align increments with $W$
+(no engineered contraction).
+
+\emph{Claim.} Under (A1)--(A4):
+(i)~the per-step Frobenius energy is fixed at
+\begin{equation}
+  \|\Delta W\|_F \;\approx\; \eta\, s\,\sqrt{r}, \qquad
+  r = \mathrm{rank}(W) \approx \min(d_{\mathrm{out}},\,d_{\mathrm{in}}),
+  \label{eq:frobenius-floor}
+\end{equation}
+independent of $\|W\|$; whereas AdamW's per-coordinate normalized step carries no
+fixed spectral energy and, with decoupled decay, drives $\|W\|$ downward.
+(ii)~In the worst case (decorrelated steps) the norm grows diffusively,
+$\|W_t\|_F \gtrsim \sqrt{\|W_0\|_F^2 + \eta^2 s^2 r\, t}$; under (A3) the growth is
+closer to ballistic (linear in $t$). Either way $\|W_t\|_F$ is monotone
+non-decreasing until decay balances the injection at a fixed point
+\begin{equation}
+  \|W^*\|_F \;\propto\; \frac{s\,\sqrt{r}}{\lambda}
+                         \;\times\; (\text{coherence factor}),
+  \label{eq:balance-norm}
+\end{equation}
+i.e.\ $\|W^*\|_F \propto 1/\lambda$ at fixed momentum.
+(iii)~The same argument gives no growth floor for AdamW: the balance point of a
+contracting, non-fixed-energy step lies at or below $\|W_0\|$.
+
+\emph{Scope / what is not claimed.} The magnitude of the empirical ratio
+(the $6.5\pm0.7$ memorization-to-grokking growth on $S_5$) is not predicted: it depends on the step count to grokking
+and on the coherence factor, both empirical. The statement is
+sign-and-scaling, not a tight quantitative prediction.
+Unit-singular-value increments also bias the weight spectrum toward uniformity,
+predicting high effective rank under Muon---consistent with the measured effective
+rank $111/128$ at grokking on $S_5$.
+\end{proposition}
+\end{mdframed}
+
+% fig:two_route float relocated here (source order still before fig:s5_route, so
+% numbering is unchanged) to free page space for the unbreakable Proposition box.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{A_two_route.pdf}
+\caption{Two empirically separable routes on modular-addition grokking
+(Section~\ref{sec:routes}).
+(a)~AdamW grokking delay $T = T_{\mathrm{grok}} - T_{\mathrm{mem}}$ (steps) as a
+function of weight decay $\lambda$ ($\lambda=0$ plotted at left edge); 24 runs.
+M1 fits a single power law to $\lambda>0$ data ($\alpha=0.34$); M2 fits a
+harmonic two-route model $T = 1/(1/D_0 + \lambda/C)$ to all points including
+$\lambda=0$ ($D_0\approx4945$, $C\approx367$), capturing the finite grokking
+delay at zero weight decay and supporting a non-contraction route alongside the
+contraction route.
+(b)~Decomposition into memorization and grokking endpoints: weight decay moves
+$T_{\mathrm{mem}}$ little and $T_{\mathrm{grok}}$ a lot, so the delay law is a
+grok-side phenomenon.
+(c)~Fit residuals (observed over fitted, log scale) for the single power law and
+the two-route form; the two-route form removes the systematic low-$\lambda$
+curvature that the power law shows.
+(d)~Muon on the same weight-decay sweep: no delay law at all---the delay is an
+AdamW-route quantity, which is what makes it a route diagnostic rather than a
+universal grokking law.}
+\label{fig:two_route}
+\end{figure}
+
+Remark~\ref{prop:growthfloor} gives the growth a first-principles sign and a
+$1/\lambda$ scaling; the norm term it produces is the optimizer-side counterpart of
+the norm-based generalization bound of Oneto et al.\ \citep{neucom2026grokking}
+(Section~\ref{sec:related}).
+
+Remark~\ref{prop:growthfloor} predicts the Muon equilibrium hidden norm decreases
+with weight decay ($\|W^*\|\propto1/\lambda$ at fixed momentum) while AdamW shows no
+such scaling. Sweeping $\lambda$ from $0.001$ to $0.3$ confirms both in sign and
+monotonicity (Fig.~\ref{fig:gap_normlaw}): the Muon norm follows a negative power law
+(log--log slope $-0.43\pm0.03$, $R^2=0.87$; median $536\to57$) while AdamW is flat
+(slope $0.03$, $R^2=0.31$). The Muon exponent is shallower than the idealized $-1$:
+refitting the raw runs gives $-0.43\pm0.03$ at the final step ($-0.47\pm0.03$ over
+the last quarter of training; $-0.52\pm0.03$ excluding the $\lambda{=}0.3$ floor),
+which rejects the $-1$ of Eq.~\ref{eq:balance-norm} at ${>}12\sigma$ but is
+statistically consistent with the $-1/2$ exponent that rotational-equilibrium
+analysis predicts for the steady-state norm, $\|W^*\|\propto(\eta/\lambda)^{1/2}$
+\citep{kosson2023rotational}. We therefore read Remark~\ref{prop:growthfloor}
+as a heuristic sign-and-floor argument---it gets the direction, the monotonicity,
+and the AdamW contrast right---while the rotational-equilibrium prediction is the
+better quantitative account of the exponent.
+
+\begin{figure}[htbp]
+\centering
+\makebox[\linewidth][c]{\includegraphics[width=\linewidth]{A_s5_route.pdf}}
+\caption{$S_5$ route diagnostic (Section~\ref{sec:routes}).
+(a)~Each point is one run at memorization ($T_{\mathrm{mem}}$) and grokking
+($T_{\mathrm{grok}}$): $x$-axis is the log-ratio of hidden norms, $y$-axis
+is the angular distance in representation space.
+Marker colour is the optimizer (AdamW, Muon, and SGDM in grey); marker shape is the
+weight-init scale (circle $=1$, triangle $=3$, large init); larger opaque markers are
+$S_5$ runs and smaller faded markers are modular-addition runs shown for context.
+Muon runs cluster in the high-norm-growth, high-rotation quadrant; AdamW
+mod-add runs appear near or left of zero growth.
+(b)~Muon-only $S_5$ zoom of (a) on the norm axis (AdamW/SGDM are not drawn).
+(c)~Muon-only $S_5$ zoom of (a) on the angular axis (AdamW/SGDM are not drawn);
+the three-family comparison is the bivariate map in (a).
+(d)~Update-geometry control (A-G3, 5 seeds per arm): on $S_5$ an exact-SVD
+flattening reproduces Muon ($5/5$) while energy-matched random semi-orthogonal
+and spectrum-inverted updates never grok ($0/5$); on modular addition every
+structured update groks and the geometry only sets the speed.}
+\label{fig:s5_route}
+\end{figure}
+
+The causal test settles the necessity question. Capping Muon's hidden-norm growth
+with a downward-only ceiling $k\cdot\|W\|_{\mathrm{init}}$ preserves
+grokking 8/8 at every $k$ including $k=1$ and accelerates it ${\sim}10{\times}$
+(grok step $3525\to325$ on $S_5$; seed-level bootstrap 95\% CI $6.6$--$16.7\times$,
+per-ratio CIs in Table~\ref{tab:ci}), and this replicates on modular addition (grok 8/8
+at every ceiling with $\|W_{\mathrm{hidden}}\|$ capped ${\sim}12{\times}$; the
+acceleration there is far smaller, $1.18\times$ (95\% percentile CI
+$1.08$--$1.23$, BCa $1.09$--$1.27$; median $65\to55$), measured on the defloored
+cadence-5 arm because Muon groks mod-add by step 100 even uncapped and the 50-step
+grid cannot resolve the gap). Within the swept range of ceilings and
+both tasks, norm growth is therefore not necessary for grokking under
+Muon---consistent with a norm-clock reading (smaller weights grok faster) and with
+the growth being a byproduct of the orthogonalized update rather than the
+generalization mechanism: were the growth necessary, suppressing it would have
+to delay or block grokking, and it does neither. The route is descriptive, now
+backed by the manipulated-cause arm (Fig.~\ref{fig:normctl}; Table~\ref{tab:normctl}).
+The ${\sim}10{\times}$ acceleration figure is a within-Muon comparison (norm-capped
+vs.\ uncapped Muon runs); it does not compare Muon to AdamW.
+
+The ${\sim}10{\times}$ $S_5$ acceleration does not transfer as a fixed magnitude. On
+a second non-abelian task ($A_5$, rung-60) the cap preserves grokking (8/8 seeds) and
+accelerates it $1.76\times$ (95\% CI $1.36$--$1.94\times$), and on a third ($D_{60}$,
+rung-120) it preserves grokking
+(5/5 seeds) and accelerates it $1.33\times$ at the 50-step evaluation cadence
+(95\% CI $1.00$--$1.67\times$; Fig.~\ref{fig:gap_normcap}). That $D_{60}$ interval
+touched $1.0$ only because the coarse grid could not resolve the difference: a
+defloored arm at evaluation cadence 5 (8 seeds per condition) puts the ratio at
+$2.50\times$ (median $200\to80$, 95\% percentile CI $2.24$--$2.97$, BCa
+$2.26$--$3.00$), excluding $1.0$. Across all three non-abelian tasks the magnitude
+is task-dependent and the preserve-and-accelerate direction invariant. The conclusion is also not a two-layer
+artifact---re-running the $S_5$ dose-response at depth 4 preserves grokking at every
+ceiling and reproduces the acceleration.
+
+\paragraph{The cap is capacity- and scale-robust; the acceleration grows with depth.}
+Two extension grids push the intervention beyond the audited operating points
+(Table~\ref{tab:capwd}). A width $\times$ depth grid on $S_5$
+($d_{\mathrm{model}}\in\{128,256,512\}$ $\times$ depth $\in\{2,4\}$ $\times$
+$k\in\{\infty,1\}$, 5 seeds per cell) preserves grokking in all $60$ of $60$ cells and
+accelerates it at every configuration, with the ratio growing with depth: from
+$15.9\times$ at the $d{=}128$/depth-2 cell (replication batch; cf.\ the primary
+8-seed arm of Table~\ref{tab:normctl}, $10.8\times$ at the same nominal
+configuration) to $38.2\times$ at
+$d{=}256$/depth-4 (every depth-4 ratio is at least $22\times$). The two estimates
+at the nominal $d{=}128$/depth-2 configuration agree within seed noise: their
+seed-level bootstrap CIs overlap almost entirely ($10.8\times$, 95\% CI
+$6.6$--$16.7$; $15.9\times$, 95\% CI $5.9$--$22.8$), the bootstrap CI on their
+difference spans zero ($-7.6$ to $+12.7$), and a between-batch variance
+decomposition of the log uncapped grok steps attributes $2.8\%$ of the variance
+to batch (Mann--Whitney $p=0.56$ uncapped, $p=0.88$ capped; per-seed values in
+Table~\ref{tab:ci-seeds}).
+
+Four independent batches now measure the uncapped $S_5$ baseline at this same
+nominal configuration, and Table~\ref{tab:batchstab} collects them. The uncapped
+median moves over a $2.09\times$ range across the four while the capped median
+stays at $325$, so the drift is in the denominator of the headline ratio, not in
+the intervention's effect. The variance decomposition above is what licenses
+reading these as one population rather than as a selected batch; quoted against
+the slowest and fastest baselines the ratio spans roughly $8\times$ to $17\times$,
+which is the interval the reader should carry rather than the point estimate
+alone.
+
+\begin{table}[htbp]
+\centering
+\caption{Uncapped $S_5$ Muon baseline across four independent batches at the same
+nominal configuration ($d_{\mathrm{model}}{=}128$, depth 2). The capped median at
+$k{=}1$ is $325$ in the primary arm and is stable across batches, so the
+$2.09\times$ spread sits in the uncapped denominator of the headline ratio. Read
+with the between-batch variance decomposition of Section~\ref{sec:causal}
+($2.8\%$ of the log-step variance is between batches; Mann--Whitney $p=0.56$
+uncapped, $p=0.88$ capped), which finds no batch effect beyond seed noise.}
+\label{tab:batchstab}
+\small
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Batch & Role & $n$ & Uncapped median grok step \\
+\midrule
+Primary arm (seeds 10--17)      & Headline $10.8\times$ ratio            & 8 & 3525 \\
+Width $\times$ depth grid       & Capacity/scale extension               & 5 & 5550 \\
+Update-geometry control (seeds 60--64) & Geometry substitution arm       & 5 & 3950 \\
+Defloored cadence-5 arm         & Fine-cadence replication               & 8 & 2657.5 \\
+\midrule
+\multicolumn{3}{@{}l}{Spread (max/min)} & $2.09\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The capped grok step is
+nearly capacity-invariant ($250$--$400$ across all six configurations) while the
+uncapped step grows with depth at every width ($3950\to9550$ at $d{=}256$; the width
+effect is non-monotone)---the norm-growth byproduct costs more at greater depth, and
+the cap removes that cost. A modulus ladder on
+modular addition ($p\in\{97,251,337\}$ with $d_{\mathrm{model}}\in\{128,256,384\}$,
+$k\in\{\infty,2,1\}$) preserves grokking in every capped cell at every rung.
+Acceleration remains evaluation-floored at $3.5\times$ the original modulus:
+uncapped Muon groks at step $100$ (the second evaluation) even at $p{=}337$, and at
+$p{=}251$ and $p{=}337$ the capped runs already grok by the first evaluation
+(step $50$), no slower than uncapped and reportable only as a bound. Only the
+$p{=}97$ rung has a defloored measurement, where the cadence-5 arm resolves a
+$1.18\times$ acceleration; the higher rungs would need the same finer cadence to
+be quantified. Muon's
+near-instant grokking on modular addition is thus scale-invariant within the probed
+range, while its uncapped final hidden norm grows with the task
+($149.6\to277.6\to423.1$ across the rungs) and the capped norm stays at
+$k\cdot\|W\|_{\mathrm{init}}$. An AdamW reference at the same $\lambda{=}0.01$ groks
+$11$--$245\times$ later than Muon across the rungs ($3250$/$1150$/$12250$ vs
+$50$--$100$; non-monotone, widest at $p{=}337$).
+
+\begin{table}[htbp]
+\centering
+\caption{Norm-cap causal arm: $S_5$ and modular-addition results across five
+hidden-norm ceiling levels $k$ ($\|W_{\mathrm{hidden}}\|\leq
+k\cdot\|W\|_{\mathrm{init}}$); 8 seeds per level
+(Section~\ref{sec:causal}). Median grok step and median final hidden-norm
+$\|W_{\mathrm{hidden}}\|$ are reported; all 8/8 seeds grok at every
+ceiling. Seed-level bootstrap 95\% CIs (percentile) for every acceleration ratio,
+and the per-seed grok steps behind the headline $10.8\times$, are given in
+Tables~\ref{tab:ci} and \ref{tab:ci-seeds}; BCa intervals are tabulated
+alongside in Table~\ref{tab:ci}. The modular-addition ratio comes from a
+defloored arm run at evaluation cadence 5 (32 runs, 8 seeds per condition on each
+of the two tasks), which resolves the 50-step evaluation grid that floored the
+earlier estimate.}
+\label{tab:normctl}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{ccccc}
+\toprule
+ & \multicolumn{2}{c}{$S_5$} & \multicolumn{2}{c}{Modular addition} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Ceiling $k$ & Grok step (med.) & $\|W_{\mathrm{hidden}}\|$ (med.) & Grok step (med.) & $\|W_{\mathrm{hidden}}\|$ (med.) \\
+\midrule
+$\infty$ (uncapped) & 3525 & 311.5 & 100 & 148.7 \\
+3           & 575  & 37.6  & 100 & 37.6  \\
+2           & 425  & 25.1  & 100 & 25.1  \\
+1.5         & 325  & 18.8  & 100 & 18.8  \\
+1           & 325  & 12.5  & 100 & 12.5  \\
+\midrule
+Ratio ($\infty\to 1$) & $\mathbf{10.8{\times}}$ [6.6, 16.7] & $24.9{\times}$ & $1.18{\times}$ [1.08, 1.23] & $11.9{\times}$ \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\figtikz[\linewidth]{A_gap_normlaw}
+\caption{Remark~\ref{prop:growthfloor} hidden-norm scaling
+(Section~\ref{sec:causal}).
+(a)~Raw sweep: median $\|W\|$ vs $\lambda$ over 30 runs per optimizer;
+Muon follows a negative power law (slope $-0.43\pm0.03$, $R^2=0.87$) while
+AdamW is nearly flat (slope $0.03$).
+(b)~Primary refit: per-seed equilibrium norms (5 seeds per $\lambda$
+and optimizer) and their fitted intervals show that the relation is not a
+median artifact.
+(c)~Slope-versus-theory falsifier: the Muon estimate is about 17.9
+standard errors from the idealized $-1$ exponent, while remaining compatible
+with the rotational-equilibrium $-1/2$ target \citep{kosson2023rotational}; the
+result is sign-and-monotonicity support, not confirmation of the idealized
+magnitude.
+(d)~Leave-one-lambda-out sensitivity: the Muon slope remains in
+$[-0.54,-0.41]$ under every deletion.}
+\label{fig:gap_normlaw}
+\end{figure}
+
+We position this interventional result against Tveit et al.'s correlational report,
+and against Omnigrok's symmetric sphere and norm-matched entropy-collapse controls,
+in Section~\ref{sec:related}.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\linewidth]{A_normctl.pdf}
+\caption{Norm-controlled Muon arm (Section~\ref{sec:causal}); 8 seeds per ceiling
+level and task.
+(a)~Grok-step comparison: tightening the hidden-norm ceiling from
+$k=\infty$ to $k=1$ changes the $S_5$ median from $3525$ to $325$, whereas
+modular addition remains evaluation-floored at step 100 throughout.
+(b)~Preservation rate: every seed groks at every ceiling on
+both tasks ($8/8$ in all ten cells), so the intervention changes timing rather
+than success.
+(c)~Acceleration interval: the primary uncapped/$k{=}1$
+median ratio is $10.85\times$ with a 95\% percentile interval of
+$[6.63,16.71]$ (BCa $[7.13,19.50]$).
+(d)~Task boundary: paired acceleration is directionally preserved but
+varies in magnitude---$10.85\times$ on $S_5$, $2.50\times$ on $D_{60}$,
+$1.76\times$ on $A_5$, and $1.18\times$ on modular addition.}
+\label{fig:normctl}
+\end{figure*}
+
+\begin{table}[htbp]
+\centering
+\caption{Norm-cap width $\times$ depth grid on $S_5$ (Section~\ref{sec:causal}):
+median grok step over 5 seeds, uncapped ($k{=}\infty$) vs tightest cap ($k{=}1$);
+all $60/60$ cells grok. The acceleration ratio is largest at depth 4 (all depth-4 rows at least $22\times$;
+the width effect is non-monotone) while the capped grok step stays nearly flat.
+The grid is an independent 5-seed replication batch (the primary 8-seed arm of
+Table~\ref{tab:normctl} gives $10.8\times$ at the nominal $d{=}128$/depth-2 point;
+the two estimates agree within seed noise, Section~\ref{sec:causal}). The last
+column gives the seed-level bootstrap 95\% percentile CI of each ratio.}
+\label{tab:capwd}
+\begin{tabular}{cccccc}
+\toprule
+$d_{\mathrm{model}}$ & depth & $k{=}\infty$ & $k{=}1$ & ratio & 95\% CI \\
+\midrule
+128 & 2 & 5550 & 350 & $15.9\times$ & [5.9, 22.8] \\
+128 & 4 & 6600 & 300 & $22.0\times$ & [16.0, 38.6] \\
+256 & 2 & 3950 & 250 & $15.8\times$ & [13.2, 25.8] \\
+256 & 4 & 9550 & 250 & $38.2\times$ & [26.7, 42.0] \\
+512 & 2 & 6500 & 400 & $16.3\times$ & [8.4, 28.8] \\
+512 & 4 & 8050 & 300 & $26.8\times$ & [14.3, 39.2] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The time course of the intervention shows the mechanism directly
+(Fig.~\ref{fig:normctl_tc}): under the tightest cap the hidden-weight norm is held
+at its initialization scale throughout training, yet validation accuracy crosses
+the grokking threshold an order of magnitude sooner than in the uncapped run, whose
+norm climbs steadily before it generalizes. Suppressing the growth does not stall
+generalization; it brings it forward.
+
+\label{sec:casestudy}A single above-median seed makes the intervention concrete:
+uncapped ($k=\infty$), seed 0 groks at step 9750 with final hidden norm
+$\|W_{\mathrm{hidden}}\|=309.6$, whereas under the tightest cap ($k=1$) the same
+seed groks at step 350---about $28\times$ sooner, a seed-specific ratio above the
+${\sim}10\times$ population median---while ending $25\times$ smaller at
+$\|W_{\mathrm{hidden}}\|=12.5$ (single-seed trajectory in Fig.~\ref{fig:case}).\footnote{Single-seed
+numbers (seed 0): uncapped grok step 9750, final hidden norm 309.6; capped ($k=1$)
+grok step 350, final hidden norm 12.5. The $28\times$ ratio is seed-0 specific; the
+population median ratio across all 8 seeds is ${\sim}10\times$ ($3525\to325$),
+reported above.}
+
+\paragraph{Defloored dose-response replication; a new $k{=}4$ point.}
+A fresh-seed replication removes the evaluation-grid coarseness of the primary
+arm and extends the dose ladder upward. Re-running the $S_5$ cap arm at an
+evaluation cadence of 5 steps (8 fresh seeds per ceiling, 8/8 grok in every
+cell) gives an uncapped median grok step of $2657.5$ and capped medians of
+$810$ at $k{=}4$, $405$ at $k{=}2$, and $257.5$ at $k{=}1$: acceleration ratios
+of $3.3\times$ (95\% CI $2.2$--$4.6$), $6.6\times$ ($4.0$--$9.2$), and
+$10.3\times$ ($6.5$--$14.0$), monotone in the ceiling. The $k{=}4$ ceiling is a
+new dose point above the published ladder of Table~\ref{tab:normctl}, and the
+defloored $k{=}1$ ratio of $10.32\times$ independently reproduces the published
+$10.8\times$ headline on disjoint seeds at a $10\times$ finer evaluation grid
+(the two estimates' 95\% CIs, $6.5$--$14.0$ and $6.6$--$16.7$, overlap almost
+entirely). The $k{=}2$ and $k{=}4$ arms were run in a separate batch (seeds
+20--27) from the $k{=}\infty$/$k{=}1$ batch (seeds 10--17), making those two
+ratios cross-batch comparisons; between-batch variation at this configuration
+is seed-noise-sized (Section~\ref{sec:causal}, Appendix~\ref{app:ci}). An AdamW reference at the same fine cadence
+confirms the baseline: $0/8$ seeds grok $S_5$ within the 20{,}000-step budget.
+All three fresh ratios are tabulated with percentile and BCa intervals in
+Table~\ref{tab:ci}.
+
+\begin{figure}[htbp]
+\centering
+\figtikz[\linewidth]{A_gap_normcap}
+\caption{Norm-cap dose response and robustness layers
+(Section~\ref{sec:causal}).
+(a)~Dose response on $A_5$ (rung-60) and $D_{60}$ (rung-120): tightening $k$
+lowers the grok step ($1.76\times$, $8/8$ preserved on $A_5$; $1.33\times$,
+$5/5$ preserved on $D_{60}$ at the coarse cadence), and every ceiling
+preserves successful grokking.
+(b)~Paired $S_5$ acceleration intervals vs ceiling $k$: $6.13\times$ ($k=3$),
+$8.29\times$ ($k=2$), $10.85\times$ ($k=1.5$ and $k=1$), all above unity.
+(c)~Defloored $D_{60}$ control (cadence 5): median grok step changes from
+$200$ to $80$ ($2.50\times$, 95\% percentile CI $[2.24,2.97]$), with no
+censored seed.
+(d)~Cross-task sensitivity: effect sizes are $10.85\times$ on $S_5$, $2.50\times$ on
+$D_{60}$, $1.76\times$ on $A_5$, and $1.18\times$ on modular addition:
+preservation is shared, whereas acceleration magnitude is task-dependent.}
+\label{fig:gap_normcap}
+\end{figure}
+
+\paragraph{Two-sided control: constant-norm spheres for all three optimizers.} The cap
+is one-sided (it only prevents growth), leaving open whether the norm level
+rather than the update geometry carries the effect. A two-sided control closes this:
+after every optimizer step, every hidden matrix is rescaled---up or down---to exactly
+its initialization norm, for AdamW, Muon, and SGDM alike (the Omnigrok sphere
+constraint \citep{liu2023omnigrok}, here applied uniformly at the standard
+initialization scale; 8 seeds per cell, both tasks, pinned norms verified at
+$12.5$ throughout). Three outcomes. First, Muon's speed survives the sphere intact:
+sphere-constrained Muon groks $S_5$ in $8/8$ seeds at median step $375$ (range
+$250$--$500$), against $3525$ for unconstrained Muon---a $9.4\times$ ratio
+(95\% CI $6.6$--$16.4\times$), the same ${\sim}10\times$
+acceleration as the $k=1$ cap---and still groks modular addition at step 100 (the
+second 50-step evaluation), the same step as unconstrained Muon. With the norm trajectory eliminated entirely (no growth and no
+contraction), the update geometry alone reproduces every Muon result. Second, the
+sphere does not rescue the other optimizers on $S_5$: sphere-AdamW fails $0/8$ and
+sphere-SGDM $0/8$, exactly as their unconstrained counterparts fail $0/5$, so their
+$S_5$ failure is not a norm-level problem that constraint could fix. Third, on modular
+addition---where AdamW does grok---the sphere accelerates AdamW ${\sim}3.4\times$
+(median $3200\to950$; 95\% CI $1.7$--$7.6\times$) and tightens SGDM's seed spread ($250\,[150,5300]\to150\,[150,350]$):
+for decay-route optimizers, part of the delay is time spent contracting the norm, and
+fixing the norm removes that wait, reproducing Omnigrok's constant-norm observation
+inside this testbed. Together with the cap, the dissociation is now two-sided: neither
+suppressing Muon's growth nor abolishing norm dynamics altogether touches the
+geometry-route advantage, while the same intervention shortcuts the decay-route clock.
+
+\subsection{The SGDM floor as an optimizer-family property}
+\label{sec:floor}
+
+Throughout the growth-route results, SGDM serves as a negative control (it fails to
+train $S_5$ and never locks a basin). Two lines of evidence establish that these
+failures are an optimizer-family floor, not evidence that the harder tasks
+require orthogonalization: a group ladder we run here (Fig.~\ref{fig:floor}), and
+a trainability-cliff grid reported in full in a companion manuscript and
+summarized below. First, a dataset-size-controlled
+group ladder: holding group order $|G|^2$ fixed within each rung and varying only
+commutator density, AdamW and Muon grok the entire abelian$\to$non-abelian ladder
+(rung-60 $\{Z_{60}, D_{30}, A_5\}$, rung-120 $\{Z_{120}, D_{60}, S_5\}$)---Muon at
+5/5 seeds on every rung, AdamW at 5/5 except $A_5$ (3/5)---while SGDM fails 0/5 on
+every rung, including the abelian $Z_{60}$. Orthogonalization is therefore not necessary for the non-abelian
+groups (both AdamW and Muon grok the whole abelian$\to$$S_5$ ladder); the only
+necessity is SGDM's wholesale floor, which
+already appears on the easiest abelian group, refuting a complexity-graded
+orthogonalization-necessity threshold once dataset size is de-confounded. Second,
+that floor has a sharp phase structure: on a Boolean degree task SGDM shows a
+$(\text{width}\times\text{lr})$ trainability cliff, with a critical width of $256$
+at learning rates $\leq0.03$ on the pure-degree-3 target, and the nested
+degree-staircase target shifting that edge ${\sim}8\times$ toward lower width. The
+cliff is SGDM-specific; the AdamW/Muon control shows none. We report this arm in
+full, with the complete width $\times$ lr grid and its criterion-robustness
+checks, in a companion manuscript; here it serves only as a bound on the
+optimizer-family floor---which is why we read SGDM's failures throughout as a
+floor, not a necessity threshold.
+
+\begin{figure}[htbp]
+\centering
+\figtikz[\linewidth]{A_normctl_timecourse}
+\caption{Training-time course of the norm-cap intervention on $S_5$
+(Section~\ref{sec:causal}); 8 seeds per condition. Dashed vertical lines mark the median
+grokking step for each condition.
+(a)~Hidden-norm trajectory (median; shaded band is the interquartile range): the uncapped run
+grows its norm steadily, while the capped run holds it near initialization scale.
+(b)~Fraction grokked (validation accuracy $\geq 0.95$), i.e.\ the empirical CDF of
+per-seed grok steps; the dotted line at $0.5$ marks where each curve crosses its median (the
+dashed grok-step line). The capped run generalizes roughly an order of magnitude sooner
+(median grok step $325$ vs $3525$), showing that suppressing the norm growth accelerates
+rather than blocks grokking.
+(c)~Per-seed timing (log scale): every capped seed groks before every
+uncapped seed's median, and the uncapped arm's long tail is what the cap removes.
+(d)~Validation trajectory (median; shaded band is the interquartile range): the
+capped run reaches the same terminal accuracy an order of magnitude sooner.}
+\label{fig:normctl_tc}
+\end{figure}
+
+The same dataset-size-controlled ladder also exposes the norm-growth signature as an
+optimizer-family discriminator across the abelian-to-non-abelian sequence
+(Fig.~\ref{fig:norm_disc}): on every group, Muon grows the hidden-weight norm
+(end-of-run over initialization norm, ratio ${>}1$), AdamW contracts it (ratio ${<}1$), and SGDM injects essentially no
+growth (ratio ${\approx}0$, consistent with its training floor). This is a
+family discriminator, not a complexity law: the Muon growth ratio does not
+increase monotonically with group difficulty, and AdamW is non-monotone (its ratio
+rises above one on $A_5$, the one rung where it groks only 3/5). The clean,
+robust reading is the three-way separation by optimizer, not a graded dependence on
+group structure.
+
+\begin{figure*}[htbp]
+\centering
+\figtikz[\linewidth]{A_floor}
+\caption{The SGDM optimizer floor (Section~\ref{sec:floor}); 5 seeds per cell
+on a dataset-size-controlled group ladder.
+(a)~Group ladder: Muon groks $5/5$ on every group, AdamW
+$5/5$ except $A_5$ ($3/5$), and SGDM $0/5$ throughout, including the abelian
+$Z_{60}$ control.
+(b)~Per-seed accuracy: the successful AdamW/Muon cells concentrate
+near accuracy 1 while SGDM remains near chance, exposing the $A_5$ partial cell
+rather than hiding it behind a median.
+(c)~Time-to-grok: among successful runs, Muon is faster on every group
+shared with AdamW; missing SGDM points denote failure within the 30{,}000-step
+budget.
+(d)~Decay-free control: plain Adam groks $5/5$ on
+$Z_{60},D_{30},Z_{120},D_{60}$ but $0/5$ on $A_5$ and $S_5$. Removing decay
+therefore leaves SGDM's wholesale family floor intact while introducing a
+structure-selective failure in the Adam family.}
+\label{fig:floor}
+\end{figure*}
+
+\paragraph{Plain Adam sits between the floor and AdamW: decay buys the non-abelian rungs.}
+A decay-free arm sharpens the family ordering into a spectrum. Running plain Adam
+(AdamW at $\lambda{=}0$; $d_{\mathrm{model}}{=}256$, $30$k steps, 5 seeds per group)
+on the same ladder, the abelian and dihedral rungs still grok---slowly (median grok
+step $1000$ on $Z_{120}$, $4300$ on $Z_{60}$, $12000$ on $D_{60}$, $22700$ on
+$D_{30}$, the last near the step budget)---but both non-abelian rungs fail
+completely: on $A_5$ and $S_5$ every seed memorizes without generalizing (train
+accuracy $1.00$, test $\leq0.09$, $0/5$ grok). The resulting ordering---SGDM fails
+the whole ladder; plain Adam groks only the abelian/dihedral rungs; AdamW with decay
+groks everything, slowly; Muon groks everything near-instantly, capped or not---says
+that weight decay is what buys the Adam family the non-abelian groups, whereas the
+orthogonalized route needs neither decay nor norm growth there. Within this spectrum
+the SGDM floor remains a family property, not a complexity threshold; the plain-Adam
+failure, by contrast, is structure-selective.
+
+\paragraph{Learning-rate crossing: no rate transplant closes the gap.}
+\label{sec:lrcross}
+The AdamW--Muon comparisons above are made at each optimizer's native
+operating point (AdamW hidden-matrix lr $10^{-3}$, Muon $2\times10^{-2}$),
+which leaves a rate-confound reading open: perhaps Muon's advantage is simply
+a more favorable learning rate that AdamW was denied. A 64-run crossing
+control tests this directly by running each optimizer at both hidden-matrix
+rates on both tasks (8 fresh seeds per cell, standard $d{=}128$/depth-2
+configuration and 20{,}000-step budget; Table~\ref{tab:lrcross}). On modular
+addition every cell groks $8/8$ and Muon leads at every pairing: at native
+rates the medians are $100$ vs $3375$ ($33.8\times$, 95\% CI $15.0$--$46.5$);
+holding the hidden rate fixed across optimizers, Muon leads $8.4\times$
+($3.9$--$11.6$) at $10^{-3}$ and $62.5\times$ ($28.5$--$107.5$) at
+$2\times10^{-2}$; and with both rates transplanted the lead is $15.6\times$
+($7.1$--$26.7$). Transplanting hurts both optimizers (Muon $100\to400$, AdamW
+$3375\to6250$)---no rate assignment in the swept pair closes the gap. On
+$S_5$ the crossing changes nothing for AdamW---$0/8$ at both rates within the
+budget, consistent with unconstrained AdamW's $0/5$ at this short-budget
+operating point (the longer-budget, dataset-size-controlled ladder above is
+where AdamW does grok $S_5$)---while Muon groks $8/8$ (median $2625$) only at
+its native rate and fails $0/8$ at $10^{-3}$. The honest reading cuts both
+ways: the acceleration is a property of the (optimizer, learning-rate-regime)
+pair---no learning-rate transplant rescues AdamW, so the advantage is not a
+tuning artifact, but Muon's advantage is likewise not ``orthogonalization at
+any rate,'' since on $S_5$ it requires its native regime.
+
+\begin{table}[htbp]
+\centering
+\caption{Learning-rate crossing control (Section~\ref{sec:lrcross}): each
+optimizer at its native and at the other optimizer's hidden-matrix learning
+rate, 8 fresh seeds per cell, standard configuration, 20{,}000-step budget.
+Median grok step is over grokked seeds; ratio CIs are given in the text and
+Table~\ref{tab:ci}.}
+\label{tab:lrcross}
+\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Task & Optimizer & Hidden lr & Grok fraction & Grok step (med.) \\
+\midrule
+Mod-add & Muon  & $2\times10^{-2}$ (native) & 8/8 & 100 \\
+Mod-add & Muon  & $10^{-3}$ (crossed)       & 8/8 & 400 \\
+Mod-add & AdamW & $10^{-3}$ (native)        & 8/8 & 3375 \\
+Mod-add & AdamW & $2\times10^{-2}$ (crossed)& 8/8 & 6250 \\
+$S_5$   & Muon  & $2\times10^{-2}$ (native) & 8/8 & 2625 \\
+$S_5$   & Muon  & $10^{-3}$ (crossed)       & 0/8 & --- \\
+$S_5$   & AdamW & $10^{-3}$ (native)        & 0/8 & --- \\
+$S_5$   & AdamW & $2\times10^{-2}$ (crossed)& 0/8 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Boundary phenomena}
+
+The remaining phenomena bound the growth-route account rather than exemplifying it;
+each is measured against the same AdamW and SGDM controls.
+
+\paragraph{Later basin commitment.}\label{sec:lmc}
+In a spawn-fork linear-mode-connectivity experiment, at spawn step 8000 Muon's
+inter-child loss barrier is uniformly high (all 5 seeds $>2.1$, median 3.18; 0/5
+basins locked) while AdamW's cluster low (median 0.56; 2/5 locked)---a
+distributional difference in basin commitment, not a clean ``$4{\times}$-later
+/ $k^\star$'' claim (where $k^\star$ denotes the basin-merge threshold spawn step,
+i.e.\ the first step at which the inter-child loss barrier drops below 0.1; this
+did not survive five seeds; both children grok). Consistent with the
+growth-route picture, weights keep growing and the basin appears to commit later in this
+small train-pool audit. SGDM never learns
+the task, so its low barriers are vacuous and excluded (its nominal 1/5 lock is
+vacuous for the same reason). We report this as
+underpowered ($n=5$; Fisher exact on lock-by-8000 gives $p\approx0.22$, directional)
+and measured on the train pool---a held-out-basin version is a natural reviewer
+request and is not yet run (Fig.~\ref{fig:lmc}).
+
+\begin{figure}[htbp]
+\centering
+\figtikz[\linewidth]{A_norm_discriminator}
+\caption{Hidden-weight norm-growth ratio across the dataset-size-controlled group
+ladder (Section~\ref{sec:floor}); 5 seeds per cell, with run-end norm divided by
+initial norm (dashed reference at 1).
+(a)~Ladder norm growth: Muon grows on every group ($1.2$--$1.9$), AdamW mostly
+contracts ($0.7$--$0.8$, with the $A_5$ exception), and non-grokked SGDM runs
+remain near zero ($\leq0.01$). This ratio is not comparable to the
+grokking-window ratio in Section~\ref{sec:causal}, which uses a different arm
+and denominator.
+(b)~Per-seed distribution: the three-way separation holds behind the medians
+and is not driven by one seed.
+(c)~Optimizer-family control: AdamW and Muon grok the whole ladder (AdamW $3/5$
+only on $A_5$), whereas SGDM remains at $0/5$ on every group, including
+$Z_{60}$.
+(d)~Non-monotonicity sensitivity: Muon's median ratio is not graded by group
+complexity (Spearman $\rho=-0.26$, $p=0.62$), and AdamW exceeds 1 only on the
+partial-success $A_5$ cell; the ratio is a family discriminator, not a
+complexity law.}
+\label{fig:norm_disc}
+\end{figure}
+
+\paragraph{Massive activations track effective step size.}\label{sec:sink}
+At the sink arm's own operating point (AdamW at lr $10^{-3}$, Muon at
+hidden-matrix lr $2\times10^{-2}$---the headline rates of
+Table~\ref{tab:hparams}; the $3\times10^{-3}$/$5\times10^{-3}$ points below
+belong to this section's learning-rate control sweep), Muon's massive-activation spike is large
+(4787 vs.\ AdamW 245 vs.\ SGDM 15), but the learning-rate arm refutes an
+optimizer-family ``amplification'': the spike magnitude is monotone in effective
+step size within each family and the families overlap (AdamW @ lr $3\times
+10^{-3}$ $\approx1440$; Muon @ lr $5\times10^{-3}$ $\approx195$, below AdamW's
+stable spike). The signature is not ``orthogonalization amplifies'' but rather that
+Muon trains stably at step sizes whose spikes sit 1--2 orders above AdamW's
+stable range---an operating-point statement, not a per-update amplification. A
+sandwich-norm architecture lever collapses the spike regardless of optimizer. This
+bounds the ``orthogonalization amplifies activations'' account rather than
+instantiating the route (Fig.~\ref{fig:sink}). At $n=3$ the peak activation also rises with depth within
+each optimizer family (Fig.~\ref{fig:spike_depth}, an existence/spread check, not a
+depth-scaling rate): from one to three layers the family ordering is preserved (Muon $\gg$ AdamW $\gg$ SGDM).
+
+\begin{figure}[htbp]
+\centering
+\figtikz[0.85\linewidth]{A_lmc}
+\caption{Linear-mode-connectivity spawn-fork audit (Section~\ref{sec:lmc});
+$S_5$ task and train-pool barriers.
+(a)~Barrier distribution: independently perturbed children remain
+more frequently connected under AdamW than Muon through the audited spawn
+window; the horizontal threshold is 0.1.
+(b)~Optimizer comparison: by spawn 8000, AdamW locks in $2/5$
+seeds and Muon in $0/5$ (one-sided Fisher $p=0.22$); SGDM's $1/5$ is vacuous
+because SGDM does not learn the task.
+(c)~Spawn extension: three Muon traces are plotted (spawn to 32{,}000); eight
+completed extension records (with one incomplete record retained as incomplete)
+preserve high/censored Muon barriers through the longer spawn window, but do
+not establish a finite lock-time ratio.
+(d)~n=5 robustness audit: the combined short audit observes a
+Muon $k^\star$ in $0/5$ runs; the exact 95\% upper bound on the unseen success
+rate is 0.451. The result is distributional and compute-bounded, not an
+order-of-magnitude timing claim.}
+\label{fig:lmc}
+\end{figure}
+
+\paragraph{Extended (not cured) plasticity.}\label{sec:plasticity}
+Under continual training, Muon is a plasticity extender, not a cure: it
+pushes the censor onset (the first task index that fails to fit within the step
+budget) from 7--34 to 75--81 (out of 100) and shallows the
+loss-of-plasticity slope 6--12$\times$, but plasticity is eventually lost. The
+dissociation: the weight spectrum stays preserved (0.91--0.98) while feature rank
+collapses to zero---separating the weight-spectrum-regularization mechanism from the
+operative one. This is a mechanism dissociation (the plasticity benefit has
+no growth signature and runs through feature rank), so it bounds the route's
+scope rather than instancing it (Fig.~\ref{fig:plasticity}).
+
+\begin{figure*}[htbp]
+\centering
+\figtikz[\linewidth]{A_sink}
+\caption{Attention-sink and massive-activation controls
+(Section~\ref{sec:sink}).
+(a)~Sink trajectories: median sink ratio over training with
+interquartile bands compares AdamW, Muon, and SGDM at the pre-norm operating
+point.
+(b)~Seed variation: formation steps are shown separately for every
+seed; explicit ``not formed'' markers distinguish censoring from missing data.
+(c)~Learning-rate control: final spike magnitude is monotone with the
+optimizer's effective step size and the optimizer ranges overlap, refuting a
+per-update orthogonalization-amplification reading.
+(d)~Depth localization: the persisted one- versus three-layer
+factorial shows where the activation concentrates; the comparison is an
+existence/spread check with $n=3$ per cell, not a depth-scaling law.}
+\label{fig:sink}
+\end{figure*}
+
+\paragraph{Warm-start vs cold-start bridge (P5).} A bounded bridge arm separates
+continual-state loss from intrinsic late-task difficulty. On the same projection-shift task
+family, cold-start controls (fresh model per task) fit all 30/30 tasks quickly for every
+optimizer, while the warm-start continual arm censors AdamW/SGDM late tasks and leaves Muon
+as the only optimizer fitting all 30/30 tasks. Muon extends plasticity in
+the continual state, but it is still slower than its own cold-start control, so it is not a
+plasticity cure (Table~\ref{tab:p5bridge}, Fig.~\ref{fig:p5bridge}; both in
+Appendix~\ref{app:robustness}).
+
+\paragraph{Benchmark boundary (permuted-MNIST).} The extend-plasticity result above is on
+a synthetic shifting-projection arm. On the recognized permuted-MNIST loss-of-plasticity
+benchmark \citep{dohare2024plasticity} it does not transfer (Fig.~\ref{fig:plast_scale}):
+across 150 tasks Muon loses plasticity faster than AdamW at every learning rate
+(fit-speed slowdown $4.0$--$6.1\times$ for Muon at lr $0.005$--$0.02$ versus $2.2\times$ for
+AdamW and SGDM). A fresh seed-extension check raises the low-lr Muon controls to five
+seeds each and preserves the boundary: the proposed feature-rank mechanism does not
+hold---at well-scaled learning rates Muon keeps feature effective rank high ($224$--$232$
+vs AdamW's $59$) with almost no dead units, yet still loses plasticity fastest
+(the full per-task feature-rank trajectory is shown in Fig.~\ref{fig:featrank}). (The catastrophic feature
+collapse at lr $0.02$---rank $7$, $95\%$ dead units---is a separate over-step artifact,
+ruled out by the learning-rate and seed-extension controls.) We therefore scope the synthetic extend-plasticity
+finding to that arm; it does not generalize to permuted-MNIST, where if anything Muon is
+worse. This bounds the route's reach: the orthogonalized update's continual-learning
+behaviour is benchmark-dependent, not a universal plasticity benefit
+(Fig.~\ref{fig:plast_scale}, Appendix~\ref{app:robustness}).
+
+\paragraph{Which part of the update geometry matters, and where.}\label{sec:geom}
+The cap and sphere arms remove the norm trajectory but leave Muon's orthogonalized
+update intact, so they do not identify which feature of that update carries the
+effect. A five-arm control substitutes the update geometry directly while holding
+the parameter set and every other configuration field fixed (50 runs, 5 seeds per
+cell, both tasks): exact-SVD spectrum flattening (a positive control that should
+behave like Newton--Schulz), energy-matched random semi-orthogonal updates
+(same per-step Frobenius energy, no gradient information), spectrum-inverted
+updates (gradient directions retained, singular values inverted), plus Muon and
+AdamW references. On $S_5$ the arms separate sharply. Spectrum flattening
+reproduces Muon (5/5 seeds grok, median step $3800$ vs $3950$, a ratio of
+$0.96\times$), while the energy-matched random arm never groks ($0/5$, final test
+accuracy $0.165$), the spectrum-inverted arm never groks ($0/5$, accuracy
+$0.055$), and AdamW never groks ($0/5$). On modular addition every arm groks
+$5/5$ and only the speed changes: Muon and spectrum flattening at step $100$,
+spectrum-inverted at $2950$, AdamW at $3450$, and the random arm slowest at
+$5700$. The reading is task-dependent: on $S_5$ the spectrum-flattening geometry
+is necessary---neither energy injection nor gradient alignment with an inverted
+spectrum groks at all---while on modular addition every structured update reaches
+the solution and the geometry only sets the speed. This is the scope behind the
+claim that the optimizer-dependence reduces to update geometry: it is a statement
+about the task where the optimizer choice decides whether grokking happens, not a
+claim that geometry governs speed everywhere. Because all five arms run through
+the Muon code path, the per-run \texttt{\_meta} logs record
+\texttt{optimizer:muon} throughout; the arm assignment for each run is recorded in
+the batch \texttt{MANIFEST} as a per-run name-to-arm mapping.
+
+\subsection{Synthesis: growth-route signatures and two bounding dissociations}
+\label{sec:synthesis}
+
+The descriptive non-contraction signature has three components, all under the
+double-route frame of Section~\ref{sec:routes}: hidden-norm growth and
+representation rotation (Section~\ref{sec:causal}), together with later basin
+commitment (Section~\ref{sec:lmc}). The remaining two phenomena in the bounding
+subsection are deliberately not route signatures: massive activations track the
+operating point / effective step size, and plasticity is a feature-rank dissociation
+on the synthetic arm, which does not transfer to permuted-MNIST. These instead bound
+competing accounts (refuting ``orthogonalization
+amplifies activations'' and, on the synthetic arm, ``weight-spectrum regularization
+explains plasticity''---while the permuted-MNIST boundary shows even that benefit is
+not universal). We do not claim the route is the unique cause of
+generalization, and the manipulated-cause arm (Section~\ref{sec:causal}) shows the
+growth is not necessary (and that its removal accelerates). The signature is therefore reported as a reproducible,
+descriptive cross-phenomenon signature that locates the optimizer-dependence of the
+grokking delay in the update geometry rather than in weight size, with the
+geometry control of Section~\ref{sec:geom} narrowing that to the spectrum-flattening
+component on $S_5$ (the signatures and dissociations are summarized in
+Table~\ref{tab:route-signatures} and Fig.~\ref{fig:synth};
+Table~\ref{tab:evidence-ledger} collects each claim with its evidence and scope boundary).
+
+\begin{table}[htbp]
+\centering
+\caption{Growth-route signatures by optimizer across three phenomena
+(Section~\ref{sec:results}). All values are medians over $n=5$ seeds at
+the standard operating point; ``---'' = optimizer does not grok/train
+at this operating point (on the de-confounded rung-120 ladder of
+Section~\ref{sec:floor}, AdamW does grok $S_5$). $S_5$ norm ratio:
+memorization-to-grokking growth $\|W_{\mathrm{hidden}}\|(T_{\mathrm{grok}})
+/ \|W_{\mathrm{hidden}}\|(T_{\mathrm{mem}})$ ($n=5$; recomputed from the
+archived route-diagnostic logs---a different quantity, on a different arm, from
+the end-of-run/initialization ratio of Fig.~\ref{fig:norm_disc}).
+Sink ratio: fraction of attention-head outputs dominated by one token,
+pre-norm architecture ($n=5$, mean$\pm$SD). Basin locked by step 8000: out of $n=5$ seeds.
+Censor onset: first task
+index at which fitting fails in the continual-learning stream, median
+across label-refit and projection-shift arms ($n=5$).}
+\label{tab:route-signatures}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Optimizer & $S_5$ norm ratio & Sink ratio (pre-norm) & Basin locked / 5 & Censor onset (tasks) \\
+\midrule
+Muon  & $6.5 \pm 0.7$    & $0.926 \pm 0.049$ & 0 / 5 & 75--81 \\
+AdamW & --- (0/5 grok)   & $0.963 \pm 0.052$ & 2 / 5 & 10--34 \\
+SGDM  & --- (0/5 grok)   & $0.301 \pm 0.157$ & 1 / 5$^\dagger$ & 7--22 \\
+\bottomrule
+\multicolumn{5}{l}{$^\dagger$ SGDM does not learn $S_5$; its single basin lock is vacuous (LMC barriers are low because the model never generalises).}\\
+\end{tabular}}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Evidence ledger for the growth-route story (Section~\ref{sec:synthesis}). Each row states the supported
+claim, the diagnostic used to test it, the amount of evidence, and the boundary that
+prevents over-claiming.}
+\label{tab:evidence-ledger}
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.21\linewidth}>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.25\linewidth}@{}}
+\toprule
+Claim & Diagnostic & Evidence & Boundary \\
+\midrule
+Two descriptive routes & Hidden-norm growth, rotation, and delayed basin commitment & Route and LMC probes across optimizer arms & Descriptive signature; norm capping shows growth is not necessary \\
+LMC densification remains compute-bounded & Short extra Muon fork checks at spawn 0/50/100 & Five completed isolated seeds (combined audits), $k^\star$ absent in $0/5$ & Not an $n=15$ densification; preserves the underpowered-LMC limitation \\
+$S_5$ route survives beyond abelian groups & Non-abelian growth signature and norm-cap intervention & $S_5$ route seeds and causal cap controls & Does not imply orthogonalization is necessary; AdamW groks $S_5$ too \\
+Cap acceleration generalizes; Muon norm scaling matches Remark~\ref{prop:growthfloor} & Dose-response on $A_5$/$D_{60}$/depth-4; width$\times$depth and modulus grids; defloored cadence-5 arm; $\|W\|$-vs-$\lambda$ fit & Preserve $+$ accelerate ($1.76\times$ on $A_5$; $2.50\times$ on $D_{60}$ and $1.18\times$ on mod-add, both defloored, both CIs excluding 1.0; $15.8$--$38\times$ on the $60/60$ width$\times$depth grid, largest at depth 4; $100\%$ survival at $p{=}97$--$337$) & Direction invariant, magnitude task-dependent; scaling sign/monotonicity only \\
+Activations are an operating-point effect & Sink-triad and effective-step-size controls & Norm/activation controls across sink settings & Refutes one mechanism, not all activation-mediated accounts \\
+Plasticity benefit is task-dependent & Synthetic bridge plus permuted-MNIST boundary & Warm/cold controls and low-lr seed extension & Synthetic-arm extender only; permuted-MNIST reverses the benefit \\
+SGDM is a family floor & Dataset-size controlled group ladder here; width $\times$ lr cliff reported in the companion manuscript & 5-seed ladder grid (this paper); companion-reported cliff cited, not re-analyzed & Floor is an optimizer regime, not a task-complexity necessity threshold \\
+Effect localizes to spectrum flattening, task-dependently & Five-arm update-geometry substitution (specflat / energy-matched random / spectrum-inverted / Muon / AdamW) & 50 runs (5 seeds/cell, both tasks): $S_5$ specflat $5/5$ at $3800$ vs Muon $3950$, random $0/5$, inverted $0/5$, AdamW $0/5$; mod-add all arms $5/5$ & Necessity claim is $S_5$-only; on modular addition geometry sets speed, not success \\
+Advantage is not a rate artifact & Hidden-lr crossing (both optimizers at both rates, both tasks) and defloored fine-cadence dose ladder & 64-run crossing grid (8 seeds/cell); 40-run cadence-5 ladder incl.\ new $k{=}4$ point, $10.32\times$ reproducing the $10.8\times$ headline & Scoped to the swept rate pair; on $S_5$ Muon needs its native regime (0/8 at $10^{-3}$) \\
+Cap result is grokking-regime-scoped & Real-text boundary arm: byte-LMs 10M (TinyStories) / 57M (FineWeb-Edu), cap $k\in\{1,2\}$ $+$ sphere vs.\ uncapped, matched tokens & 27 runs (3 seeds/arm): dose-dependent loss cost, $+0.08$--$0.09$ nats at $k{=}2$, $+0.19$--$0.21$ at $k{=}1$, 3/3 seeds in both families; sphere $\approx$ cap $k{=}1$ & Adverse-direction scoping, not contradiction: grokking claims untouched; $n{=}3$, one decay setting, $\le$57M / $\le$0.6B tokens \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\figtikz[0.7\linewidth]{A_plasticity}
+\caption{Plasticity dissociation scatter (Section~\ref{sec:plasticity}).
+Each point is one optimizer $\times$ arm combination; point size encodes the
+number of fittable tasks; triangles are label-refit arms, circles are
+projection-shift arms.
+$x$-axis: weight effective rank retention (last checkpoint / first checkpoint,
+range 0.85--1.02); $y$-axis: feature effective rank retention (range
+$-0.02$--$0.07$).
+(a)~Retention dissociation: under Muon (orange), weight spectrum is preserved
+(0.91--0.98) while feature rank collapses to near zero, dissociating the two
+mechanisms and showing that the plasticity benefit does not run through
+weight-spectrum regularization.
+(b)~Retention gap (weight minus feature retention) per optimizer: the
+dissociation as a per-arm quantity rather than a scatter position.
+(c)~Task support: fittable-task counts per arm show the cells the dissociation
+actually covers; small cells are read as existence, not magnitude.
+(d)~Permuted-MNIST boundary: endpoint feature rank on the 150-task
+stream. The synthetic-arm plasticity ordering does not transfer to this
+benchmark---default-rate Muon collapses to near zero, while a well-scaled
+learning rate preserves rank, bounding the claim's scope.}
+\label{fig:plasticity}
+
+\end{figure}
+
+\section{Related work}
+\label{sec:related}
+\begin{figure*}[htbp]
+\centering
+\figtikz[\linewidth]{A_synth}
+\caption{Synthesis of the growth-route signature and its bounding diagnostics
+(Section~\ref{sec:synthesis}).
+(a)~Growth signature: on $S_5$, Muon shows a
+grok/init hidden-norm ratio of $6.5\pm0.7$, whereas AdamW and
+SGDM contribute no grokked trajectory at this operating point.
+(b)~Causal cap: tightening the ceiling from $k=\infty$ to $k=1$
+changes the median Muon grok step from $3525$ to $325$ while preserving $8/8$
+seeds, showing that growth is not necessary.
+(c)~Basin lock: lock-by-8000 is $2/5$ for AdamW and $0/5$ for Muon;
+this is a directional, underpowered distributional result, not a finite
+lock-time ratio.
+(d)~Diagnostic boundary: sink-ratio bars (AdamW $0.963$, Muon $0.926$,
+SGDM $0.301$) sit beside Muon plasticity retention (weight spectrum $0.912$
+vs feature rank $0.002$); this panel draws those two synthetic-arm bounds,
+not permuted-MNIST.}
+\label{fig:synth}
+\end{figure*}
+
+\paragraph{Grokking: mechanisms and weight norms.}
+Grokking was introduced by \citet{power2022grokking} on modular arithmetic tasks.
+\citet{nanda2023progress} reverse-engineered the generalizing algorithm in modular-addition
+transformers via mechanistic interpretability, identifying discrete Fourier-space circuits---whose eventual dominance under weight decay is explained by circuit-efficiency competition \citep{varma2023circuiteff}---
+and continuous ``excluded loss'' progress measures that underlie the sharp phase
+transition. Omnigrok \citep{liu2023omnigrok} demonstrated that constraining weight
+norms (via an init-scale sphere) accelerates generalization across a range of tasks,
+placing norm control at the center of grokking dynamics. Later work connects
+the delay to a norm-separation law \citep{khanh2026normseparation} and
+studies interventions that change the delay via entropy collapse
+\citep{khanh2026entropycollapse}---the latter delays grokking, in contrast to our
+downward-only cap that accelerates it.  Norm-matched controls and weight-decay regime
+diagnostics \citep{verma2026weightdecay} further pin the delay to the rate at which
+weight decay contracts the norm. Oneto et al.\ \citep{neucom2026grokking} reconcile
+grokking with statistical learning theory analytically, bounding generalization
+through norm- and stability-based quantities and identifying the weight norm as the
+controlling axis. Our result supplies the complementary causal-interventional leg on
+that same axis: where their bound is descriptive of the norm's role, our
+downward-only cap manipulates it and shows the growth is not the operative signal.
+The balance-norm scaling of Remark~\ref{prop:growthfloor}
+(Eq.~\ref{eq:balance-norm}) is the optimizer-side counterpart of the norm term in
+their bound.
+
+\paragraph{Muon and orthogonalized/spectral optimizers.}
+Muon orthogonalizes each update via Newton--Schulz iteration; its theoretical
+foundation is modular duality \citep{bernstein2024modular}, which constructs
+operator-norm-based duality maps for each layer type.
+\citet{tveit2025muongrokking} documented Muon's grokking acceleration on a bare
+hyperparameter grid; our work adds the cross-phenomenon mechanism and the causal
+norm-cap intervention.  The flat/uniform-spectrum dynamics account
+\citep{beneventano2026spectraldynamics} and the skeptical ``alignment suffices''
+result \citep{shumaylov2026muonnotspecial} offer competing theoretical interpretations
+we do not adjudicate; we provide empirical signatures instead.
+Spectral flattening \citep{nguyen2026spectralflattening} and simplicity bias
+\citep{dragutinovic2026usemuon} round out the mechanistic picture of why Muon's
+equalized learning rates stabilize training.
+
+\paragraph{Positioning the growth route against published Muon--grokking accounts.}
+Four prior lines directly intersect our findings; we state where we agree,
+extend, or diverge.
+
+\emph{vs.\ \citet{tveit2025muongrokking}.}
+Tveit et al.\ document Muon's grokking acceleration (${\approx}1.5\times$ across seven
+modular-arithmetic tasks) but report it at the optimizer level without an interventional
+test of the cause. Our causal norm-cap supplies that test: suppressing growth preserves
+grokking 8/8 and accelerates it ${\sim}10{\times}$ on $S_5$, establishing that the growth
+is not necessary---a byproduct. Their controlled-swap evidence rests on this single study (larger accelerations
+elsewhere are gradient-filtering, a distinct category; no onset measurement exists for
+second-order optimizers such as Shampoo/SOAP), so our lever is a separate one rather than a
+point in a meta-distribution.
+
+\emph{vs.\ \citet{beneventano2026spectraldynamics} and
+\citet{shumaylov2026muonnotspecial}.}
+Beneventano et al.\ attribute Muon's behaviour to flat-spectrum dynamics; Shumaylov et al.\
+argue alignment and step-size optimality suffice. We do not adjudicate. Our
+massive-activation result (Section~\ref{sec:sink}), where spike magnitude tracks effective
+step size rather than orthogonalization, aligns with the latter's deflationary stance, but
+the growth route and causal cap are a separable signature neither account predicts.
+
+\emph{vs.\ \citet{kumar2024lazytorich}.}
+Kumar et al.\ frame grokking as a lazy-to-rich transition driven by regularization. We are
+compatible: orthogonalized updates inject near-uniform-singular-value steps that push the
+spectrum toward high effective rank (Remark~\ref{prop:growthfloor}; $111/128$ at
+grokking on $S_5$). Our addition is the norm-route---growth driven by each step's fixed
+Frobenius energy, with the causal cap showing the growth itself is non-causal---a
+mechanistic layer on their picture, not a competitor.
+
+\emph{vs.\ \citet{liu2023omnigrok}.}
+Omnigrok constrains weight norms to a symmetric sphere and speeds grokking; our
+intervention is a downward-only ceiling on a Muon run already on the growth route. The
+direction agrees (smaller norms grok faster) but the mechanism differs: their sphere is a
+constant constraint from initialization, whereas our cap suppresses only upward drift.
+Norm-matched controls that delay grokking \citep{khanh2026entropycollapse} show norm level
+alone is insufficient, so the operative signal is something the cap leaves intact rather
+than norm size.
+
+\paragraph{Implicit bias, weight decay, and norm growth.}
+Decoupled weight decay \citep{loshchilov2019adamw} --- whose late-phase implicit bias provably induces grokking transitions \citep{lyu2024dichotomy} --- separates the $\ell_2$-penalty
+contraction from adaptive gradient scaling, making AdamW's norm-contracting behaviour
+qualitatively distinct from Muon's fixed-energy-injection regime.  The rotational
+equilibrium framework \citep{kosson2023rotational} characterizes how weight decay
+balances the magnitude and angular update of each neuron, providing a per-neuron
+implicit-bias lens complementary to our population-level norm-growth signature.
+Ortega and Masegosa \citep{neucom2026sgdbias} frame optimizer implicit bias via
+large-deviation theory---the analytic register our growth-floor argument complements
+empirically. Edge-of-Stability dynamics
+\citep{cohen2021eos,cohen2022adaptiveeos} show that adaptive optimizers also
+operate near the sharpness threshold $2/\eta$, relevant background for the
+operating-point interpretation of Muon's large effective step sizes
+(Section~\ref{sec:sink}).
+
+\paragraph{Linear mode connectivity and basin geometry.}
+\citet{frankle2020lmc} established that networks optimized from the same initialization
+under different SGD noise converge to linearly connected minima from early in training---a
+property we use as a basin-commitment probe.  \citet{entezari2022permutation} conjecture
+that accounting for permutation symmetries removes loss barriers between independently
+trained networks, motivating our spawn-fork protocol that keeps the parent network
+fixed to control for permutation misalignment. The train-pool LMC result
+(Section~\ref{sec:lmc}) is reported as underpowered; held-out-basin and
+permutation-aligned versions are natural next steps.
+
+\paragraph{Massive activations and attention sinks.}
+\citet{sun2024massive} characterize massive activations---a small number of dimensions
+with values ${\sim}10^5$ times the median---as implicit bias terms in large LLMs
+whose location is fixed regardless of input; subsequent work shows such sinks emerge as a function of the optimization configuration rather than model scale \citep{gu2025attnsink}. Our Section~\ref{sec:sink} reports a
+qualitatively similar spike in our 420k-parameter toy transformer; the key
+distinction is that on our testbed the spike tracks effective step size
+(an operating-point property) rather than model scale, and a sandwich-norm
+architecture lever eliminates it.
+
+\paragraph{Loss of plasticity.}
+\citet{dohare2024plasticity} established the permuted-MNIST benchmark for loss of
+plasticity in continual learning. Our Section~\ref{sec:plasticity} reproduces and
+extends the benchmark: on the standard task Muon loses plasticity faster
+than AdamW, bounding the scope of the synthetic-arm extension result.  The
+benchmark boundary is a deliberate scope statement, not a contradiction
+of the synthetic result.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{What the growth route is and is not.}
+The central empirical finding is that Muon generalizes along a non-contraction
+route: weights grow monotonically, representations rotate, and the loss basin stays
+open longer, in sharp contrast to AdamW's decay-driven contraction.
+Remark~\ref{prop:growthfloor} gives this a heuristic floor: the fixed
+per-step Frobenius energy of an orthogonalized update must accumulate monotonically
+when weight decay is small, so norm growth is structurally forced by the optimizer's
+geometry \citep{bernstein2024modular}.  The norm-cap intervention then answers the
+necessity question directly (Section~\ref{sec:causal}).  This
+distinguishes our result from Omnigrok \citep{liu2023omnigrok}, whose symmetric
+constant-norm sphere prevents growth from the start and whose inference about
+norm control is correlational rather than interventional.
+
+\paragraph{What the cap does and does not license (causal preemption).}
+A one-sided cap shows that fast generalization proceeds when the growth is
+suppressed; by itself this does not prove the growth is inert on the natural,
+uncapped trajectory---an intervention can in principle preempt one mechanism by
+enabling another. Three observations close most of that gap. First, the
+dose-response is monotone: intermediate ceilings interpolate smoothly between
+the uncapped and $k=1$ endpoints (Table~\ref{tab:normctl}), and the defloored
+fresh-seed replication extends the monotone ladder with a new $k{=}4$ point
+($3.3\times\to6.6\times\to10.3\times$; Section~\ref{sec:causal})---which a
+switch to a qualitatively different mechanism at some ceiling would not
+predict. Second, the
+two-sided constant-norm sphere control removes the norm trajectory
+entirely---no growth, no contraction, norm pinned at initialization for every
+optimizer---and Muon's advantage survives unchanged while AdamW and SGDM are
+not rescued on $S_5$; whatever carries the optimizer difference, it is not the
+norm dynamics that these interventions manipulate. Third, the acceleration
+under the cap is exactly the direction the norm-clock reading of the uncapped
+dynamics predicts, rather than an anomaly requiring a new mechanism. We
+therefore state the conclusion as a necessity claim---the growth is not
+necessary, and its removal accelerates---strengthened by the sphere's
+elimination result, not as a claim that the growth plays no role of any kind on
+the natural trajectory.
+
+\paragraph{Connecting to weight decay and implicit bias.}
+AdamW's contraction route is mechanically explained by decoupled weight decay
+\citep{loshchilov2019adamw}: the $\lambda\|W\|$ shrinkage term dominates unless
+the gradient is large enough to overcome it, driving the weight norm down.  Muon
+has the same decay term, but its fixed-energy-injection dynamic
+(Eq.~\ref{eq:frobenius-floor}) more than offsets it at the learning rates swept here,
+producing the falling equilibrium norm of Eq.~\ref{eq:balance-norm} (idealized
+$\propto 1/\lambda$; the measured exponent is ${\approx}-0.5$, quantitatively
+closer to the rotational-equilibrium prediction $\|W^*\|\propto(\eta/\lambda)^{1/2}$,
+Section~\ref{sec:causal}).
+The rotational equilibrium framework \citep{kosson2023rotational}, and more broadly the reading of weight decay as a controller of effective optimization dynamics rather than a regularizer \citep{dangelo2024wd}, provides a
+complementary per-neuron view: at steady state weight decay balances the angular
+and radial update components; under Muon the fixed-magnitude semi-orthogonal increment
+shifts that equilibrium point outward, placing our route signature
+within a coherent implicit-bias picture---and, on our measurements, supplying
+the better quantitative fit to the equilibrium-norm exponent.
+
+\paragraph{Relation to grokking mechanisms.}
+The mechanistic interpretability of grokking on modular arithmetic
+\citep{nanda2023progress} shows that the generalizing algorithm uses discrete Fourier
+circuits and that progress toward it is continuous, though hidden.  Our findings
+neither confirm nor refute that circuit account---we observe that Muon reaches the
+generalized solution faster and with larger norms, not that it discovers a different
+circuit.  Two separate comparisons are in play here. Across optimizers, Muon reaches
+the circuit faster than AdamW while carrying larger norms; within Muon, the norm-cap
+result shows that smaller norms after grokking (12.5 vs.\ 309.6 for seed 0) go with
+faster, not slower, grokking. A clock interpretation reconciles them: weight decay
+needs less time to bring a capped norm down to the generalizing threshold, analogous
+to Omnigrok's sphere constraint, so it is the update geometry rather than the final
+norm size that sets the speed. The two-sided sphere control (Section~\ref{sec:causal})
+closes this loop directly: with every optimizer pinned to the same constant norm at
+every step, Muon keeps its full advantage while AdamW's mod-add clock shortens by the
+predicted contraction-wait, and the $S_5$ failures of AdamW and SGDM persist---the
+clock reading survives a complete removal of norm dynamics.
+
+\paragraph{Scope of the plasticity and activation results.}
+The plasticity finding illustrates the importance of benchmark scope
+\citep{dohare2024plasticity}: Muon extends plasticity on a synthetic shifting-projection
+arm but loses it faster on permuted-MNIST.  The feature-rank dissociation (weight
+spectrum preserved, feature rank collapses) is an honest mechanism diagnostic---it
+shows that the plasticity benefit does not run through weight-spectrum regularization
+on the synthetic arm, but this mechanism may not be operative on permuted-MNIST at
+all.  Similarly, the massive-activation result \citep{sun2024massive} is
+scale-dependent: at 420k parameters the spike is an operating-point artifact rather
+than a model-scale emergent property, and it disappears under a sandwich-norm
+architecture.  Both bounding dissociations sharpen the scope of the growth-route
+claim rather than contradicting it.
+
+\paragraph{Real-text pretraining boundary.}
+\label{sec:realtext}
+To locate the boundary of the cap result outside the grokking regime, we ran the
+same intervention on ordinary byte-level language-model pretraining: decoder-only
+transformers of 10.0M parameters on TinyStories \citep{eldan2023tinystories}
+($0.30$B tokens) and 57.2M parameters on a FineWeb-Edu sample
+\citep{penedo2024fineweb} ($0.60$B tokens), arms \{uncapped Muon, AdamW,
+capped Muon $k\in\{1,2\}$\} plus the constant-norm sphere at 10M, 3 seeds per arm
+(hybrid split with Muon hidden-matrix rate $10^{-2}$ and AdamW rate
+$3\times10^{-4}$ from a short probe, weight decay $0.01$; a config audit
+confirms the arms within each family differ only in the norm constraint; the two
+families are analyzed separately throughout). Precision here is bf16 autocast
+over fp32 master parameters, not a pure-bf16 parameter path, so the optimizer
+state and the decoupled decay multiplier are applied in fp32 and the nominal
+$\lambda{=}0.01$ takes effect as written. The direction inverts
+(Table~\ref{tab:realtext}): at matched token counts, capping Muon's norm growth
+costs validation loss dose-dependently. At 10M the median final cross-entropy
+rises from $0.582$ (uncapped) to $0.663$ at $k{=}2$ and $0.768$ at $k{=}1$; at
+57M from $0.955$ to $1.045$ and $1.162$---a paired per-seed cost of
+$+0.08$--$0.09$ nats at $k{=}2$ and $+0.19$--$0.21$ at $k{=}1$, in 3/3 seeds and
+nearly identical across the two families. The cap binds essentially throughout
+($k{=}1$ from initialization, $k{=}2$ within the first ${\sim}5\%$ of the token
+budget), while uncapped Muon grows its hidden norm to $6.4\times$/$5.0\times$
+initialization by the end of the run. The sphere control at 10M lands on the
+$k{=}1$ cap, not on uncapped Muon (median $0.767$ vs.\ $0.768$; per-seed gaps
+$<0.005$ nats): on real text there is no one-sided-vs-two-sided dissociation
+---any constraint holding the hidden norm at initialization scale pays the same
+price. (A preliminary pooled read had suggested the sphere matched uncapped
+Muon; that was an artifact of pooling the two families' different loss scales
+and is refuted by the per-family analysis.) Muon's early-phase advantage does
+transfer: at matched tokens Muon leads AdamW from the first evaluation in both
+families (e.g.\ $1.06$ vs.\ $1.91$ at 4M tokens on the 10M model), and the lead
+persists to the end of the 10M budget ($0.582$ vs.\ $0.595$, 3/3 seeds) but
+inverts at 57M, where AdamW ends slightly ahead ($0.932$ vs.\ $0.955$, 3/3
+seeds; AdamW is also $18$--$32\%$ faster in wall-clock throughput at these
+sizes, so the token-matched comparison favors Muon). The scoping is therefore
+two-way: in the grokking regime, suppressing norm growth preserves and
+accelerates generalization; in ordinary pretraining at 10--57M parameters the
+same intervention monotonically costs loss. The dispensability-and-acceleration
+claim is a grokking-regime result, not a general norm-control recommendation.
+
+\begin{table}[htbp]
+\centering
+\caption{Real-text pretraining boundary arm (Section~\ref{sec:realtext}). Final
+validation cross-entropy (nats/byte) at matched token counts, median over 3
+seeds with per-seed range in brackets; the two model/corpus families are never
+pooled. $\Delta$: median of the paired per-seed differences vs.\ uncapped Muon
+(positive $=$ worse). Sphere is a 10M-only arm. All arms within a family share
+every configuration field except the norm constraint.}
+\label{tab:realtext}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+& \multicolumn{2}{c}{10.0M / TinyStories, $0.30$B tok}
+& \multicolumn{2}{c}{57.2M / FineWeb-Edu, $0.60$B tok} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Arm & median [range] & $\Delta$ & median [range] & $\Delta$ \\
+\midrule
+Muon (uncapped) & $0.582$ [$0.571,0.588$] & --- & $0.955$ [$0.953,1.035$] & --- \\
+AdamW           & $0.595$ [$0.585,0.597$] & $+0.013$ & $0.932$ [$0.930,1.008$] & $-0.025$ \\
+Capped Muon $k{=}2$ & $0.663$ [$0.658,0.668$] & $+0.082$ & $1.045$ [$1.037,1.127$] & $+0.090$ \\
+Capped Muon $k{=}1$ & $0.768$ [$0.767,0.772$] & $+0.186$ & $1.162$ [$1.154,1.247$] & $+0.207$ \\
+Sphere (const.\ norm) & $0.767$ [$0.762,0.772$] & $+0.186$ & \multicolumn{2}{c}{not run} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Limitations.}
+\label{sec:limitations}
+
+All results are toy-scale (420k parameters, two layers; modular addition / $S_5$ /
+continual learning / attention sink / linear-mode connectivity). The route is a
+descriptive signature, causal only where a dissociation or intervention arm supports
+it (Section~\ref{sec:causal} rank $+$ the norm cap---the strongest claim, robust
+across six ceiling levels ($k\in\{\infty,4,3,2,1.5,1\}$, the $k{=}4$ point from
+the defloored fresh-seed replication), four tasks ($S_5$, modular addition, $A_5$, $D_{60}$),
+network depths 2 and 4, a $4\times$ width range ($d_{\mathrm{model}}=128$--$512$ on
+$S_5$), and three modular-addition scales ($p=97$--$337$); Section~\ref{sec:plasticity}
+spectrum/feature). The real-text arm (Section~\ref{sec:realtext}) bounds the
+transfer of the cap result: at 10--57M parameters on ordinary byte-level
+pretraining the cap costs loss rather than accelerating, so none of the
+preserve-and-accelerate claims extend beyond the grokking regime; that arm is
+itself limited ($n{=}3$ seeds, one weight-decay setting, $\le$57M parameters,
+$\le$0.6B tokens). The Section~\ref{sec:lmc} LMC result---the weakest claim in the
+paper---is a distributional basin
+difference at $n=5$ (underpowered, Fisher $p\approx0.22$), measured on the train
+pool, not a clean $k^\star/4{\times}$ claim. Fresh isolated short audits completed two
+extra Muon fork seeds at spawn steps 0/50/100 (seeds 10--11) and again found no
+$k^\star$ (Fig.~\ref{fig:lmc-extension}); three additional seeds (12--14) confirm this
+non-hit at the combined $n=5$ short-audit level
+(Fig.~\ref{fig:lmc-n5}), but the remaining densification to $n=15$ is still disproportionate
+(each full Muon fork cell $\approx75$ min), so the LMC statement remains boundary-grade;
+held-out-basin and permutation-aligned LMC \citep{entezari2022permutation,ainsworth2023gitrebasin} are the
+natural way to settle it further. The
+Section~\ref{sec:sink} activation result is for spiking configurations only (5/16
+Muon runs do not spike high) and is operating-point-dependent. The
+Section~\ref{sec:floor} ``SGDM necessity'' is not complexity-specific---SGDM fails
+wholesale even on abelian groups (an optimizer-family floor plus a data-size
+confound \citep{dragutinovic2026usemuon}), so we frame it as ``plain momentum cannot
+train these families,'' not ``$S_5$ requires orthogonalization.'' All
+optimizer comparisons are scoped to the swept learning-rate pair: the crossing
+control (Section~\ref{sec:lrcross}) rules out a rate-transplant rescue of
+AdamW, but it also shows Muon's advantage is a property of the (optimizer,
+learning-rate-regime) pair rather than of orthogonalization at any rate---on
+$S_5$, Muon itself fails at the AdamW-native rate. There is no indexed-journal
+Muon-optimizer precedent, so we enter via the grokking-dynamics / implicit-bias
+framing.
+
+\paragraph{Outlook.}
+The question that matters most for generality is whether the causal cap behaves the
+same way on larger language-model pretraining, where the orthogonalized update is
+actually deployed \citep{liu2025muonscale}; if the growth-as-byproduct conclusion
+survives at scale, it would have practical consequences for norm-control heuristics.
+The width $\times$ depth and modulus grids of Section~\ref{sec:causal} are a first
+step in that direction---the cap's effect is, if anything, larger at higher
+capacity---and the real-text boundary arm (Section~\ref{sec:realtext}) now gives
+a first answer at 10--57M parameters: adverse. There, the norm freedom the cap
+removes is load-bearing, and the open question sharpens from whether the regimes
+separate to where---at what point between memorization-then-generalization
+dynamics and ordinary pretraining the growth becomes load-bearing, and whether
+tuned decay or schedules move that point.
+Separately, the SGDM floor (Section~\ref{sec:floor}) is an optimizer-family property
+unrelated to complexity; the plain-Adam arm has now sharpened that taxonomy into a
+spectrum (decay-free Adam fails selectively on the non-abelian rungs), and extending
+it to further non-orthogonalizing optimizers would map the spectrum more finely.
+
+\section*{Funding}
+This research received no external funding.
+
+\section*{Declaration of competing interest}
+
+The author declares no competing financial or personal interests.
+
+\section*{CRediT author statement}
+
+Zeyu Fu: Conceptualization, Methodology, Software, Investigation, Formal
+analysis, Writing -- original draft, Writing -- review \& editing.
+
+\section*{Data availability}
+
+All grokking-regime experiments are synthetic (modular arithmetic, $S_5$
+composition, and continual-learning streams) and fully specified in
+Section~\ref{sec:setup}; the real-text boundary arm
+(Section~\ref{sec:realtext}) uses the publicly available TinyStories and
+FineWeb-Edu corpora. The
+complete training, probe, and analysis code, the per-cell result logs, and the
+figure-generation scripts required to reproduce every reported result and figure
+are archived in a public repository under open licenses (code: MIT; data and
+figures: CC~BY~4.0). Archive DOI: \href{https://doi.org/10.5281/zenodo.21020291}{\texttt{10.5281/zenodo.21020291}}. No restricted
+data are used.
+
+\appendix
+\setcounter{figure}{0}\renewcommand{\thefigure}{A\arabic{figure}}
+\setcounter{table}{0}\renewcommand{\thetable}{A\arabic{table}}
+% Keep hyperref anchors unique after the counter reset (avoids duplicate-destination warnings)
+\renewcommand{\theHfigure}{A\arabic{figure}}
+\renewcommand{\theHtable}{A\arabic{table}}
+
+\section{Supplementary robustness figures}\label{app:robustness}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{A_rescue_coverage.pdf}
+\caption{Hyperparameter rescue map for $S_5$ grokking (Section~\ref{sec:causal}).
+(a)~Coverage/existence map at 2 seeds per cell. Each tile gives the number of seeds (out
+of 2) that grok at that learning-rate/weight-decay combination; the two optimizers
+were swept over their own native learning-rate ranges (panels use independent
+$y$-axes). AdamW recovers $S_5$ grokking only in a high-weight-decay corner, while SGDM
+fails to recover at every setting, consistent with the optimizer-family floor of
+Section~\ref{sec:floor}. The low seed count supports an existence map, not a
+success-rate surface.
+(b)~Marginal coverage by learning rate (pooling weight decay): AdamW's rescue is
+broadest at its native rate and collapses off it.
+(c)~Time-to-grok within rescued cells (log scale): rescued AdamW cells grok late
+but finitely; no rescued cell approaches the uncapped-Muon speed.
+(d)~Cell-verdict agreement across the 2 seeds (2/2, 1/2, 0/2): most AdamW rescues
+are 2/2, so the map is not single-seed luck, but the 1/2 column marks the cells
+whose verdict would flip on one more seed.}
+\label{fig:rescue}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{A_case.pdf}
+\caption{Case study: time course of one $S_5$ seed (seed 0) under the norm cap
+(Section~\ref{sec:causal}); the two conditions differ only in the hidden-norm
+ceiling. Single-run trajectories (no band); dashed verticals mark each run's
+grok step; $x$-axis is symlog. This is one run in detail; cf.\ the 8-seed
+population median in Fig.~\ref{fig:normctl_tc}.
+(a)~Hidden-weight norm $\|W_{\mathrm{hidden}}\|$ vs training step: uncapped
+($k=\infty$) climbs steadily to a final $309.6$, while capped ($k=1$) stays pinned
+at the initialization scale ($12.5$).
+(b)~Validation accuracy vs training step (dotted line at the 0.95 grok threshold):
+the capped run groks at step 350, an order of magnitude before the uncapped run's
+step 9750 ($28{\times}$ for this seed; population median ${\sim}10{\times}$).
+Suppressing the norm growth accelerates rather than blocks grokking.
+(c)~Transition shape in a window around each grok point: both conditions
+generalize abruptly once they generalize; the cap moves when, not how.
+(d)~Generalization gap (train minus validation accuracy, symlog step axis): the
+capped run closes the gap as soon as it fits the training set, while the
+uncapped run's gap stays open until its late grok.}
+\label{fig:case}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\figtikz[0.7\linewidth]{A_spike_depth}
+\caption{Peak activation magnitude vs network depth (Section~\ref{sec:sink});
+existence/spread check at $n=3$ seeds, individual seeds shown as points, line
+through the per-depth median, log scale.
+(a)~Going from a one-layer to a three-layer network raises the peak activation for all
+three optimizers, preserving the family ordering (Muon $\gg$ AdamW $\gg$ SGDM). The
+small seed count supports an existence/spread reading, not a depth-scaling rate.
+(b)~Spike formation during training (median of 3 seeds per arm): the three-layer
+spike grows from early training rather than appearing at a late transition.
+(c)~Learning-rate robustness (the \texttt{sink\_triad\_lr} arm): the spike
+persists across a $10\times$ AdamW range and an $8\times$ Muon range; SGDM is
+not plotted.
+(d)~Per-seed spread at each depth (n $=3$): the depth ordering holds for every
+seed; the small sample supports an existence claim, not a magnitude law.}
+\label{fig:spike_depth}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\makebox[\linewidth][c]{\figtikz[\linewidth]{A_plasticity_p5_bridge}}
+\caption{P5 warm-start/cold-start bridge (Section~\ref{sec:plasticity}): steps to
+threshold and feature rank across 30 projection-shift tasks, comparing warm-start
+continual training to cold-start (fresh model) per-task controls.
+Median across 3 seeds; ribbons show IQR; all cold-start controls fit 30/30 tasks.
+(a)~Warm-start continual training slows or censors late tasks for AdamW and SGDM.
+Muon fits all 30/30 warm-start tasks and preserves feature rank, but is slower than its own
+cold-start control---an extender, not a cure.
+(b)~Cold-start controls remain fast and uncensored for every optimizer.
+(c)~Bridge effect per task: median cold/warm step ratio (uncensored tasks);
+values $\le 1$ and falling are a warm-start cost (Muon is slower than cold-start).
+(d)~Endpoint plasticity by optimizer and start: final feature effective rank
+(bars) with dead-unit fraction labels, from the verdict summary over 30
+projection-shift tasks.}
+\label{fig:p5bridge}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\figtikz[\linewidth]{A_plasticity_scale}
+\caption{Benchmark boundary on permuted-MNIST (Section~\ref{sec:plasticity}):
+the synthetic-arm ``Muon extends plasticity'' finding does not transfer to this
+standard benchmark across 150 tasks.
+(a)~Fit-speed slowdown (median last-10 vs first-10 tasks): Muon at every
+learning rate (0.005--0.02) shows larger slowdown than AdamW (lr 1e-3, dotted
+reference line) and SGDM (lr 0.02).
+(b)~Final feature effective rank: low-lr Muon (0.005--0.01) keeps high rank
+(224--232) with near-zero dead units, yet still loses plasticity fastest, ruling
+out the feature-rank-collapse mechanism. Dead-unit fractions annotated above each
+bar. The lr$=0.02$ collapse is an over-step
+artifact (low-lr arms extended to 5 seeds each).
+(c)~Per-seed slowdown: the arm ordering is seed-consistent (the lr$=0.02$ Muon
+arm's spread is the over-step regime, not seed noise).
+(d)~Dead-unit fraction per seed: near-zero at the rank-preserving learning
+rates, so the rank-preservation cells are not carried by dead capacity.}
+\label{fig:plast_scale}
+\end{figure}
+
+\begin{figure}[t!]
+\centering
+\figtikz[\linewidth]{A_feature_rank_decay}
+\caption{Feature effective rank across a permuted-MNIST continual-learning stream of
+150 tasks (Section~\ref{sec:plasticity}); median across seeds (3 for the standard
+arms, 5 for the scaled-learning-rate Muon arm), shaded band is the interquartile
+range.
+(a)~At its default operating point Muon's feature rank collapses toward zero, but
+at a well-scaled learning rate Muon instead preserves a high feature rank
+($\approx232$) throughout---above AdamW's---even though it still loses plasticity
+fastest. This rules out feature-rank collapse as the mechanism behind the
+permuted-MNIST plasticity loss.
+(b)~Endpoint effective rank per seed at the final (150th) task: the arm ordering
+is seed-consistent.
+(c)~Decay speed: first task at which the rank falls to half its initial value
+(per seed); undefined for the scaled-rate Muon arm, whose rank grows through the
+stream (2 seeds omitted).
+(d)~Rank retained at stream end (endpoint over initial): AdamW retains about a
+third, SGDM about a sixth, and default-rate Muon almost none (scaled-lr Muon is
+not plotted).}
+\label{fig:featrank}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{P5 warm-start/cold-start bridge on the projection-shift arm (Section~\ref{sec:plasticity}; 30 tasks, 120
+steps/task, seeds 0--2). Cold-start controls fit all tasks, showing the warm-start slowdown
+is continual plasticity loss rather than task difficulty.}
+\label{tab:p5bridge}
+\begin{tabular}{llccc}
+\toprule
+Optimizer & Start & Median fit steps & Tasks fit & Final feature rank \\
+\midrule
+Muon & warm & 35.6 & 30/30 & 209.7 \\
+Muon & cold & 15.2 & 30/30 & 195.9 \\
+AdamW & warm & 67.3 & 28/30 & 19.2 \\
+AdamW & cold & 29.5 & 30/30 & 183.6 \\
+SGDM & warm & 77.0 & 23/30 & 17.0 \\
+SGDM & cold & 29.1 & 30/30 & 178.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\figtikz[\linewidth]{A_lmc_extension}
+\caption{Isolated short Muon fork checks (Section~\ref{sec:limitations}): two
+independent seeds at spawn steps 0, 50, and 100.
+(a)~Max LMC barrier vs spawn step: both seeds and both audit passes remain far
+above the $k^\star$ merge threshold of $0.1$ at every spawn step (barriers near
+$5.3$; the threshold is fifty-fold below the plotted axis and is stated rather
+than drawn).
+(b)~Boundary-grade non-hit summary: 2/2 seeds show absent $k^\star$ (left bar,
+100\%); Clopper--Pearson upper-95\% bound if 0 hits out of 2 is 0.776 (right
+bar). This confirms a non-hit boundary while acknowledging the small $n$.}
+\label{fig:lmc-extension}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\figtikz[\linewidth]{A_lmc_n5}
+\caption{Supplementary LMC robustness check (Section~\ref{sec:limitations}):
+inter-child loss barrier heights for five Muon fork seeds (10--14), each measured
+at spawn steps 0, 50, and 100 (three points per seed). Every barrier sits near
+5.3, far above the no-merge / $k^\star$ threshold of 0.1 (dashed red line); the
+large gap means no seed's barrier ever dips to a crossing.
+Combined Muon short audits therefore found 0 of 5 $k^\star$ barrier crossings;
+the Clopper--Pearson upper-95\% bound on the $k^\star$-hit rate is 0.451.
+This strengthens the non-hit boundary while keeping the LMC claim explicitly
+underpowered rather than causal or dense.}
+\label{fig:lmc-n5}
+\end{figure}
+
+\section{Bootstrap confidence intervals for the headline acceleration ratios}
+\label{app:ci}
+
+Every acceleration ratio reported in the paper is a ratio of group medians of
+per-seed grok steps. Table~\ref{tab:ci} gives seed-level nonparametric bootstrap
+95\% confidence intervals for each of them ($2\times10^{4}$ resamples,
+independent resampling within each arm; percentile and bias-corrected
+accelerated (BCa) intervals). Grok steps are quantized to each arm's evaluation
+grid (Section~\ref{sec:setup}), so interval endpoints land on ratios of grid
+medians; the intervals are computed from the raw per-run logs, not from derived
+tables. All $S_5$ intervals exclude 1 by a wide margin. On the coarse 50-step
+grid the $D_{60}$ lower endpoint touches 1.0 and the modular-addition interval is
+degenerate at the evaluation floor; the two defloored cadence-5 rows below the
+rule resolve both, giving $2.50\times$ [2.24, 2.97] on $D_{60}$ and $1.18\times$
+[1.08, 1.23] on modular addition, each excluding 1.0. The rows below the rule are
+the fresh-seed revision arms: the defloored fine-cadence dose ladder and the
+defloored $D_{60}$/modular-addition pair (evaluation cadence 5;
+Section~\ref{sec:causal}) and the learning-rate crossing control
+(Section~\ref{sec:lrcross}), computed with the identical bootstrap; with $n=8$
+and tie-heavy medians the BCa endpoints of the defloored $k{=}1$ row are
+coarse, so the percentile interval is the one quoted inline.
+Table~\ref{tab:ci-seeds} lists the per-seed
+grok steps behind the two independent estimates of the nominal
+$d{=}128$/depth-2 $S_5$ ratio ($10.8\times$ and $15.9\times$): the batches agree
+within seed noise (Mann--Whitney $p=0.56$ uncapped / $p=0.88$ capped; $2.8\%$ of
+the log-step variance is between batches; the bootstrap CI of the ratio
+difference, $-7.6$ to $+12.7$, spans zero).
+
+\begin{table}[htbp]
+\centering
+\caption{Seed-level bootstrap 95\% CIs for every headline acceleration ratio
+(ratio of group medians, baseline over treated; $2\times10^{4}$ resamples).
+``Sphere'' rows compare the two-sided constant-norm control to its
+unconstrained counterpart (the mod-add AdamW baseline is the $\lambda{=}0.01$
+grid arm, $n{=}5$).}
+\label{tab:ci}
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Comparison & $n$ (base/treat) & Median (base) & Median (treat) & Ratio & 95\% CI (percentile) & 95\% CI (BCa) \\
+\midrule
+$S_5$ primary, $k{=}\infty \to 3$        & 8/8 & 3525 & 575 & $6.1\times$  & [4.0, 9.8]   & [4.2, 10.6] \\
+$S_5$ primary, $k{=}\infty \to 2$        & 8/8 & 3525 & 425 & $8.3\times$  & [5.0, 13.8]  & [5.2, 14.2] \\
+$S_5$ primary, $k{=}\infty \to 1.5$      & 8/8 & 3525 & 325 & $10.8\times$ & [6.9, 16.7]  & [7.1, 19.5] \\
+$S_5$ primary, $k{=}\infty \to 1$        & 8/8 & 3525 & 325 & $10.8\times$ & [6.6, 16.7]  & [7.1, 19.5] \\
+Mod-add primary, $k{=}\infty \to 1$      & 8/8 & 100  & 100 & 1.0 (floored) & [1.0, 1.0]  & [1.0, 1.0] \\
+$S_5$ grid $d{=}128$, depth 2            & 5/5 & 5550 & 350 & $15.9\times$ & [5.9, 22.8]  & [6.2, 22.8] \\
+$S_5$ grid $d{=}128$, depth 4            & 5/5 & 6600 & 300 & $22.0\times$ & [16.0, 38.6] & [14.6, 38.6] \\
+$S_5$ grid $d{=}256$, depth 2            & 5/5 & 3950 & 250 & $15.8\times$ & [13.2, 25.8] & [12.8, 25.8] \\
+$S_5$ grid $d{=}256$, depth 4            & 5/5 & 9550 & 250 & $38.2\times$ & [26.7, 42.0] & [31.4, 42.0] \\
+$S_5$ grid $d{=}512$, depth 2            & 5/5 & 6500 & 400 & $16.3\times$ & [8.4, 28.8]  & [8.4, 28.8] \\
+$S_5$ grid $d{=}512$, depth 4            & 5/5 & 8050 & 300 & $26.8\times$ & [14.3, 39.2] & [19.1, 39.2] \\
+$A_5$ (rung-60), $k{=}\infty \to 1$      & 8/8 & 375  & 212.5 & $1.76\times$ & [1.36, 1.94] & [1.43, 2.00] \\
+$D_{60}$ (rung-120), $k{=}\infty \to 1$  & 5/5 & 100  & 75  & $1.33\times$ & [1.00, 1.67] & [1.00, 1.67] \\
+$S_5$ depth-4 arm, $k{=}\infty \to 1$    & 5/5 & 7750 & 300 & $25.8\times$ & [18.5, 40.2] & [18.5, 40.2] \\
+$S_5$ sphere-Muon vs uncapped            & 8/8 & 3525 & 375 & $9.4\times$  & [6.6, 16.4]  & [6.5, 15.2] \\
+Mod-add sphere-AdamW vs unconstrained    & 5/8 & 3200 & 950 & $3.4\times$  & [1.7, 7.6]   & [1.9, 9.1] \\
+\midrule
+$S_5$ defloored, $k{=}\infty \to 4$ (eval 5)   & 8/8 & 2657.5 & 810   & $3.3\times$  & [2.2, 4.6]   & [2.3, 4.8] \\
+$S_5$ defloored, $k{=}\infty \to 2$ (eval 5)   & 8/8 & 2657.5 & 405   & $6.6\times$  & [4.0, 9.2]   & [4.3, 9.5] \\
+$S_5$ defloored, $k{=}\infty \to 1$ (eval 5)   & 8/8 & 2657.5 & 257.5 & $10.3\times$ & [6.5, 14.0]  & [7.4, 21.4] \\
+Mod-add defloored, $k{=}\infty \to 1$ (eval 5) & 8/8 & 65     & 55    & $1.18\times$ & [1.08, 1.23] & [1.09, 1.27] \\
+$D_{60}$ defloored, $k{=}\infty \to 1$ (eval 5) & 8/8 & 200   & 80    & $2.50\times$ & [2.24, 2.97] & [2.26, 3.00] \\
+Mod-add lr-cross, AdamW/Muon native rates      & 8/8 & 3375 & 100 & $33.8\times$ & [15.0, 46.5]  & [15.0, 44.0] \\
+Mod-add lr-cross, AdamW/Muon at lr $10^{-3}$   & 8/8 & 3375 & 400 & $8.4\times$  & [3.9, 11.6]   & [3.8, 11.0] \\
+Mod-add lr-cross, AdamW/Muon at lr $2{\times}10^{-2}$ & 8/8 & 6250 & 100 & $62.5\times$ & [28.5, 107.5] & [28.5, 99.5] \\
+Mod-add lr-cross, both rates transplanted      & 8/8 & 6250 & 400 & $15.6\times$ & [7.1, 26.7]   & [7.1, 25.0] \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Per-seed $S_5$ grok steps behind the two independent estimates of the
+nominal $d_{\mathrm{model}}{=}128$/depth-2 acceleration ratio: the primary
+8-seed arm ($10.8\times$, Table~\ref{tab:normctl}) and the width$\times$depth
+replication batch ($15.9\times$, Table~\ref{tab:capwd}). The between-batch
+difference is seed noise, not a batch effect (statistics in the text of this
+appendix and Section~\ref{sec:causal}).}
+\label{tab:ci-seeds}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+Batch / arm & Uncapped ($k{=}\infty$) per-seed & Capped ($k{=}1$) per-seed \\
+\midrule
+Primary (8 seeds) & 9750, 2600, 2650, 5850, 4100, 4000, 1950, 3050 & 350, 250, 300, 400, 400, 550, 300, 300 \\
+Replication (5 seeds) & 6850, 2650, 2800, 5700, 5550 & 500, 300, 250, 350, 450 \\
+\midrule
+Medians (primary / replication) & 3525 / 5550 & 325 / 350 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\bibliographystyle{plainnat}
+\clearpage
+\section*{Declaration of generative AI and AI-assisted technologies}
+
+During the preparation of this work the author used Claude (Anthropic) to assist
+with drafting and editing the manuscript text, developing and reviewing the
+analysis code, and preparing the figures. After using this tool, the author
+reviewed and edited the content as needed and takes full responsibility for the
+content of the published article.
+
+\begin{thebibliography}{31}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{\path{doi:#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Ainsworth et~al.(2023)Ainsworth, Hayase and
+  Srinivasa}]{ainsworth2023gitrebasin}
+\bibinfo{author}{Ainsworth, S.K.}, \bibinfo{author}{Hayase, J.},
+  \bibinfo{author}{Srinivasa, S.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Git re-basin: Merging models modulo permutation
+  symmetries}, in: \bibinfo{booktitle}{International Conference on Learning
+  Representations (ICLR)}.
+\newblock \bibinfo{note}{arXiv:2209.04836}.
+%Type = Inproceedings
+\bibitem[{Beneventano et~al.(2026)Beneventano, Abdelmoneum and
+  Poggio}]{beneventano2026spectraldynamics}
+\bibinfo{author}{Beneventano, P.}, \bibinfo{author}{Abdelmoneum, M.},
+  \bibinfo{author}{Poggio, T.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{The spectral dynamics and noise geometry of Muon}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2606.08388}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2606.08388}
+\bibitem[{Bernstein and Newhouse(2024)}]{bernstein2024modular}
+\bibinfo{author}{Bernstein, J.}, \bibinfo{author}{Newhouse, L.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Modular duality in deep learning}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2410.21265}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2410.21265}
+\bibitem[{Cohen et~al.(2021)Cohen, Kaur, Li, Kolter and
+  Talwalkar}]{cohen2021eos}
+\bibinfo{author}{Cohen, J.M.}, \bibinfo{author}{Kaur, S.}, \bibinfo{author}{Li,
+  Y.}, \bibinfo{author}{Kolter, J.Z.}, \bibinfo{author}{Talwalkar, A.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Gradient descent on neural networks typically occurs
+  at the edge of stability}, in: \bibinfo{booktitle}{International Conference
+  on Learning Representations (ICLR)}.
+\newblock \bibinfo{note}{arXiv:2103.00065}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2103.00065}
+\bibitem[{Cohen et~al.(2022)Cohen, Ghorbani, Krishnan, Agarwal, Medapati,
+  Badura, Suo, Cardoze, Nado, Dahl and Gilmer}]{cohen2022adaptiveeos}
+\bibinfo{author}{Cohen, J.M.}, \bibinfo{author}{Ghorbani, B.},
+  \bibinfo{author}{Krishnan, S.}, \bibinfo{author}{Agarwal, N.},
+  \bibinfo{author}{Medapati, S.}, \bibinfo{author}{Badura, M.},
+  \bibinfo{author}{Suo, D.}, \bibinfo{author}{Cardoze, D.},
+  \bibinfo{author}{Nado, Z.}, \bibinfo{author}{Dahl, G.E.},
+  \bibinfo{author}{Gilmer, J.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Adaptive gradient methods at the edge of stability}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2207.14484}.
+%Type = Inproceedings
+\newblock \doi{10.48550/arXiv.2207.14484}
+\bibitem[{D'Angelo et~al.(2024)D'Angelo, Andriushchenko, Varre and
+  Flammarion}]{dangelo2024wd}
+\bibinfo{author}{D'Angelo, F.}, \bibinfo{author}{Andriushchenko, M.},
+  \bibinfo{author}{Varre, A.}, \bibinfo{author}{Flammarion, N.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Why do we need weight decay in modern deep
+  learning?}, in: \bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems (NeurIPS)}.
+\newblock \bibinfo{note}{arXiv:2310.04415}.
+%Type = Inproceedings
+\bibitem[{Dohare et~al.(2024)Dohare, Hernandez-Garcia, Lan, Rahman, Mahmood and
+  Sutton}]{dohare2024plasticity}
+\bibinfo{author}{Dohare, S.}, \bibinfo{author}{Hernandez-Garcia, J.F.},
+  \bibinfo{author}{Lan, Q.}, \bibinfo{author}{Rahman, P.},
+  \bibinfo{author}{Mahmood, A.R.}, \bibinfo{author}{Sutton, R.S.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Loss of plasticity in deep continual learning}.
+\newblock \bibinfo{journal}{Nature} \bibinfo{volume}{632},
+  \bibinfo{pages}{768--774}.
+\newblock \DOIprefix\doi{10.1038/s41586-024-07711-7}.
+%Type = Article
+\bibitem[{Dragutinovi{\'c} et~al.(2026)Dragutinovi{\'c}, Zhang and
+  Ranganath}]{dragutinovic2026usemuon}
+\bibinfo{author}{Dragutinovi{\'c}, S.}, \bibinfo{author}{Zhang, Y.},
+  \bibinfo{author}{Ranganath, R.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{To use or not to use Muon: How simplicity bias in
+  optimizers matters}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2603.00742}.
+%Type = Inproceedings
+\newblock \doi{10.48550/arXiv.2603.00742}
+\bibitem[{Eldan and Li(2023)}]{eldan2023tinystories}
+\bibinfo{author}{Eldan, R.}, \bibinfo{author}{Li, Y.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{{TinyStories}: How small can language models be and
+  still speak coherent {English}?}
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2305.07759}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2305.07759}
+\bibitem[{Entezari et~al.(2022)Entezari, Sedghi, Saukh and
+  Neyshabur}]{entezari2022permutation}
+\bibinfo{author}{Entezari, R.}, \bibinfo{author}{Sedghi, H.},
+  \bibinfo{author}{Saukh, O.}, \bibinfo{author}{Neyshabur, B.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{The role of permutation invariance in linear mode
+  connectivity of neural networks}, in: \bibinfo{booktitle}{International
+  Conference on Learning Representations (ICLR)}.
+\newblock \bibinfo{note}{arXiv:2110.06296}.
+\newblock \doi{10.48550/arXiv.2110.06296}
+%Type = Inproceedings
+\bibitem[{Frankle et~al.(2020)Frankle, Dziugaite, Roy and
+  Carbin}]{frankle2020lmc}
+\bibinfo{author}{Frankle, J.}, \bibinfo{author}{Dziugaite, G.K.},
+  \bibinfo{author}{Roy, D.M.}, \bibinfo{author}{Carbin, M.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Linear mode connectivity and the lottery ticket
+  hypothesis}, in: \bibinfo{booktitle}{International Conference on Machine
+  Learning (ICML)}, pp. \bibinfo{pages}{3259--3269}.
+\newblock \bibinfo{note}{arXiv:1912.05671}.
+\newblock \doi{10.48550/arXiv.1912.05671}
+%Type = Inproceedings
+\bibitem[{Gu et~al.(2025)Gu, Pang, Du, Liu, Zhang, Du, Wang and
+  Lin}]{gu2025attnsink}
+\bibinfo{author}{Gu, X.}, \bibinfo{author}{Pang, T.}, \bibinfo{author}{Du, C.},
+  \bibinfo{author}{Liu, Q.}, \bibinfo{author}{Zhang, F.},
+  \bibinfo{author}{Du, C.}, \bibinfo{author}{Wang, Y.},
+  \bibinfo{author}{Lin, M.}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{When attention sink emerges in language models: An
+  empirical view}, in: \bibinfo{booktitle}{International Conference on
+  Learning Representations (ICLR)}.
+\newblock \bibinfo{note}{arXiv:2410.10781}.
+%Type = Inproceedings
+\bibitem[{Gupta et~al.(2018)Gupta, Koren and Singer}]{gupta2018shampoo}
+\bibinfo{author}{Gupta, V.}, \bibinfo{author}{Koren, T.},
+  \bibinfo{author}{Singer, Y.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Shampoo: Preconditioned stochastic tensor
+  optimization}, in: \bibinfo{booktitle}{International Conference on Machine
+  Learning (ICML)}.
+\newblock \doi{10.48550/arXiv.1802.09568}
+%Type = Misc
+\bibitem[{Jordan et~al.(2024)Jordan, Jin, Boza, You, Cesista, Newhouse and
+  Bernstein}]{jordan2024muon}
+\bibinfo{author}{Jordan, K.}, \bibinfo{author}{Jin, Y.},
+  \bibinfo{author}{Boza, V.}, \bibinfo{author}{You, J.},
+  \bibinfo{author}{Cesista, F.}, \bibinfo{author}{Newhouse, L.},
+  \bibinfo{author}{Bernstein, J.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Muon: An optimizer for hidden layers in neural
+  networks}.
+\newblock \bibinfo{howpublished}{Blog post,
+  \url{https://kellerjordan.github.io/posts/muon/}}
+%Type = Inproceedings
+%Type = Article
+\bibitem[{Kosson et~al.(2024)Kosson, Messmer and Jaggi}]{kosson2023rotational}
+\bibinfo{author}{Kosson, A.}, \bibinfo{author}{Messmer, B.},
+  \bibinfo{author}{Jaggi, M.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Rotational equilibrium: How weight decay balances
+  learning across neural networks}.
+\newblock \bibinfo{journal}{Proceedings of the 41st International Conference on Machine Learning (ICML)}. \bibinfo{note}{arXiv:2305.17212}.
+%Type = Inproceedings
+\newblock \doi{10.48550/arXiv.2305.17212}
+\bibitem[{Kumar et~al.(2024)Kumar, Bordelon, Gershman and Pehlevan}]{kumar2024lazytorich}
+\bibinfo{author}{Kumar, T.}, \bibinfo{author}{Bordelon, B.},
+  \bibinfo{author}{Gershman, S.J.}, \bibinfo{author}{Pehlevan, C.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Grokking as the transition from lazy to rich training
+  dynamics}.
+\newblock \bibinfo{journal}{International Conference on Learning Representations (ICLR)}. \bibinfo{note}{arXiv:2310.06110}.
+%Type = Inproceedings
+\newblock \doi{10.48550/arXiv.2310.06110}
+%Type = Article
+\bibitem[{Lee et~al.(2024)Lee, Kang, Kim and Lee}]{lee2024grokfast}
+\bibinfo{author}{Lee, J.}, \bibinfo{author}{Kang, B.G.},
+  \bibinfo{author}{Kim, K.}, \bibinfo{author}{Lee, K.M.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Grokfast: Accelerated grokking by amplifying slow
+  gradients}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2405.20233}.
+\newblock \doi{10.48550/arXiv.2405.20233}
+\bibitem[{Liu et~al.(2023)Liu, Michaud and Tegmark}]{liu2023omnigrok}
+\bibinfo{author}{Liu, Z.}, \bibinfo{author}{Michaud, E.J.},
+  \bibinfo{author}{Tegmark, M.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Omnigrok: Grokking beyond algorithmic data}, in:
+  \bibinfo{booktitle}{International Conference on Learning Representations
+  (ICLR)}.
+\newblock \bibinfo{note}{arXiv:2210.01117}.
+%Type = Inproceedings
+\newblock \doi{10.48550/arXiv.2210.01117}
+%Type = Article
+\bibitem[{Liu et~al.(2025)Liu, Su, Yao, Jiang, Lai, Du et~al.}]{liu2025muonscale}
+\bibinfo{author}{Liu, J.}, \bibinfo{author}{Su, J.}, \bibinfo{author}{Yao, X.},
+  \bibinfo{author}{Jiang, Z.}, \bibinfo{author}{Lai, G.}, \bibinfo{author}{Du, Y.},
+  et~al., \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Muon is scalable for {LLM} training}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2502.16982}.
+\newblock \doi{10.48550/arXiv.2502.16982}
+\bibitem[{Loshchilov and Hutter(2019)}]{loshchilov2019adamw}
+\bibinfo{author}{Loshchilov, I.}, \bibinfo{author}{Hutter, F.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Decoupled weight decay regularization}, in:
+  \bibinfo{booktitle}{International Conference on Learning Representations
+  (ICLR)}.
+\newblock \bibinfo{note}{arXiv:1711.05101}.
+\newblock \doi{10.48550/arXiv.1711.05101}
+%Type = Inproceedings
+\bibitem[{Lyu et~al.(2024)Lyu, Jin, Li, Du, Lee and Hu}]{lyu2024dichotomy}
+\bibinfo{author}{Lyu, K.}, \bibinfo{author}{Jin, J.}, \bibinfo{author}{Li, Z.},
+  \bibinfo{author}{Du, S.S.}, \bibinfo{author}{Lee, J.D.},
+  \bibinfo{author}{Hu, W.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Dichotomy of early and late phase implicit biases
+  can provably induce grokking}, in: \bibinfo{booktitle}{International
+  Conference on Learning Representations (ICLR)}.
+\newblock \bibinfo{note}{arXiv:2311.18817}.
+\newblock \doi{10.48550/arXiv.2311.18817}
+%Type = Article
+\bibitem[{Nanda et~al.(2023)Nanda, Chan, Lieberum, Smith and
+  Steinhardt}]{nanda2023progress}
+\bibinfo{author}{Nanda, N.}, \bibinfo{author}{Chan, L.},
+  \bibinfo{author}{Lieberum, T.}, \bibinfo{author}{Smith, J.},
+  \bibinfo{author}{Steinhardt, J.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Progress measures for grokking via mechanistic
+  interpretability}, in: \bibinfo{booktitle}{International Conference on
+  Learning Representations (ICLR)}.
+\newblock \bibinfo{note}{arXiv:2301.05217}.
+\newblock \doi{10.48550/arXiv.2301.05217}
+%Type = Article
+\bibitem[{Nguyen et~al.(2026)Nguyen, Nguyen, Truong, Nguyen, Bailey and
+  Le}]{nguyen2026spectralflattening}
+\bibinfo{author}{Nguyen, T.P.}, \bibinfo{author}{Nguyen, T.},
+  \bibinfo{author}{Truong, M.P.}, \bibinfo{author}{Nguyen, T.},
+  \bibinfo{author}{Bailey, J.}, \bibinfo{author}{Le, T.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Spectral flattening is all Muon needs: How
+  orthogonalization controls learning rate and convergence}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2605.13079}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2605.13079}
+\bibitem[{Oneto et~al.(2026)Oneto, Ridella, Minisi, Coraddu and
+  Anguita}]{neucom2026grokking}
+\bibinfo{author}{Oneto, L.}, \bibinfo{author}{Ridella, S.},
+  \bibinfo{author}{Minisi, S.}, \bibinfo{author}{Coraddu, A.},
+  \bibinfo{author}{Anguita, D.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Reconciling grokking with statistical learning theory
+  through the lens of norm- and stability-based generalization bounds}.
+\newblock \bibinfo{journal}{Neurocomputing}
+  \DOIprefix\doi{10.1016/j.neucom.2026.132826}.
+%Type = Article
+\bibitem[{Ortega and Masegosa(2026)}]{neucom2026sgdbias}
+\bibinfo{author}{Ortega, L.A.}, \bibinfo{author}{Masegosa, A.R.},
+  \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{A large deviation theory analysis on the implicit
+  bias of {SGD}}.
+\newblock \bibinfo{journal}{Neurocomputing}
+  \DOIprefix\doi{10.1016/j.neucom.2026.132960}.
+%Type = Article
+\bibitem[{Park et~al.(2025)Park, Kim and Kim}]{park2025kagrokking}
+\bibinfo{author}{Park, Y.}, \bibinfo{author}{Kim, M.}, \bibinfo{author}{Kim, Y.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Acceleration of grokking in learning arithmetic
+  operations via {Kolmogorov--Arnold} representation}.
+\newblock \bibinfo{journal}{Neurocomputing}
+  \DOIprefix\doi{10.1016/j.neucom.2025.130347}.
+%Type = Article
+\bibitem[{Penedo et~al.(2024)Penedo, Kydl{\'\i}{\v c}ek, Ben~Allal, Lozhkov,
+  Mitchell, Raffel, von~Werra and Wolf}]{penedo2024fineweb}
+\bibinfo{author}{Penedo, G.}, \bibinfo{author}{Kydl{\'\i}{\v c}ek, H.},
+  \bibinfo{author}{Ben~Allal, L.}, \bibinfo{author}{Lozhkov, A.},
+  \bibinfo{author}{Mitchell, M.}, \bibinfo{author}{Raffel, C.},
+  \bibinfo{author}{von~Werra, L.}, \bibinfo{author}{Wolf, T.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{The {FineWeb} datasets: Decanting the web for the
+  finest text data at scale}, in: \bibinfo{booktitle}{Advances in Neural
+  Information Processing Systems (NeurIPS), Datasets and Benchmarks Track}.
+\newblock \bibinfo{note}{arXiv:2406.17557}.
+\newblock \doi{10.48550/arXiv.2406.17557}
+%Type = Inproceedings
+\bibitem[{Power et~al.(2022)Power, Burda, Edwards, Babuschkin and
+  Misra}]{power2022grokking}
+\bibinfo{author}{Power, A.}, \bibinfo{author}{Burda, Y.},
+  \bibinfo{author}{Edwards, H.}, \bibinfo{author}{Babuschkin, I.},
+  \bibinfo{author}{Misra, V.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Grokking: Generalization beyond overfitting on small
+  algorithmic datasets}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2201.02177}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2201.02177}
+\bibitem[{Shumaylov et~al.(2026)Shumaylov, Da~Costa, Zaika, Mucs{\'a}nyi,
+  Massucco, Gelberg, Sch{\"o}nlieb, Gal and
+  Hennig}]{shumaylov2026muonnotspecial}
+\bibinfo{author}{Shumaylov, Z.}, \bibinfo{author}{Da~Costa, N.},
+  \bibinfo{author}{Zaika, P.}, \bibinfo{author}{Mucs{\'a}nyi, B.},
+  \bibinfo{author}{Massucco, A.}, \bibinfo{author}{Gelberg, Y.},
+  \bibinfo{author}{Sch{\"o}nlieb, C.B.}, \bibinfo{author}{Gal, Y.},
+  \bibinfo{author}{Hennig, P.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Muon is not that special: Random or inverted spectra
+  work just as well}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2605.11181}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2605.11181}
+\bibitem[{Sun et~al.(2024)Sun, Chen, Kolter and Liu}]{sun2024massive}
+\bibinfo{author}{Sun, M.}, \bibinfo{author}{Chen, X.}, \bibinfo{author}{Kolter,
+  J.Z.}, \bibinfo{author}{Liu, Z.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Massive activations in large language models}.
+\newblock \bibinfo{journal}{First Conference on Language Modeling (COLM)}. \bibinfo{note}{arXiv:2402.17762}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2402.17762}
+\bibitem[{Thilak et~al.(2024)Thilak, Littwin, Zhai, Saremi, Paiss and
+  Susskind}]{thilak2022slingshot}
+\bibinfo{author}{Thilak, V.}, \bibinfo{author}{Littwin, E.},
+  \bibinfo{author}{Zhai, S.}, \bibinfo{author}{Saremi, O.},
+  \bibinfo{author}{Paiss, R.}, \bibinfo{author}{Susskind, J.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{The slingshot effect: A late-stage optimization
+  anomaly in adam-family of optimization methods}.
+\newblock \bibinfo{journal}{Transactions on Machine Learning Research (TMLR)}.
+  \bibinfo{note}{arXiv:2206.04817}.
+%Type = Article
+\bibitem[{Truong et~al.(2026a)Truong, Truong, Luu and
+  Phan}]{khanh2026normseparation}
+\bibinfo{author}{Truong, X.K.}, \bibinfo{author}{Truong, Q.H.},
+  \bibinfo{author}{Luu, D.T.}, \bibinfo{author}{Phan, T.D.},
+  \bibinfo{year}{2026}a.
+\newblock \bibinfo{title}{The norm-separation delay law of grokking: A
+  first-principles theory of delayed generalization}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2603.13331}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2603.13331}
+\bibitem[{Truong et~al.(2026b)Truong, Truong, Luu and
+  Phan}]{khanh2026entropycollapse}
+\bibinfo{author}{Truong, X.K.}, \bibinfo{author}{Truong, Q.H.},
+  \bibinfo{author}{Luu, D.T.}, \bibinfo{author}{Phan, T.D.},
+  \bibinfo{year}{2026}b.
+\newblock \bibinfo{title}{Spectral entropy collapse as a phase transition in
+  delayed generalisation: {An} interventional and predictive framework for
+  grokking}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2604.13123}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2604.13123}
+\bibitem[{Tveit et~al.(2025)Tveit, Remseth and
+  Skogvold}]{tveit2025muongrokking}
+\bibinfo{author}{Tveit, A.}, \bibinfo{author}{Remseth, B.},
+  \bibinfo{author}{Skogvold, A.}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Muon optimizer accelerates grokking}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2504.16041}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2504.16041}
+\bibitem[{Varma et~al.(2023)Varma, Shah, Kenton, Kram{\'a}r and
+  Kumar}]{varma2023circuiteff}
+\bibinfo{author}{Varma, V.}, \bibinfo{author}{Shah, R.},
+  \bibinfo{author}{Kenton, Z.}, \bibinfo{author}{Kram{\'a}r, J.},
+  \bibinfo{author}{Kumar, R.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Explaining grokking through circuit efficiency}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2309.02390}.
+\newblock \doi{10.48550/arXiv.2309.02390}
+%Type = Article
+\bibitem[{Verma(2026)}]{verma2026weightdecay}
+\bibinfo{author}{Verma, L.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Weight decay regimes in grokking transformers: Cheap
+  online diagnostics}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2605.20441}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2605.20441}
+\bibitem[{Walker et~al.(2025)Walker, Humayun, Balestriero and
+  Baraniuk}]{walker2025grokalign}
+\bibinfo{author}{Walker, T.}, \bibinfo{author}{Humayun, A.I.},
+  \bibinfo{author}{Balestriero, R.}, \bibinfo{author}{Baraniuk, R.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{GrokAlign: Geometric characterisation and
+  acceleration of grokking}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2506.12284}.
+%Type = Article
+\newblock \doi{10.48550/arXiv.2506.12284}
+%Type = Inproceedings
+\bibitem[{Xiao et~al.(2024)Xiao, Tian, Chen, Han and Lewis}]{xiao2024streaming}
+\bibinfo{author}{Xiao, G.}, \bibinfo{author}{Tian, Y.},
+  \bibinfo{author}{Chen, B.}, \bibinfo{author}{Han, S.},
+  \bibinfo{author}{Lewis, M.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Efficient streaming language models with attention
+  sinks}, in: \bibinfo{booktitle}{International Conference on Learning
+  Representations (ICLR)}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2309.17453}.
+\newblock \doi{10.48550/arXiv.2309.17453}
+\bibitem[{Zhou et~al.(2025)Zhou, Fan, Jaggi and Fu}]{zhou2025neuralgrok}
+\bibinfo{author}{Zhou, X.}, \bibinfo{author}{Fan, S.},
+  \bibinfo{author}{Jaggi, M.}, \bibinfo{author}{Fu, J.}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{NeuralGrok: Accelerate grokking by neural gradient
+  transformation}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2504.17243}.
+\newblock \doi{10.48550/arXiv.2504.17243}
+\end{thebibliography}
+
+\end{document}

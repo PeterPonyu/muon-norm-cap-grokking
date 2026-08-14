@@ -1,25 +1,32 @@
-# Muon-accelerated grokking: causal norm-cap test — code & data
+# Muon-accelerated grokking: causal norm-cap test — code, data, pointer TeX
 
-Reproducibility archive: **experiment code and per-run result logs only**.
-Manuscript and write-up/derivation documents are intentionally **not** included.
+Warehouse: **https://github.com/PeterPonyu/muon-norm-cap-grokking**
+
+Reproducibility archive for the causal Frobenius-norm cap on Muon grokking.
+Concept DOI: [10.5281/zenodo.21020291](https://doi.org/10.5281/zenodo.21020291).
 
 ## Contents
 - `experiments/<study>/` — runner / analysis code per sub-experiment.
 - `experiments/results/` — per-run logs (JSON/JSONL) behind every reported number.
+- `papers/A/main.tex` — full pointer manuscript (`\input{../figs/figpreamble.tex}`).
+- `papers/figs/` — generators + JSON summaries. Compiled `tex/` and `vec/` are gitignored.
+- `papers/FIGURE-INDEX.json` — portal figure contract (papers/-relative paths).
+- `portal/` — Next.js instrument door (`output: 'export'`, `basePath` `/muon-norm-cap-grokking`). Excluded from Zenodo `git archive`.
 
 ## Reproducing
-The committed per-run logs are the recorded outputs. To re-run a study from
-scratch (GPU recommended): `python experiments/<study>/run_*.py`. Runs are seeded
-(seed lists appear in result-log filenames). Dependencies: Python 3.11+, PyTorch,
-numpy. All inputs are synthetic and fully specified in the code, except large
-standard datasets (MNIST / WikiText) which are not bundled.
+Committed per-run logs are the recorded outputs. To re-run a study from
+scratch (GPU recommended): `python experiments/<study>/run_*.py`. Rebuild
+figures with `papers/figs/PIPELINE.md`.
 
-## Scale-hardening additions (v1.3, 2026-07)
-- `experiments/s5_normctl/run_20260708_capscale.py` + `experiments/results/s5_normctl_scale/` (112 runs):
-  norm-cap dose-response across modulus rungs p in {97,251,337} (capscale, 52 runs) and the
-  S5 width {128,256,512} x depth {2,4} x ceiling {inf,1} grid (capwd, 60 runs).
-- `experiments/group_complexity/run_20260708_adam_nowd.py` + `experiments/results/group_complexity_nowd/`
-  (30 runs): plain-Adam (lambda=0) taxonomy arm over the group ladder.
+## Portal
+Graphite instrument UI. Static export (no LaTeX, not a preprint):
+
+```bash
+bash portal/build.sh
+```
+
+Writes `portal/out/` and copies it to `_site/`. Project Pages (after deploy from `main`):
+https://peterponyu.github.io/muon-norm-cap-grokking/
 
 ## License
-Code: MIT (`LICENSE`). Result logs: CC BY 4.0. See `CITATION.cff`.
+Code: MIT (`LICENSE`). Result logs and figures: CC BY 4.0. See `CITATION.cff`.

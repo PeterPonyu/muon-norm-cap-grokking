@@ -1,0 +1,705 @@
+{
+  "artifact": "A_gap_normcap",
+  "generated_from_manifest": "papers/figs/figure_manifest.yaml",
+  "layout": "balanced-2x2",
+  "panel_count": 4,
+  "panels": [
+    {
+      "id": "a",
+      "metrics": {
+        "add": {
+          "grok_at_every_ceiling": true,
+          "grok_step_ratio_k1_over_kinf": 1.0,
+          "rows": {
+            "k1": {
+              "grok_step_med": 100.0,
+              "k": 1.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9992913603782654,
+              "wn_hidden_med": 12.54409792990311
+            },
+            "k1p5": {
+              "grok_step_med": 100.0,
+              "k": 1.5,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9994685053825378,
+              "wn_hidden_med": 18.816146958244882
+            },
+            "k2": {
+              "grok_step_med": 100.0,
+              "k": 2.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9995571076869965,
+              "wn_hidden_med": 25.08819549862163
+            },
+            "k3": {
+              "grok_step_med": 100.0,
+              "k": 3.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 37.62489681267334
+            },
+            "kinf": {
+              "grok_step_med": 100.0,
+              "k": null,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 148.74751555015587
+            }
+          },
+          "wn_monotone_decreasing": true
+        },
+        "s5": {
+          "grok_at_every_ceiling": true,
+          "grok_step_ratio_k1_over_kinf": 0.09219858156028368,
+          "rows": {
+            "k1": {
+              "grok_step_med": 325.0,
+              "k": 1.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9999421238899231,
+              "wn_hidden_med": 12.544657244910361
+            },
+            "k1p5": {
+              "grok_step_med": 325.0,
+              "k": 1.5,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 18.81698605109572
+            },
+            "k2": {
+              "grok_step_med": 425.0,
+              "k": 2.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 25.07908180573015
+            },
+            "k3": {
+              "grok_step_med": 575.0,
+              "k": 3.0,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 1.0,
+              "wn_hidden_med": 37.632320722648984
+            },
+            "kinf": {
+              "grok_step_med": 3525.0,
+              "k": null,
+              "n": 8,
+              "n_grok": 8,
+              "test_acc_med": 0.9993055462837219,
+              "wn_hidden_med": 311.4547593799924
+            }
+          },
+          "wn_monotone_decreasing": true
+        }
+      },
+      "question": "What is the observed cap dose response?",
+      "sources": [
+        "experiments/results/figures-021/normctl_verdict.json"
+      ]
+    },
+    {
+      "id": "b",
+      "metrics": {
+        "A5: kinf/k1": {
+          "base_per_seed": {
+            "0": 350.0,
+            "1": 375.0,
+            "2": 375.0,
+            "3": 400.0,
+            "4": 375.0,
+            "5": 350.0,
+            "6": 350.0,
+            "7": 400.0
+          },
+          "ci95_bca": [
+            1.4285714285714286,
+            2.0
+          ],
+          "ci95_percentile": [
+            1.3636363636363635,
+            1.9375
+          ],
+          "median_base": 375.0,
+          "median_treat": 212.5,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "A5: kinf/k1",
+          "note": "results/ieee_gap_20260705/A/normaccel, rung-60, 8 seeds",
+          "ratio": 1.7647058823529411,
+          "treat_per_seed": {
+            "0": 200.0,
+            "1": 175.0,
+            "2": 250.0,
+            "3": 275.0,
+            "4": 200.0,
+            "5": 200.0,
+            "6": 225.0,
+            "7": 275.0
+          }
+        },
+        "D60: kinf/k1": {
+          "base_per_seed": {
+            "0": 75.0,
+            "1": 100.0,
+            "2": 75.0,
+            "3": 125.0,
+            "4": 100.0
+          },
+          "ci95_bca": [
+            1.0,
+            1.6666666666666667
+          ],
+          "ci95_percentile": [
+            1.0,
+            1.6666666666666667
+          ],
+          "median_base": 100.0,
+          "median_treat": 75.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "D60: kinf/k1",
+          "note": "results/ieee_gap_20260705/A/normaccel, rung-120, 5 seeds",
+          "ratio": 1.3333333333333333,
+          "treat_per_seed": {
+            "0": 75.0,
+            "1": 75.0,
+            "2": 75.0,
+            "3": 75.0,
+            "4": 75.0
+          }
+        },
+        "S5 depth-4 (gap battery): kinf/k1": {
+          "base_per_seed": {
+            "0": 12050.0,
+            "1": 6500.0,
+            "2": 10150.0,
+            "3": 7750.0,
+            "4": 5550.0
+          },
+          "ci95_bca": [
+            18.5,
+            40.166666666666664
+          ],
+          "ci95_percentile": [
+            18.5,
+            40.166666666666664
+          ],
+          "median_base": 7750.0,
+          "median_treat": 300.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "S5 depth-4 (gap battery): kinf/k1",
+          "note": "results/ieee_gap_20260705/A/depth4, 5 seeds/arm",
+          "ratio": 25.833333333333332,
+          "treat_per_seed": {
+            "0": 300.0,
+            "1": 250.0,
+            "2": 350.0,
+            "3": 300.0,
+            "4": 350.0
+          }
+        },
+        "S5 grid d=128 L=2: kinf/k1": {
+          "base_per_seed": {
+            "0": 6850.0,
+            "1": 2650.0,
+            "2": 2800.0,
+            "3": 5700.0,
+            "4": 5550.0
+          },
+          "ci95_bca": [
+            6.222222222222222,
+            22.833333333333332
+          ],
+          "ci95_percentile": [
+            5.888888888888889,
+            22.8
+          ],
+          "median_base": 5550.0,
+          "median_treat": 350.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "S5 grid d=128 L=2: kinf/k1",
+          "note": "results/s5_normctl_scale capwd, 5 seeds/arm (replication batch)",
+          "ratio": 15.857142857142858,
+          "treat_per_seed": {
+            "0": 500.0,
+            "1": 300.0,
+            "2": 250.0,
+            "3": 350.0,
+            "4": 450.0
+          }
+        },
+        "S5 grid d=128 L=4: kinf/k1": {
+          "base_per_seed": {
+            "0": 6600.0,
+            "1": 5850.0,
+            "2": 9650.0,
+            "3": 10850.0,
+            "4": 6400.0
+          },
+          "ci95_bca": [
+            14.625,
+            38.6
+          ],
+          "ci95_percentile": [
+            16.0,
+            38.6
+          ],
+          "median_base": 6600.0,
+          "median_treat": 300.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "S5 grid d=128 L=4: kinf/k1",
+          "note": "results/s5_normctl_scale capwd, 5 seeds/arm (replication batch)",
+          "ratio": 22.0,
+          "treat_per_seed": {
+            "0": 300.0,
+            "1": 250.0,
+            "2": 400.0,
+            "3": 400.0,
+            "4": 250.0
+          }
+        },
+        "S5 grid d=256 L=2: kinf/k1": {
+          "base_per_seed": {
+            "0": 3850.0,
+            "1": 3950.0,
+            "2": 6450.0,
+            "3": 4600.0,
+            "4": 3750.0
+          },
+          "ci95_bca": [
+            12.833333333333334,
+            25.8
+          ],
+          "ci95_percentile": [
+            13.166666666666666,
+            25.8
+          ],
+          "median_base": 3950.0,
+          "median_treat": 250.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "S5 grid d=256 L=2: kinf/k1",
+          "note": "results/s5_normctl_scale capwd, 5 seeds/arm (replication batch)",
+          "ratio": 15.8,
+          "treat_per_seed": {
+            "0": 200.0,
+            "1": 250.0,
+            "2": 300.0,
+            "3": 250.0,
+            "4": 250.0
+          }
+        },
+        "S5 grid d=256 L=4: kinf/k1": {
+          "base_per_seed": {
+            "0": 7850.0,
+            "1": 9550.0,
+            "2": 9750.0,
+            "3": 10500.0,
+            "4": 8000.0
+          },
+          "ci95_bca": [
+            31.4,
+            42.0
+          ],
+          "ci95_percentile": [
+            26.666666666666668,
+            42.0
+          ],
+          "median_base": 9550.0,
+          "median_treat": 250.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "S5 grid d=256 L=4: kinf/k1",
+          "note": "results/s5_normctl_scale capwd, 5 seeds/arm (replication batch)",
+          "ratio": 38.2,
+          "treat_per_seed": {
+            "0": 250.0,
+            "1": 300.0,
+            "2": 250.0,
+            "3": 300.0,
+            "4": 250.0
+          }
+        },
+        "S5 grid d=512 L=2: kinf/k1": {
+          "base_per_seed": {
+            "0": 10850.0,
+            "1": 6500.0,
+            "2": 5050.0,
+            "3": 8650.0,
+            "4": 3400.0
+          },
+          "ci95_bca": [
+            8.416666666666666,
+            28.833333333333332
+          ],
+          "ci95_percentile": [
+            8.416666666666666,
+            28.833333333333332
+          ],
+          "median_base": 6500.0,
+          "median_treat": 400.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "S5 grid d=512 L=2: kinf/k1",
+          "note": "results/s5_normctl_scale capwd, 5 seeds/arm (replication batch)",
+          "ratio": 16.25,
+          "treat_per_seed": {
+            "0": 300.0,
+            "1": 400.0,
+            "2": 550.0,
+            "3": 600.0,
+            "4": 300.0
+          }
+        },
+        "S5 grid d=512 L=4: kinf/k1": {
+          "base_per_seed": {
+            "0": 11750.0,
+            "1": 7650.0,
+            "2": 8050.0,
+            "3": 4300.0,
+            "4": 10050.0
+          },
+          "ci95_bca": [
+            19.125,
+            39.166666666666664
+          ],
+          "ci95_percentile": [
+            14.333333333333334,
+            39.166666666666664
+          ],
+          "median_base": 8050.0,
+          "median_treat": 300.0,
+          "n_base": 5,
+          "n_treat": 5,
+          "name": "S5 grid d=512 L=4: kinf/k1",
+          "note": "results/s5_normctl_scale capwd, 5 seeds/arm (replication batch)",
+          "ratio": 26.833333333333332,
+          "treat_per_seed": {
+            "0": 400.0,
+            "1": 300.0,
+            "2": 300.0,
+            "3": 300.0,
+            "4": 450.0
+          }
+        },
+        "S5 primary: kinf/k1": {
+          "base_per_seed": {
+            "0": 9750.0,
+            "1": 2600.0,
+            "2": 2650.0,
+            "3": 5850.0,
+            "4": 4100.0,
+            "5": 4000.0,
+            "6": 1950.0,
+            "7": 3050.0
+          },
+          "ci95_bca": [
+            7.125,
+            19.5
+          ],
+          "ci95_percentile": [
+            6.625,
+            16.714285714285715
+          ],
+          "median_base": 3525.0,
+          "median_treat": 325.0,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "S5 primary: kinf/k1",
+          "note": "results/s5_normctl, 8 seeds/arm; paper headline 10.8x at k=1",
+          "ratio": 10.846153846153847,
+          "treat_per_seed": {
+            "0": 350.0,
+            "1": 250.0,
+            "2": 300.0,
+            "3": 400.0,
+            "4": 400.0,
+            "5": 550.0,
+            "6": 300.0,
+            "7": 300.0
+          }
+        },
+        "S5 primary: kinf/k1p5": {
+          "base_per_seed": {
+            "0": 9750.0,
+            "1": 2600.0,
+            "2": 2650.0,
+            "3": 5850.0,
+            "4": 4100.0,
+            "5": 4000.0,
+            "6": 1950.0,
+            "7": 3050.0
+          },
+          "ci95_bca": [
+            7.125,
+            19.5
+          ],
+          "ci95_percentile": [
+            6.933333333333334,
+            16.714285714285715
+          ],
+          "median_base": 3525.0,
+          "median_treat": 325.0,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "S5 primary: kinf/k1p5",
+          "note": "results/s5_normctl, 8 seeds/arm; paper headline 10.8x at k=1",
+          "ratio": 10.846153846153847,
+          "treat_per_seed": {
+            "0": 500.0,
+            "1": 300.0,
+            "2": 300.0,
+            "3": 350.0,
+            "4": 400.0,
+            "5": 400.0,
+            "6": 250.0,
+            "7": 300.0
+          }
+        },
+        "mod-add primary: kinf/k1": {
+          "base_per_seed": {
+            "0": 100.0,
+            "1": 100.0,
+            "2": 100.0,
+            "3": 100.0,
+            "4": 100.0,
+            "5": 100.0,
+            "6": 100.0,
+            "7": 100.0
+          },
+          "ci95_bca": [
+            1.0,
+            1.0
+          ],
+          "ci95_percentile": [
+            1.0,
+            1.0
+          ],
+          "median_base": 100.0,
+          "median_treat": 100.0,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "mod-add primary: kinf/k1",
+          "note": "results/add_normctl; eval-floored (all medians at step 100)",
+          "ratio": 1.0,
+          "treat_per_seed": {
+            "0": 100.0,
+            "1": 100.0,
+            "2": 100.0,
+            "3": 100.0,
+            "4": 100.0,
+            "5": 100.0,
+            "6": 100.0,
+            "7": 100.0
+          }
+        }
+      },
+      "question": "What paired acceleration interval is supported?",
+      "sources": [
+        "experiments/revision2026/A/bootstrap_cis.json"
+      ]
+    },
+    {
+      "id": "c",
+      "metrics": {
+        "D60": {
+          "ci95_percentile": [
+            2.235294117647059,
+            2.9666935483870946
+          ],
+          "median_capped": 80.0,
+          "median_uncapped": 200.0,
+          "ratio": 2.5
+        },
+        "add": {
+          "ci95_percentile": [
+            1.0833333333333333,
+            1.2272727272727273
+          ],
+          "median_capped": 55.0,
+          "median_uncapped": 65.0,
+          "ratio": 1.1818181818181819
+        }
+      },
+      "question": "Do defloored controls preserve the acceleration?",
+      "sources": [
+        "experiments/revision2026/gpu2026/adf/adf_verdict.json"
+      ]
+    },
+    {
+      "id": "d",
+      "metrics": {
+        "A5": {
+          "base_per_seed": {
+            "0": 350.0,
+            "1": 375.0,
+            "2": 375.0,
+            "3": 400.0,
+            "4": 375.0,
+            "5": 350.0,
+            "6": 350.0,
+            "7": 400.0
+          },
+          "ci95_bca": [
+            1.4285714285714286,
+            2.0
+          ],
+          "ci95_percentile": [
+            1.3636363636363635,
+            1.9375
+          ],
+          "median_base": 375.0,
+          "median_treat": 212.5,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "A5: kinf/k1",
+          "note": "results/ieee_gap_20260705/A/normaccel, rung-60, 8 seeds",
+          "ratio": 1.7647058823529411,
+          "treat_per_seed": {
+            "0": 200.0,
+            "1": 175.0,
+            "2": 250.0,
+            "3": 275.0,
+            "4": 200.0,
+            "5": 200.0,
+            "6": 225.0,
+            "7": 275.0
+          }
+        },
+        "D60": {
+          "capped_per_seed": {
+            "70": 80,
+            "71": 80,
+            "72": 80,
+            "73": 80,
+            "74": 75,
+            "75": 80,
+            "76": 90,
+            "77": 90
+          },
+          "ci95_bca": [
+            2.264705882352941,
+            3.0
+          ],
+          "ci95_percentile": [
+            2.235294117647059,
+            2.9666935483870946
+          ],
+          "inference_status": "complete_uncensored",
+          "median_capped": 80.0,
+          "median_uncapped": 200.0,
+          "n_capped": 8,
+          "n_uncapped": 8,
+          "nongrok_capped": 0,
+          "nongrok_uncapped": 0,
+          "ratio": 2.5,
+          "task": "D60",
+          "uncapped_per_seed": {
+            "70": 190,
+            "71": 205,
+            "72": 185,
+            "73": 220,
+            "74": 190,
+            "75": 195,
+            "76": 240,
+            "77": 245
+          }
+        },
+        "S5": {
+          "base_per_seed": {
+            "0": 9750.0,
+            "1": 2600.0,
+            "2": 2650.0,
+            "3": 5850.0,
+            "4": 4100.0,
+            "5": 4000.0,
+            "6": 1950.0,
+            "7": 3050.0
+          },
+          "ci95_bca": [
+            7.125,
+            19.5
+          ],
+          "ci95_percentile": [
+            6.625,
+            16.714285714285715
+          ],
+          "median_base": 3525.0,
+          "median_treat": 325.0,
+          "n_base": 8,
+          "n_treat": 8,
+          "name": "S5 primary: kinf/k1",
+          "note": "results/s5_normctl, 8 seeds/arm; paper headline 10.8x at k=1",
+          "ratio": 10.846153846153847,
+          "treat_per_seed": {
+            "0": 350.0,
+            "1": 250.0,
+            "2": 300.0,
+            "3": 400.0,
+            "4": 400.0,
+            "5": 550.0,
+            "6": 300.0,
+            "7": 300.0
+          }
+        },
+        "add": {
+          "capped_per_seed": {
+            "70": 60,
+            "71": 60,
+            "72": 60,
+            "73": 55,
+            "74": 55,
+            "75": 55,
+            "76": 55,
+            "77": 55
+          },
+          "ci95_bca": [
+            1.0869565217391304,
+            1.2727272727272727
+          ],
+          "ci95_percentile": [
+            1.0833333333333333,
+            1.2272727272727273
+          ],
+          "inference_status": "complete_uncensored",
+          "median_capped": 55.0,
+          "median_uncapped": 65.0,
+          "n_capped": 8,
+          "n_uncapped": 8,
+          "nongrok_capped": 0,
+          "nongrok_uncapped": 0,
+          "ratio": 1.1818181818181819,
+          "task": "add",
+          "uncapped_per_seed": {
+            "70": 70,
+            "71": 70,
+            "72": 60,
+            "73": 65,
+            "74": 60,
+            "75": 65,
+            "76": 65,
+            "77": 65
+          }
+        }
+      },
+      "question": "How does the effect vary across tasks?",
+      "sources": [
+        "experiments/revision2026/A/bootstrap_cis.json",
+        "experiments/revision2026/gpu2026/adf/adf_verdict.json"
+      ]
+    }
+  ]
+}
