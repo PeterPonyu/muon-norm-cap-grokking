@@ -27,3 +27,6 @@ _site/
 portal/node_modules/
 portal/.next/
 portal/out/
+portal/test-results/
+portal/playwright-report/
+portal/blob-report/

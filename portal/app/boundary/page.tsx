@@ -1,25 +1,14 @@
 import { InstrumentShell } from "../../components/InstrumentShell";
+import { ModulePage } from "../../components/ModulePage";
 
 export default function BoundaryPage() {
   return (
     <InstrumentShell active="boundary">
-      <main className="stage">
-        <section className="module-page">
-          <article className="panel">
-            <h1>Boundary</h1>
-            <p>
-              Scope probes: activations, plasticity, real-text. File names only; no
-              caption prose.
-            </p>
-            <dl className="kv">
-              <dt>channel</dt>
-              <dd>scope probes</dd>
-              <dt>summaries</dt>
-              <dd className="mono">A_sink.json · A_plasticity.json · A_synth.json</dd>
-            </dl>
-          </article>
-        </section>
-      </main>
+      <ModulePage
+        title="Boundary"
+        intro="Scope probes: activation sinks, plasticity, and the synthesis bound. Each face loads its public summary and shows questions plus panel structure."
+        faceIds={["sink", "plasticity", "synth"]}
+      />
     </InstrumentShell>
   );
 }

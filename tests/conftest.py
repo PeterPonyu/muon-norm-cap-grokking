@@ -40,6 +40,8 @@ FORBIDDEN_UI = (
     "manuscript",
     "submission",
     "preprint",
+    "publication",
+    "venue",
     "peerj",
     "neurocomputing",
     "jmlr",
@@ -47,6 +49,34 @@ FORBIDDEN_UI = (
     "figure-index",
     "pipeline.md",
     "warehouse",
+)
+FILENAME_LEAKS = (
+    ".json",
+    ".tex",
+    ".md",
+    ".py",
+    ".r",
+    "figure-index",
+    "pipeline",
+    "main.tex",
+    "a_gap",
+    "a_normctl",
+    "a_floor",
+    "a_lmc",
+    "a_sink",
+    "a_plasticity",
+    "a_synth",
+    "papers/a",
+    "warehouse",
+)
+SCIENCE_TOKENS = (
+    "Cap",
+    "Dose",
+    "Floor",
+    "LMC",
+    "Boundary",
+    "dose response",
+    "hidden-norm",
 )
 LEAK_PATTERNS = (
     "3525",

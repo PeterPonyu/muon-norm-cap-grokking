@@ -43,3 +43,24 @@ def test_dual_license_notice_preserved() -> None:
 def test_readme_cites_github() -> None:
     readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
     assert GITHUB_URL in readme or "PeterPonyu/muon-norm-cap-grokking" in readme
+
+
+def test_readme_leads_with_live_door_and_strips_publication_leaks() -> None:
+    readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+    head = "\n".join(readme.strip().splitlines()[:6])
+    assert "https://peterponyu.github.io/muon-norm-cap-grokking/" in head
+    lower = readme.lower()
+    for tok in (
+        "warehouse",
+        "preprint",
+        "journal",
+        "manuscript",
+        "venue",
+        "main.tex",
+        "figure-index",
+        "pipeline.md",
+        "github estimate",
+        "stars",
+    ):
+        assert tok not in lower, f"README still leaks {tok}"
+    assert "star" not in lower

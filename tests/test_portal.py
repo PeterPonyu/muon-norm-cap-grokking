@@ -11,12 +11,14 @@ from conftest import (
     BASE_PATH,
     CONCEPT_DOI,
     EXPORT_ROUTES,
+    FILENAME_LEAKS,
     FORBIDDEN_UI,
     GITHUB_URL,
     LEAK_PATTERNS,
     NAV_LABELS,
     PORTAL_DIR,
     REPO_ROOT,
+    SCIENCE_TOKENS,
 )
 
 EMOJI = re.compile(r"[\U0001F300-\U0001FAFF]")
@@ -197,6 +199,22 @@ def test_exported_html_has_no_document_framing() -> None:
         if found:
             hits.append(f"{rel}: {found}")
     assert hits == [], f"exported visible copy still frames a document: {hits}"
+
+
+def test_exported_html_shows_science_not_filenames() -> None:
+    site = REPO_ROOT / "_site"
+    if not (site / "index.html").is_file():
+        subprocess.run(["bash", str(PORTAL_DIR / "build.sh")], cwd=REPO_ROOT, check=True)
+    home = _visible_html((site / "index.html").read_text(encoding="utf-8"))
+    missing = [tok for tok in SCIENCE_TOKENS if tok.lower() not in home.lower()]
+    assert missing == [], f"home is missing scientific structure: {missing}"
+    leaks: list[str] = []
+    for rel in EXPORT_ROUTES:
+        visible = _visible_html((site / rel).read_text(encoding="utf-8")).lower()
+        found = [tok for tok in FILENAME_LEAKS if tok in visible]
+        if found:
+            leaks.append(f"{rel}: {found}")
+    assert leaks == [], f"exported visible copy still prints paths: {leaks}"
 
 
 def test_exported_html_uses_basepath_not_user_site_assets() -> None:
