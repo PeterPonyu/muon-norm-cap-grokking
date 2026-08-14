@@ -1,4 +1,4 @@
-/* Paper A graphite instrument tokens (DESIGN.md). next/font owns the faces. */
+/* Graphite hidden-norm instrument tokens. next/font owns the faces. */
 :root {
   --ground: #12151A;
   --surface: #1A1F27;
@@ -301,7 +301,7 @@ header.instrument {
   text-align: right;
 }
 
-footer.warehouse {
+footer.instrument-foot {
   flex: 0 0 var(--footer-h);
   display: flex;
   align-items: center;
@@ -316,13 +316,13 @@ footer.warehouse {
   overflow: hidden;
 }
 
-footer.warehouse a {
+footer.instrument-foot a {
   color: var(--muted);
   text-decoration: none;
 }
 
-footer.warehouse a:hover,
-footer.warehouse a:focus-visible {
+footer.instrument-foot a:hover,
+footer.instrument-foot a:focus-visible {
   color: var(--cap-cyan);
   outline: none;
 }
@@ -427,7 +427,7 @@ footer.warehouse a:focus-visible {
     grid-column: span 6;
   }
 
-  footer.warehouse {
+  footer.instrument-foot {
     white-space: normal;
     height: auto;
     flex: 0 0 auto;
