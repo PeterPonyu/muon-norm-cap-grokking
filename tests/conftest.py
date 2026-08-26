@@ -13,7 +13,7 @@ CANONICAL_TEX = REPO_ROOT / "papers" / "A" / "main.tex"
 PAPER_TITLE = "A causal norm cap preserves—and can accelerate—Muon grokking"
 
 CONCEPT_DOI = "10.5281/zenodo.21020291"
-VERSION_DOI = "10.5281/zenodo.21020292"
+VERSION_DOI = "10.5281/zenodo.21737440"
 GITHUB_REPO = "PeterPonyu/muon-norm-cap-grokking"
 GITHUB_URL = f"https://github.com/{GITHUB_REPO}"
 BASE_PATH = "/muon-norm-cap-grokking"
