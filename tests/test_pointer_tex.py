@@ -1,39 +1,47 @@
-"""Pointer manuscript contract (F5, F6, F6b)."""
+"""Pointer contract: public papers/A/main.tex is a short archive pointer."""
 
 from __future__ import annotations
 
-from conftest import CANONICAL_TEX, REPO_ROOT
+from conftest import CANONICAL_TEX, CONCEPT_DOI, GITHUB_URL, PAPER_TITLE, REPO_ROOT
 
-MIN_LINES = 2100  # canonical papers/A/main.tex is ~2295; 20-line stubs fail
+MAX_LINES = 40
 
 
-def test_warehouse_tex_is_full_canonical_not_a_list() -> None:
+def test_pointer_tex_exists() -> None:
     assert CANONICAL_TEX.is_file()
+
+
+def test_pointer_tex_is_short() -> None:
+    lines = CANONICAL_TEX.read_text(encoding="utf-8").splitlines()
+    assert 1 <= len(lines) <= MAX_LINES
+
+
+def test_pointer_tex_cites_title_doi_and_github() -> None:
     text = CANONICAL_TEX.read_text(encoding="utf-8")
-    lines = text.splitlines()
-    assert len(lines) >= MIN_LINES, (
-        f"F6b: papers/A/main.tex has {len(lines)} lines; expected full manuscript"
-    )
-    assert "pointer-only" not in text.lower()
+    assert PAPER_TITLE in text
+    assert CONCEPT_DOI in text
+    assert GITHUB_URL in text
 
 
-def test_figpreamble_include_survives() -> None:
-    text = CANONICAL_TEX.read_text(encoding="utf-8")
-    assert r"\input{../figs/figpreamble.tex}" in text
-    assert r"\graphicspath{{./}}" not in text
-    assert "figpreamble severed" not in text
-    assert "Figure1.pdf" not in text
-    assert "Figure3.pdf" not in text
+def test_pointer_tex_states_reproduction_archive() -> None:
+    text = CANONICAL_TEX.read_text(encoding="utf-8").lower()
+    assert "reproduction archive" in text
+    assert "submitted separately" in text
 
 
-def test_preamble_routed_heatmap_includes_may_remain() -> None:
-    text = CANONICAL_TEX.read_text(encoding="utf-8")
-    assert "A_normctl.pdf" in text
-
-
-def test_tex_does_not_include_previews() -> None:
-    text = CANONICAL_TEX.read_text(encoding="utf-8")
-    assert "previews/" not in text
+def test_pointer_tex_has_no_journal_or_internal_leaks() -> None:
+    lower = CANONICAL_TEX.read_text(encoding="utf-8").lower()
+    for tok in (
+        "bundle a",
+        "paper a",
+        "paper c",
+        "ieee",
+        "peerj",
+        "elsevier",
+        "claude",
+        "/home/zeyufu",
+    ):
+        assert tok not in lower, f"pointer leaks {tok}"
 
 
 def test_figpreamble_file_is_unmodified_pointer() -> None:

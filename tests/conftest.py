@@ -10,6 +10,7 @@ SCHEMA_PATH = REPO_ROOT / "papers" / "FIGURE-INDEX.schema.json"
 PORTAL_DIR = REPO_ROOT / "portal"
 WORKFLOWS_DIR = REPO_ROOT / ".github" / "workflows"
 CANONICAL_TEX = REPO_ROOT / "papers" / "A" / "main.tex"
+PAPER_TITLE = "A causal norm cap preserves—and can accelerate—Muon grokking"
 
 CONCEPT_DOI = "10.5281/zenodo.21020291"
 VERSION_DOI = "10.5281/zenodo.21020292"
