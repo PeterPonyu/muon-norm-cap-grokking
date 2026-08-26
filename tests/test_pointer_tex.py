@@ -26,7 +26,9 @@ def test_pointer_tex_cites_title_doi_and_github() -> None:
 def test_pointer_tex_states_reproduction_archive() -> None:
     text = CANONICAL_TEX.read_text(encoding="utf-8").lower()
     assert "reproduction archive" in text
-    assert "submitted separately" in text
+    assert "experiment code" in text
+    assert "per-run" in text
+    assert "result logs" in text
 
 
 def test_pointer_tex_has_no_journal_or_internal_leaks() -> None:

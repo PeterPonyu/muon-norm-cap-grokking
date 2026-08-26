@@ -1,6 +1,6 @@
 {
   "title": "A causal norm cap preserves—and can accelerate—Muon grokking",
-  "description": "Code and result logs for a causal norm-cap test of Muon-accelerated grokking on tiny transformers. Code is MIT; result logs CC-BY-4.0. Figure/manuscript sources not included; large standard datasets not bundled.",
+  "description": "This archive is the experiment code and per-run result logs for A causal norm cap preserves—and can accelerate—Muon grokking. Code is MIT; result logs CC-BY-4.0. Concept DOI 10.5281/zenodo.21020291.",
   "upload_type": "dataset",
   "access_right": "open",
   "license": "MIT",
