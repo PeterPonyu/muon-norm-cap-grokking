@@ -1,6 +1,6 @@
 """Update-GEOMETRY control: if not norm growth, then what?
 
-findings-021 (A §3.2) showed that capping Muon's hidden-matrix norm growth
+The S5 norm-cap arm showed that capping Muon's hidden-matrix norm growth
 PRESERVES grokking and ACCELERATES it ~10x, i.e. the growth is a dispensable
 byproduct. The obvious referee question is then "what IS doing the work?".
 This arm attacks that by substituting Muon's orthogonalized update UV^T with

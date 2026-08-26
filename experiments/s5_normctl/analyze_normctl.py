@@ -2,7 +2,7 @@
 
 Norm-controlled Muon (downward-only ceiling = k * init weight-norm) with
 k ∈ {inf, 3, 2, 1.5, 1}, 8 seeds. If growth were the mechanism, capping it should
-DELAY or block grokking. findings-021 (S5, results/s5_normctl) found the opposite:
+DELAY or block grokking. The S5 norm-cap logs (results/s5_normctl) found the opposite:
 grok survives at every ceiling incl. k=1, and capping ACCELERATES grok ~10× while
 ‖W_hidden‖ falls monotonically — growth is a byproduct of the orthogonalized
 update, not the cause.
@@ -106,7 +106,7 @@ def main():
         if arm not in out:
             continue
         v = out[arm]
-        label = "S5 (findings-021 baseline)" if arm == "s5" else "MOD-ADD (replication)"
+        label = "S5 (norm-cap baseline)" if arm == "s5" else "MOD-ADD (replication)"
         print(f"== {label} ==")
         print("  k       n  grok  grok_step(med)  ‖W_hidden‖(med)  test_acc(med)")
         for k in K_ORDER:

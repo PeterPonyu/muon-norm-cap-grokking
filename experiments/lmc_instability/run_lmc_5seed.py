@@ -1,4 +1,4 @@
-"""Direction 012 — 5-seed hardening (red-team audit 2026-06-13).
+"""5-seed hardening of the LMC grid (2026-06-13).
 
 The headline grid ran 3 seeds; the audit flagged Muon's k* as right-censored at
 n=3 (the "≥4× later than AdamW" claim needs more seeds to bound k* and the

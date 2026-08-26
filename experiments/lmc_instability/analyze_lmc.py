@@ -1,7 +1,7 @@
-"""Aggregate the LMC basin-lock metric k* across seeds (012 / paper-A §3.3).
+"""Aggregate the LMC basin-lock metric k* across seeds.
 
 k* = earliest spawn step after which the two forked children stay linearly connected
-(loss barrier < threshold). The §3.3 claim: Muon basin-locks LATER than AdamW and is
+(loss barrier < threshold). The LMC claim: Muon basin-locks LATER than AdamW and is
 seed-variable. At n=3 Muon's k* was right-censored; this re-aggregates over the
 densified n=15 (run_lmc_15seed.py) and reports per-optimizer median k*, spread, the
 muon/adamw ratio, and the censoring rate (k*=None ⇒ not connected by the last spawn
@@ -59,7 +59,7 @@ def main():
         rec = {
             "n": len(ks),
             "n_censored": sum(1 for k in ks if k is None),
-            # the DISTRIBUTIONAL readout (paper-A §3.3: "distributional, NOT 4x"):
+            # the DISTRIBUTIONAL readout (distributional, not a 4x median ratio):
             # fraction whose basin LOCKS by the last spawn step. Lower => basin stays
             # open longer. Most base-grid k* are censored at 8000, so this rate (not an
             # imputed median) is the clean comparison.

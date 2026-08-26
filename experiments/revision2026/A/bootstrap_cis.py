@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""A-T0-1 (revision plan 2026-07-16): bootstrap CIs + per-seed values for every
-Paper-A headline acceleration ratio, plus a quantification of the 10.8x-vs-15.9x
-between-batch discrepancy at the nominal d=128/depth-2 S5 configuration.
+"""Bootstrap CIs + per-seed values for every headline acceleration ratio, plus
+a quantification of the 10.8x-vs-15.9x between-batch discrepancy at the
+nominal d=128/depth-2 S5 configuration.
 
 Data: RAW per-run jsonls (never derived tables, per LESSONS-AND-ERRATA rule 3).
   - results/s5_normctl/            primary 8-seed S5 dose-response (10.8x)

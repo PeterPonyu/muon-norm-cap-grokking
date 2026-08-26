@@ -1,8 +1,8 @@
-"""Direction 012 / A §3.3 — densify LMC seeds 5..14 (n=5 -> n=15).
+"""Densify LMC seeds 5..14 (n=5 -> n=15).
 
-paper-A §3.3 (linear-mode-connectivity / basin-lock: Muon's k* ~4x later than AdamW
-& seed-variable) rests on n=5. The red-team flagged the k* bound + seed-variance as
-thin. This adds seeds 5..14 (10 new parent cells per optimizer) into the SAME
+The linear-mode-connectivity / basin-lock result (Muon's k* ~4x later than AdamW
+and seed-variable) rests on n=5. Seed variance on that bound is thin. This adds
+seeds 5..14 (10 new parent cells per optimizer) into the SAME
 results/lmc_instability/ namespace (names opt_s{seed}), reusing the headline config
 verbatim (default SPAWN_STEPS, N_CHILDREN), resume-safe. Mirrors run_lmc_5seed.py.
 """
@@ -26,8 +26,8 @@ def main():
     import argparse
     ap = argparse.ArgumentParser()
     # TRIMMED default (2026-06-15): each LMC fork cell costs ~25-44 min, so the full
-    # 3-opt x 10-seed sweep would be ~15 h for an OPTIONAL §3.3 strengthening. SGDM is
-    # excluded (findings-012: never learns -> connectivity vacuous), and +5 seeds for
+    # 3-opt x 10-seed sweep would be ~15 h for an optional LMC strengthening. SGDM is
+    # excluded (it never learns, so connectivity is vacuous), and +5 seeds for
     # {muon,adamw} (n=5 -> n=10) already powers the distributional "basin stays open
     # longer" claim (e.g. muon 0/10 vs adamw ~4/10 -> Fisher p~0.04).
     ap.add_argument("--optimizers", default="muon,adamw")

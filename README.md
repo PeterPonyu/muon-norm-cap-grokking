@@ -39,6 +39,7 @@ CC BY 4.0.
 
 Layout:
 
+- `experiments/grokking/` — shared trainer, Muon optimizer, model, and data
 - `experiments/s5_normctl/` — downward-only norm-cap runners and analyzers
 - `experiments/s5_mech/` — S5 growth-signature reference arm
 - `experiments/lmc_instability/` — spawn-fork linear-mode-connectivity (LMC) arms

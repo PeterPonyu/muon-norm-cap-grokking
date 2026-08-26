@@ -43,9 +43,8 @@ get full LaTeX-typeset TikZ; figures with plotmath get correct vector PDF. A sep
 
 ```bash
 cd papers
-./build_vectors.sh            # all figures + LuaLaTeX compile, all papers
+./build_vectors.sh            # all figures + LuaLaTeX compile
 ./build_vectors.sh figs       # figures only
-./build_vectors.sh A          # one paper
 ```
 
 Per-paper concurrent renders must use a distinct metrics dictionary to avoid

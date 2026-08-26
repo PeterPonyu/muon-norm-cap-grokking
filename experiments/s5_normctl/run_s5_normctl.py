@@ -1,9 +1,9 @@
 """Tier-2 — norm-controlled Muon on S5: is the growth route CAUSAL?
 
-The A red-team objected that Muon's 6.5× hidden-norm growth (findings-002) may be a
-restatement of the orthogonalized update (fixed spectral norm ⇒ Frobenius norm
-inflates every step) rather than a mechanism. This runner is the manipulated-cause
-arm: cap the hidden-matrix growth and ask whether grokking survives.
+A concern is that Muon's 6.5× hidden-norm growth may be a restatement of the
+orthogonalized update (fixed spectral norm ⇒ Frobenius norm inflates every
+step) rather than a mechanism. This runner is the manipulated-cause arm: cap
+the hidden-matrix growth and ask whether grokking survives.
 
 RED-TEAM-CORRECTED design:
 - DOSE-RESPONSE is primary: ceiling k ∈ {∞ (vanilla Muon = growth control), 3, 2,
@@ -15,16 +15,16 @@ RED-TEAM-CORRECTED design:
   wd-cancellation confound the naive "project to init" had. k=∞ ⇒ vanilla Muon.
 - CONFIG MATCHES s5_mech (NOT grokking/train.py defaults): op=s5, init_scale=1.0,
   weight_decay=0.01, steps=20000, eval_every=50, mech=True — so the growth arm
-  reproduces 002's 6.5× and grok_step / wn_hidden are directly comparable.
+  reproduces the 6.5× growth signature and grok_step / wn_hidden are directly comparable.
 
 Non-invasive: reuses grokking/train.run via a monkeypatch of train.build_optimizer.
 train.run already calls opt.step() in its loop, so NormControlledMuon.step()
 (= super().step() then project) drops in with no loop change.
 
 KILL CRITERIA (preregistered):
-- flat/low-k arms grok at comparable rate/step → growth NOT causal (A §3.2 demoted
-  to descriptive; the honest, likely-publishable negative).
-- monotone grok-rate collapse as k→1 → growth IS causal (A §3.2 upheld as mechanism).
+- flat/low-k arms grok at comparable rate/step → growth NOT causal
+  (the growth signature is descriptive, not mechanistic).
+- monotone grok-rate collapse as k→1 → growth IS causal.
 - sanity: growth arm (k=∞) must reproduce ~6.5× (final_wn_hidden); capped arms must
   show wn_hidden pinned at ≤ k·init (logged) — else the intervention didn't bite.
 - confound watch: log wn_hidden (the represented-scale proxy); a future logit-RMS

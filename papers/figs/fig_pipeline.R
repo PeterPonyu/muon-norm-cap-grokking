@@ -50,15 +50,15 @@ dir.create(.fp_texdir, showWarnings = FALSE, recursive = TRUE)
 dir.create(.fp_vecdir, showWarnings = FALSE, recursive = TRUE)
 source(file.path(.fp_figdir, "figure_panel_helpers.R"))
 
-# ── PeerJ re-review opt-in: title-stripped variants in sibling dirs ───────────
-# PeerJ requires images with no baked-in titles/legends at re-review. Setting
-# FIG_STRIP_TITLES (any non-empty value) redirects output to tex-peerj/vec-peerj
-# and strips plot titles/subtitles in emit_vector() below. With the env var
-# unset, .fp_texdir/.fp_vecdir keep their values from above and this file's
-# behavior is byte-identical to before this block existed.
+# ── Title-strip opt-in: caption-ready variants in sibling dirs ────────────────
+# Some venues want images with no baked-in titles. Setting FIG_STRIP_TITLES
+# (any non-empty value) redirects output to tex-stripped/vec-stripped and
+# strips plot titles/subtitles in emit_vector() below. With the env var unset,
+# .fp_texdir/.fp_vecdir keep their values from above and this file's behavior
+# is byte-identical to before this block existed.
 if (nzchar(Sys.getenv("FIG_STRIP_TITLES", unset = ""))) {
-  .fp_texdir <- file.path(.fp_figdir, "tex-peerj")
-  .fp_vecdir <- file.path(.fp_figdir, "vec-peerj")
+  .fp_texdir <- file.path(.fp_figdir, "tex-stripped")
+  .fp_vecdir <- file.path(.fp_figdir, "vec-stripped")
   dir.create(.fp_texdir, showWarnings = FALSE, recursive = TRUE)
   dir.create(.fp_vecdir, showWarnings = FALSE, recursive = TRUE)
 }
@@ -190,7 +190,7 @@ fp_tex_escape <- function(x) {
   invisible(out)
 }
 
-# ── PeerJ opt-in: strip baked-in titles/subtitles, keep panel tags ───────────
+# ── Title-strip opt-in: strip baked-in titles/subtitles, keep panel tags ──────
 # A title/subtitle beginning with a panel-tag pattern "(a) ..." keeps just the
 # "(a)" (captions reference these); everything else is NULLed. Patchwork's own
 # "(a)"/"(b)" tags come from plot_annotation(tag_levels=), a layer separate
@@ -208,7 +208,7 @@ fp_tex_escape <- function(x) {
   # below (it needs a plain character string) — strip them like any other.
   if (is.language(x) || is.expression(x)) return(NULL)
   # Plain "(a) title" and markdown "**(a)** title" from compose_C_four_panel.
-  # Keep markdown bold so PeerJ strip titles stay **(a)** under element_markdown.
+  # Keep markdown bold so stripped titles stay **(a)** under element_markdown.
   m <- regmatches(x, regexpr("^\\*\\*\\(([A-Za-z0-9]+)\\)\\*\\*\\s*", x))
   if (length(m) && nzchar(m)) {
     tag <- sub("^\\*\\*\\(([A-Za-z0-9]+)\\)\\*\\*.*$", "**(\\1)**", m)
@@ -265,7 +265,7 @@ ggplot_add.fp_title_stripper <- function(object, plot, object_name) {
 # gridtext hard break "<br>" becomes a real newline. We cannot substitute LaTeX
 # markup (\textbf) here: tikz() runs with sanitize = TRUE, which would escape the
 # backslash and print the macro literally. Full titles stay plain for spacing;
-# bare PeerJ-stripped tags ("(a)" only) are re-bolded via element_text(face=
+# bare stripped tags ("(a)" only) are re-bolded via element_text(face=
 # "bold") in .fp_text_titles_elem so tikzDevice emits \bfseries (a).
 .fp_demarkdown_title <- function(x) {
   if (is.null(x) || is.language(x) || is.expression(x)) return(x)
@@ -287,7 +287,7 @@ ggplot_add.fp_title_stripper <- function(object, plot, object_name) {
   # merged over an element_markdown ("Can't merge the `plot.title` theme
   # element"). Direct replacement sidesteps the merge entirely.
   #
-  # PeerJ strip leaves titles as bare "(a)" / "(b)" only. tikzDevice cannot
+  # Title-strip leaves titles as bare "(a)" / "(b)" only. tikzDevice cannot
   # carry markdown bold through sanitize=TRUE, but face="bold" emits
   # \bfseries — matching C_case / C_subspace plot.tag tags. Full titles
   # ("(a) Speedup ...") stay plain so multi-word spacing stays correct.
@@ -329,15 +329,15 @@ ggplot_add.fp_title_detexer <- function(object, plot, object_name) {
 emit_vector <- function(p, name, w = 6.5, h = 4.0) {
   panel_metadata <- attr(p, "figure_panel_metadata", exact = TRUE)
   strip_titles <- nzchar(Sys.getenv("FIG_STRIP_TITLES", unset = ""))
-  # Pin the -peerj variant to whichever tier the CANONICAL figure already
-  # uses, when known. Tier can otherwise flip after stripping: e.g. a title
-  # containing a glyph tikzDevice can't measure forces the canonical build
-  # onto the vector-PDF fallback tier, but removing that title lets the
-  # SAME plot compile as TikZ post-strip. main.tex picks \figtikz vs
+  # Pin the title-stripped variant to whichever tier the CANONICAL figure
+  # already uses, when known. Tier can otherwise flip after stripping: e.g. a
+  # title containing a glyph tikzDevice can't measure forces the canonical
+  # build onto the vector-PDF fallback tier, but removing that title lets the
+  # SAME plot compile as TikZ post-strip. The paper include picks \figtikz vs
   # \includegraphics per figure based on the canonical tier, so an unpinned
-  # flip would silently strand the -peerj variant somewhere main.tex never
-  # looks. Pinning is skipped if the canonical output doesn't exist yet (or
-  # is ambiguous) and falls back to ordinary auto-detection.
+  # flip would silently strand the stripped variant somewhere the include
+  # never looks. Pinning is skipped if the canonical output doesn't exist yet
+  # (or is ambiguous) and falls back to ordinary auto-detection.
   pinned_tier <- NULL
   if (strip_titles) {
     canon_tex_exists <- file.exists(file.path(.fp_figdir, "tex", paste0(name, ".tex")))

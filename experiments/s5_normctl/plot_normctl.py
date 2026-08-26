@@ -1,4 +1,4 @@
-"""Render the 021 norm-control causal figure for paper-A §3.2.
+"""Render the norm-control causal figure.
 
 Reads results/figures-021/normctl_verdict.json (produced by analyze_normctl.py)
 and draws the manipulated-cause result: a downward-only hidden-norm ceiling

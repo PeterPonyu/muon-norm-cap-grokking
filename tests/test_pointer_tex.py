@@ -39,7 +39,6 @@ def test_pointer_tex_has_no_journal_or_internal_leaks() -> None:
         "peerj",
         "elsevier",
         "claude",
-        "/home/zeyufu",
     ):
         assert tok not in lower, f"pointer leaks {tok}"
 

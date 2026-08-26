@@ -1,4 +1,4 @@
-"""Scale ladder for the norm-controlled-Muon cap (findings-021 follow-up).
+"""Scale ladder for the norm-controlled-Muon cap.
 
 Two arms, both reusing run_s5_normctl.py's cap-injection mechanism UNCHANGED
 (NormControlledMuon + make_builder monkeypatch of train.build_optimizer):
