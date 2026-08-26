@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A-DF -- defloor Paper A's two unresolved acceleration ratios.
+"""A-DF -- defloor the two unresolved acceleration ratios.
 
 Two ratios are pinned to their evaluation grids: mod-add p=97 has uncapped/k=1
 medians 100/100 at cadence 50, and D60 has 100/75 at cadence 25. This arm
@@ -9,7 +9,7 @@ changes only eval cadence to 5 and uses eight fresh seeds per arm:
 
 The add cells reuse grokking.train.run and run_s5_normctl.make_builder. D60
 reuses tools/run_20260705_gapA_normaccel.py's trainer and operating point.
-Companion analyze_adf.py reproduces Paper A's 20,000-resample percentile+BCa
+Companion analyze_adf.py reproduces the 20,000-resample percentile+BCa
 seed bootstrap.
 """
 from __future__ import annotations

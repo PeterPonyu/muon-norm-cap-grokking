@@ -51,7 +51,7 @@ def test_index_paths_are_papers_relative() -> None:
 
 def test_index_ids_have_generators_and_summaries() -> None:
     data = _index()
-    assert data["figures"], "INDEX must list Paper A figures"
+    assert data["figures"], "INDEX must list figures"
     for fig in data["figures"]:
         gen = fig.get("generator")
         assert gen, f"F2: {fig['id']} needs generator"

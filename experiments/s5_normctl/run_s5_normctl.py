@@ -1,4 +1,4 @@
-"""Tier-2 (A-ISSUE-3) — norm-controlled Muon on S5: is the growth route CAUSAL?
+"""Tier-2 — norm-controlled Muon on S5: is the growth route CAUSAL?
 
 The A red-team objected that Muon's 6.5× hidden-norm growth (findings-002) may be a
 restatement of the orthogonalized update (fixed spectral norm ⇒ Frobenius norm
@@ -188,7 +188,7 @@ def main():
                     help="ceiling ladder (inf=vanilla Muon growth control)")
     ap.add_argument("--seeds", type=int, default=8)
     ap.add_argument("--op", default="s5", choices=["s5", "add"],
-                   help="s5 (default, s5_mech operating point) | add (mod-add replication of A-ISSUE-3)")
+                   help="s5 (default, s5_mech operating point) | add (mod-add replication of the norm-control arm)")
     try:
         from runner_utils import add_shard_args, shard_cells, validate_shard_args
         add_shard_args(ap); _shard = True

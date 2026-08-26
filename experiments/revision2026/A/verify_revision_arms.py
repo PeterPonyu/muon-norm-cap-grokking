@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify launch-agent numbers for Paper A revision integration (2026-07-17).
+"""Verify launch-agent numbers for revision integration (2026-07-17).
 
 Arms:
   P1-A1  pilot-AB/p1a1_lrcross      S5 lr-cross (adamw/muon x native/crossed, seeds 10-17)

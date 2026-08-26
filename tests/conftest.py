@@ -1,4 +1,4 @@
-"""Warehouse-root fixtures for Paper A contract tests."""
+"""Warehouse-root fixtures for figure-contract tests."""
 
 from __future__ import annotations
 

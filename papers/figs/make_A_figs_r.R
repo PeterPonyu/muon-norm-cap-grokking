@@ -1508,7 +1508,7 @@ make_A_s5_route <- function() {
          x = NULL, y = "Angular distance (deg)") +
     paper_theme()
 
-  # (d) update-geometry control (A-G3): on S5 only spectrum flattening groks;
+  # (d) update-geometry control: on S5 only spectrum flattening groks;
   #     on mod-add every structured update groks and geometry only sets speed
   ag3 <- read_json_safe(file.path(root, "experiments", "revision2026", "gpu2026",
                                   "ag3", "ag3_verdict.json"))
@@ -1546,7 +1546,7 @@ make_A_s5_route <- function() {
 # ══════════════════════════════════════════════════════════════════════════════
 #  Run all figures
 # ══════════════════════════════════════════════════════════════════════════════
-cat("=== Paper A figures: R/ggplot2 render ===\n\n")
+cat("=== figures: R/ggplot2 render ===\n\n")
 
 run_fig <- function(name, fn) {
   cat(sprintf("--- %s ---\n", name))

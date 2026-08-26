@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A-G3 readout — does any update-geometry control reproduce Muon's grokking?
+"""Update-geometry readout — does any update-geometry control reproduce Muon's grokking?
 
 The arm substitutes Muon's orthogonalized update UV^T with transforms that keep
 some of its properties and break others, at a fixed param set (see
@@ -272,7 +272,7 @@ def adjudicate(summary: dict) -> list[dict]:
 
 def render(data: dict, summary: dict, verdicts: list[dict]) -> str:
     L = []
-    L.append(f"A-G3 update-geometry readout — {len(data['cells'])}"
+    L.append(f"Update-geometry readout — {len(data['cells'])}"
              f"/{data['n_planned']} runs read")
     if data["absent"] or data["partial"]:
         L.append(f"  INCOMPLETE: {len(data['absent'])} absent, "
@@ -320,7 +320,7 @@ def render(data: dict, summary: dict, verdicts: list[dict]) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser(
-        description="A-G3 readout: does any update-geometry control reproduce Muon?")
+        description="Update-geometry readout: does any update-geometry control reproduce Muon?")
     ap.add_argument("--root", type=Path, default=DEFAULT_ROOT,
                     help=f"arm results dir (default {DEFAULT_ROOT})")
     ap.add_argument("--allow-incomplete", action="store_true",

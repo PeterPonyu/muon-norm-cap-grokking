@@ -1,4 +1,4 @@
-"""A-ISSUE-3 — is norm GROWTH causal for grokking, or a byproduct?
+"""Is norm GROWTH causal for grokking, or a byproduct?
 
 Norm-controlled Muon (downward-only ceiling = k * init weight-norm) with
 k ∈ {inf, 3, 2, 1.5, 1}, 8 seeds. If growth were the mechanism, capping it should

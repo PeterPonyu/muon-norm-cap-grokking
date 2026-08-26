@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Analyze A-DF with Paper A's seed-level ratio-of-medians bootstrap."""
+"""Analyze A-DF with the seed-level ratio-of-medians bootstrap."""
 from __future__ import annotations
 
 import argparse

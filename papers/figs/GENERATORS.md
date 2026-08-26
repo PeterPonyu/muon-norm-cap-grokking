@@ -1,4 +1,4 @@
-# Paper A figure generators
+# Figure generators for this repo
 
 - `make_A_figs_r.R` — body figures (normctl, floor, LMC, sink, plasticity, synth)
 - `make_A_new_figs_r.R` — timecourse and discriminator

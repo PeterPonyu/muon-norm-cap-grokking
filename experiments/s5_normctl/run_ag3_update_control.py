@@ -1,4 +1,4 @@
-"""A-G3 — update-GEOMETRY control: if not norm growth, then what?
+"""Update-GEOMETRY control: if not norm growth, then what?
 
 findings-021 (A §3.2) showed that capping Muon's hidden-matrix norm growth
 PRESERVES grokking and ACCELERATES it ~10x, i.e. the growth is a dispensable
