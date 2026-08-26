@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: >-
-  Code and data for: Norm growth is a byproduct, not the cause, of Muon-accelerated grokking
+  A causal norm cap preserves—and can accelerate—Muon grokking
 message: If you use this code or data, please cite this archive and the manuscript.
 type: dataset
 authors:
@@ -23,6 +23,6 @@ date-released: '2026-06-29'
 doi: 10.5281/zenodo.21020291
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.21020292
+    value: 10.5281/zenodo.21737440
     description: This version
 repository-code: 'https://github.com/PeterPonyu/muon-norm-cap-grokking'
