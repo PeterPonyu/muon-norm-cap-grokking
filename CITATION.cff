@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: >-
   A causal norm cap preserves—and can accelerate—Muon grokking
-message: If you use this code or data, please cite this archive and the manuscript.
+message: Cite this archive for the experiment code and per-run logs (concept DOI 10.5281/zenodo.21020291).
 type: dataset
 authors:
   - given-names: Zeyu
