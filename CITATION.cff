@@ -18,8 +18,8 @@ keywords:
   - delayed generalization
   - reproducibility
 license: MIT
-version: 1.0.0
-date-released: '2026-06-29'
+version: 1.4.1
+date-released: '2026-08-01'
 doi: 10.5281/zenodo.21020291
 identifiers:
   - type: doi
