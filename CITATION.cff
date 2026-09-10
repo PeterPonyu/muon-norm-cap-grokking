@@ -1,16 +1,17 @@
 cff-version: 1.2.0
 title: >-
   A causal norm cap preserves—and can accelerate—Muon grokking
-message: Cite this archive for the experiment code and per-run logs (concept DOI 10.5281/zenodo.21020291).
+message: Cite this archive for the experiment code and per-run logs (concept DOI 10.5281/zenodo.21020291). Source code is MIT; result logs and figures are CC BY 4.0.
 type: dataset
 authors:
   - given-names: Zeyu
     family-names: Fu
-    email: fuzeyu99@126.com
+    email: fuzeyu09@gmail.com
     orcid: 'https://orcid.org/0009-0001-8329-0108'
     affiliation: 'Army Medical University, Chongqing, China'
 abstract: >-
   Code and result logs for a causal norm-cap test of Muon-accelerated grokking on tiny transformers.
+  Source code is MIT licensed; result logs and figures are CC BY 4.0.
 keywords:
   - grokking
   - Muon
@@ -18,11 +19,7 @@ keywords:
   - delayed generalization
   - reproducibility
 license: MIT
-version: 1.4.1
-date-released: '2026-08-01'
+version: 1.4.2
+date-released: '2026-09-09'
 doi: 10.5281/zenodo.21020291
-identifiers:
-  - type: doi
-    value: 10.5281/zenodo.21737440
-    description: This version
 repository-code: 'https://github.com/PeterPonyu/muon-norm-cap-grokking'
